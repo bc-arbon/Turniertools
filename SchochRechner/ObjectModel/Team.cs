@@ -5,6 +5,7 @@
         public Team()
         {
             this.Opponents = new List<int>();
+            this.Name = String.Empty;
         }
 
         public int Id { get; set; }

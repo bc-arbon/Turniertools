@@ -49,12 +49,26 @@ namespace SchochRechner
 
         public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)
         {
-            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, GamesTeam1 = games1, GamesTeam2 = games2, SetsTeam1 = sets1, SetsTeam2 = sets2 } );
+            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, GamesTeam1 = games1, GamesTeam2 = games2, SetsTeam1 = sets1, SetsTeam2 = sets2 } );            
         }
 
+        public void DeleteEntry(Entry entry)
+        {
+            this.Entries.Remove(entry);
+        }
 
         public void CalculateRanking()
         {
+            // Clear all stats first
+            foreach (var team in this.Teams)
+            {
+                team.GameWins = 0;
+                team.GameLosses = 0;
+                team.SetWins = 0;
+                team.SetLosses = 0;
+                team.Opponents.Clear();
+            }
+
             // Calculate win/loss
             foreach (var entry in this.Entries)
             {
@@ -106,13 +120,11 @@ namespace SchochRechner
             this.Teams.Sort(new SchochComparer());
         }
 
-
-
-
-
-
         public void AddExampleData()
         {
+            this.Teams.Clear();
+            this.Entries.Clear();
+
             this.AddTeam(1, "awit drop");
             this.AddTeam(2, "awit smash");
             this.AddTeam(3, "Beni&Sandro Crushers");
@@ -186,7 +198,6 @@ namespace SchochRechner
             this.AddEntry(5, 6, 10, 1, 1, 2, 2);
             this.AddEntry(5, 16, 9, 2, 0, 4, 0);
             this.AddEntry(5, 3, 18, 0, 2, 2, 4);
-            
 
             this.CalculateRanking();
         }

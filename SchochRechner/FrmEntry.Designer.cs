@@ -42,9 +42,12 @@
             this.TxtSets1 = new System.Windows.Forms.TextBox();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnOk = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.TxtRound = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,7 +99,7 @@
             this.groupBox2.Controls.Add(this.TxtGames2);
             this.groupBox2.Controls.Add(this.TxtGames1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 77);
+            this.groupBox2.Location = new System.Drawing.Point(12, 145);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(512, 62);
             this.groupBox2.TabIndex = 1;
@@ -126,6 +129,7 @@
             this.TxtGames1.Name = "TxtGames1";
             this.TxtGames1.Size = new System.Drawing.Size(36, 23);
             this.TxtGames1.TabIndex = 0;
+            this.TxtGames1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox3
             // 
@@ -133,7 +137,7 @@
             this.groupBox3.Controls.Add(this.TxtSets2);
             this.groupBox3.Controls.Add(this.TxtSets1);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(12, 145);
+            this.groupBox3.Location = new System.Drawing.Point(12, 213);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(512, 62);
             this.groupBox3.TabIndex = 4;
@@ -163,11 +167,12 @@
             this.TxtSets1.Name = "TxtSets1";
             this.TxtSets1.Size = new System.Drawing.Size(36, 23);
             this.TxtSets1.TabIndex = 0;
+            this.TxtSets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // BtnCancel
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancel.Location = new System.Drawing.Point(449, 213);
+            this.BtnCancel.Location = new System.Drawing.Point(449, 283);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 23);
             this.BtnCancel.TabIndex = 5;
@@ -177,18 +182,38 @@
             // BtnOk
             // 
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnOk.Location = new System.Drawing.Point(368, 213);
+            this.BtnOk.Location = new System.Drawing.Point(368, 283);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(75, 23);
             this.BtnOk.TabIndex = 6;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.TxtRound);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox4.Location = new System.Drawing.Point(12, 77);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(512, 62);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Runde";
+            // 
+            // TxtRound
+            // 
+            this.TxtRound.Location = new System.Drawing.Point(229, 22);
+            this.TxtRound.Name = "TxtRound";
+            this.TxtRound.Size = new System.Drawing.Size(36, 23);
+            this.TxtRound.TabIndex = 0;
+            this.TxtRound.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 244);
+            this.ClientSize = new System.Drawing.Size(540, 316);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.BtnOk);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.groupBox3);
@@ -204,6 +229,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +251,7 @@
         private TextBox TxtSets1;
         private Button BtnCancel;
         private Button BtnOk;
+        private GroupBox groupBox4;
+        private TextBox TxtRound;
     }
 }
