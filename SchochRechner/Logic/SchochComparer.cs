@@ -9,6 +9,7 @@ namespace SchochRechner.Logic
             if (x == null) return 1;
             if (y == null) return -1;
 
+            // Swapping x and y here to get a descending ranking
             var team1 = (Team)y;
             var team2 = (Team)x;
 
