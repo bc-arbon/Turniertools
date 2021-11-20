@@ -33,10 +33,10 @@ namespace SchochRechner
             this.CbxTeam2.SelectedItem = team2;
 
             this.TxtRound.Text = entry.Round.ToString();
-            this.TxtGames1.Text = entry.GamesTeam1.ToString();
-            this.TxtGames2.Text = entry.GamesTeam2.ToString();
-            this.TxtSets1.Text = entry.SetsTeam1.ToString();
-            this.TxtSets2.Text = entry.SetsTeam2.ToString();
+            this.TxtGames1.Text = entry.Games1.ToString();
+            this.TxtGames2.Text = entry.Games2.ToString();
+            this.TxtSets1.Text = entry.Sets1.ToString();
+            this.TxtSets2.Text = entry.Sets2.ToString();
         }
     }
 }

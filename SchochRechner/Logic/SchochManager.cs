@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
-using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 
-namespace SchochRechner
+namespace SchochRechner.Logic
 {
     internal class SchochManager
     {
@@ -49,7 +48,7 @@ namespace SchochRechner
 
         public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)
         {
-            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, GamesTeam1 = games1, GamesTeam2 = games2, SetsTeam1 = sets1, SetsTeam2 = sets2 } );            
+            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, Games1 = games1, Games2 = games2, Sets1 = sets1, Sets2 = sets2 } );            
         }
 
         public void DeleteEntry(Entry entry)
@@ -75,15 +74,20 @@ namespace SchochRechner
                 var team1 = this.Teams.Find(x => x.Id == entry.Team1);
                 var team2 = this.Teams.Find(x => x.Id == entry.Team2);
 
-                team1.GameWins += entry.GamesTeam1;
-                team1.GameLosses += entry.GamesTeam2;
-                team2.GameWins += entry.GamesTeam2;
-                team2.GameLosses += entry.GamesTeam1;
+                if (team1 == null || team2 == null)
+                {
+                    continue;
+                }
 
-                team1.SetWins += entry.SetsTeam1;
-                team1.SetLosses += entry.SetsTeam2;
-                team2.SetWins += entry.SetsTeam2;
-                team2.SetLosses += entry.SetsTeam1;
+                team1.GameWins += entry.Games1;
+                team1.GameLosses += entry.Games2;
+                team2.GameWins += entry.Games2;
+                team2.GameLosses += entry.Games1;
+
+                team1.SetWins += entry.Sets1;
+                team1.SetLosses += entry.Sets2;
+                team2.SetWins += entry.Sets2;
+                team2.SetLosses += entry.Sets1;
 
                 team1.Opponents.Add(team2.Id);
                 team2.Opponents.Add(team1.Id);

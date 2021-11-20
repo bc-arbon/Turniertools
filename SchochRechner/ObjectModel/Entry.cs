@@ -8,12 +8,12 @@
 
         public int Team2 { get; set; }
 
-        public int SetsTeam1 { get; set; }
+        public int Sets1 { get; set; }
 
-        public int SetsTeam2 { get; set; }
+        public int Sets2 { get; set; }
 
-        public int GamesTeam1 { get; set; }
+        public int Games1 { get; set; }
 
-        public int GamesTeam2 { get; set; }
+        public int Games2 { get; set; }
     }
 }

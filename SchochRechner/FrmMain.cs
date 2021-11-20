@@ -1,3 +1,4 @@
+using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 
 namespace SchochRechner
@@ -11,7 +12,7 @@ namespace SchochRechner
             this.ShowEntries();
         }
 
-        private SchochManager schochManager = new SchochManager();
+        private readonly SchochManager schochManager = new();
 
         private void ShowRanking()
         {
@@ -45,8 +46,8 @@ namespace SchochRechner
                 var team2 = this.schochManager.Teams.Find(x => x.Id == entry.Team2);
                 item.SubItems.Add(team1 != null ? team1.Name : string.Empty);
                 item.SubItems.Add(team2 != null ? team2.Name : String.Empty);
-                item.SubItems.Add(entry.GamesTeam1 + ":" + entry.GamesTeam2);
-                item.SubItems.Add(entry.SetsTeam1 + ":" + entry.SetsTeam2);
+                item.SubItems.Add(entry.Games1 + ":" + entry.Games2);
+                item.SubItems.Add(entry.Sets1 + ":" + entry.Sets2);
                 this.listView1.Items.Add(item);
             }
         }
@@ -77,10 +78,10 @@ namespace SchochRechner
                 entry.Round = frmEntry.Round;
                 entry.Team1 = frmEntry.Team1;
                 entry.Team2 = frmEntry.Team2;
-                entry.GamesTeam1 = frmEntry.Games1;
-                entry.GamesTeam2 = frmEntry.Games2;
-                entry.SetsTeam1 = frmEntry.Sets1;
-                entry.SetsTeam2 = frmEntry.Sets2;
+                entry.Games1 = frmEntry.Games1;
+                entry.Games2 = frmEntry.Games2;
+                entry.Sets1 = frmEntry.Sets1;
+                entry.Sets2 = frmEntry.Sets2;
 
                 this.schochManager.CalculateRanking();
                 this.ShowEntries();
