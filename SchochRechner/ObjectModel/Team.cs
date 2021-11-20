@@ -26,5 +26,10 @@
         public int Feinbuchholz { get; set; }
 
         public List<int> Opponents { get; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

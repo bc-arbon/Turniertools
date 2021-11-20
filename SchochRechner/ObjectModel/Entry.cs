@@ -1,6 +1,6 @@
 ﻿namespace SchochRechner.ObjectModel
 {
-    internal class Entry
+    public class Entry
     {
         public int Round { get; set; }
 
