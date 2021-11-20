@@ -42,11 +42,18 @@
             this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.ChrRound = new System.Windows.Forms.ColumnHeader();
+            this.ChrTeam1 = new System.Windows.Forms.ColumnHeader();
+            this.ChrRound2 = new System.Windows.Forms.ColumnHeader();
+            this.ChrGames = new System.Windows.Forms.ColumnHeader();
+            this.ChrSets = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -63,8 +70,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1087, 549);
-            this.splitContainer1.SplitterDistance = 734;
+            this.splitContainer1.Size = new System.Drawing.Size(1236, 558);
+            this.splitContainer1.SplitterDistance = 696;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -73,10 +80,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(734, 549);
+            this.groupBox1.Size = new System.Drawing.Size(696, 558);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Rangliste";
             // 
             // LvwRanking
             // 
@@ -96,7 +103,7 @@
             this.LvwRanking.FullRowSelect = true;
             this.LvwRanking.Location = new System.Drawing.Point(3, 19);
             this.LvwRanking.Name = "LvwRanking";
-            this.LvwRanking.Size = new System.Drawing.Size(728, 527);
+            this.LvwRanking.Size = new System.Drawing.Size(690, 536);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -108,7 +115,8 @@
             // 
             // ChrRounds
             // 
-            this.ChrRounds.Text = "Rounds";
+            this.ChrRounds.Text = "R";
+            this.ChrRounds.Width = 30;
             // 
             // ChrGameWins
             // 
@@ -144,20 +152,63 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.listView1);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(349, 549);
+            this.groupBox2.Size = new System.Drawing.Size(536, 558);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ChrRound,
+            this.ChrTeam1,
+            this.ChrRound2,
+            this.ChrGames,
+            this.ChrSets});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.FullRowSelect = true;
+            this.listView1.Location = new System.Drawing.Point(3, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(530, 536);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // ChrRound
+            // 
+            this.ChrRound.Text = "R";
+            this.ChrRound.Width = 30;
+            // 
+            // ChrTeam1
+            // 
+            this.ChrTeam1.Text = "Team 1";
+            this.ChrTeam1.Width = 120;
+            // 
+            // ChrRound2
+            // 
+            this.ChrRound2.Text = "Team 2";
+            this.ChrRound2.Width = 120;
+            // 
+            // ChrGames
+            // 
+            this.ChrGames.Text = "G";
+            this.ChrGames.Width = 40;
+            // 
+            // ChrSets
+            // 
+            this.ChrSets.Text = "S";
+            this.ChrSets.Width = 40;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 549);
+            this.ClientSize = new System.Drawing.Size(1236, 558);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmMain";
             this.Text = "Form1";
@@ -166,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -186,5 +238,11 @@
         private ColumnHeader ChrSetLosses;
         private ColumnHeader ChrSetsDiff;
         private ColumnHeader ChrRounds;
+        private ListView listView1;
+        private ColumnHeader ChrRound;
+        private ColumnHeader ChrTeam1;
+        private ColumnHeader ChrRound2;
+        private ColumnHeader ChrGames;
+        private ColumnHeader ChrSets;
     }
 }

@@ -2,7 +2,7 @@
 {
     internal class Entry
     {
-        public int Id { get; set; }
+        public int Round { get; set; }
 
         public int Team1 { get; set; }
 

@@ -8,7 +8,7 @@ namespace SchochRechner
     {
         public SchochManager()
         {
-            this.AddMockData();
+            this.AddExampleData();
         }
 
         public List<Entry> Entries { get; } = new();
@@ -47,14 +47,15 @@ namespace SchochRechner
             this.Teams.Add(new Team { Id = id, Name = name });
         }
 
-        public void AddEntry(int team1, int team2, int games1, int games2, int sets1, int sets2)
+        public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)
         {
-            this.Entries.Add(new Entry { Team1 = team1, Team2 = team2, GamesTeam1 = games1, GamesTeam2 = games2, SetsTeam1 = sets1, SetsTeam2 = sets2 } );
+            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, GamesTeam1 = games1, GamesTeam2 = games2, SetsTeam1 = sets1, SetsTeam2 = sets2 } );
         }
 
 
         public void CalculateRanking()
         {
+            // Calculate win/loss
             foreach (var entry in this.Entries)
             {
                 var team1 = this.Teams.Find(x => x.Id == entry.Team1);
@@ -81,7 +82,10 @@ namespace SchochRechner
                 foreach(var opp in team.Opponents)
                 {
                     var oppTeam = this.Teams.Find(x => x.Id == opp);
-                    team.Buchholz += oppTeam.GameWins;
+                    if (oppTeam != null)
+                    {
+                        team.Buchholz += oppTeam.GameWins;
+                    }
                 }
             }
 
@@ -92,7 +96,10 @@ namespace SchochRechner
                 foreach (var opp in team.Opponents)
                 {
                     var oppTeam = this.Teams.Find(x => x.Id == opp);
-                    team.Feinbuchholz += oppTeam.Buchholz;
+                    if (oppTeam != null)
+                    {
+                        team.Feinbuchholz += oppTeam.Buchholz;
+                    }
                 }
             }
 
@@ -104,7 +111,7 @@ namespace SchochRechner
 
 
 
-        public void AddMockData()
+        public void AddExampleData()
         {
             this.AddTeam(1, "awit drop");
             this.AddTeam(2, "awit smash");
@@ -126,59 +133,59 @@ namespace SchochRechner
             this.AddTeam(18, "Pausenfüller");
 
             // Runde 1
-            this.AddEntry(2, 3, 0, 2, 0, 4);
-            this.AddEntry(6, 4, 2, 0, 4, 2);
-            this.AddEntry(10, 8, 0, 2, 1, 4);
-            this.AddEntry(14, 11, 0, 2, 0, 4);
-            this.AddEntry(9, 7, 0, 2, 1, 4);
-            this.AddEntry(13, 1, 0, 2, 1, 4);
-            this.AddEntry(18, 17, 0, 2, 0, 4);
-            this.AddEntry(12, 16, 1, 1, 2, 2);
-            this.AddEntry(15, 5, 0, 2, 0, 4);
+            this.AddEntry(1, 2, 3, 0, 2, 0, 4);
+            this.AddEntry(1, 6, 4, 2, 0, 4, 2);
+            this.AddEntry(1, 10, 8, 0, 2, 1, 4);
+            this.AddEntry(1, 14, 11, 0, 2, 0, 4);
+            this.AddEntry(1, 9, 7, 0, 2, 1, 4);
+            this.AddEntry(1, 13, 1, 0, 2, 1, 4);
+            this.AddEntry(1, 18, 17, 0, 2, 0, 4);
+            this.AddEntry(1, 12, 16, 1, 1, 2, 2);
+            this.AddEntry(1, 15, 5, 0, 2, 0, 4);
 
             // Runde 2
-            this.AddEntry(8, 11, 2, 0, 4, 0);
-            this.AddEntry(5, 3, 1, 1, 2, 2);
-            this.AddEntry(1, 17, 0, 2, 2, 4);
-            this.AddEntry(16, 4, 1, 1, 2, 2);
-            this.AddEntry(15, 18, 1, 1, 2, 2);
-            this.AddEntry(7, 6, 2, 0, 4, 2);
-            this.AddEntry(12, 10, 2, 0, 4, 0);
-            this.AddEntry(13, 9, 2, 0, 4, 2);
-            this.AddEntry(14, 2, 2, 0, 4, 1);
+            this.AddEntry(2, 8, 11, 2, 0, 4, 0);
+            this.AddEntry(2, 5, 3, 1, 1, 2, 2);
+            this.AddEntry(2, 1, 17, 0, 2, 2, 4);
+            this.AddEntry(2, 16, 4, 1, 1, 2, 2);
+            this.AddEntry(2, 15, 18, 1, 1, 2, 2);
+            this.AddEntry(2, 7, 6, 2, 0, 4, 2);
+            this.AddEntry(2, 12, 10, 2, 0, 4, 0);
+            this.AddEntry(2, 13, 9, 2, 0, 4, 2);
+            this.AddEntry(2, 14, 2, 2, 0, 4, 1);
 
             // Runde 3
-            this.AddEntry(1, 6, 2, 0, 4, 1);
-            this.AddEntry(17, 8, 0, 2, 1, 4);
-            this.AddEntry(15, 4, 2, 0, 4, 0);
-            this.AddEntry(18, 9, 0, 2, 2, 4);
-            this.AddEntry(11, 16, 1, 1, 3, 3);
-            this.AddEntry(13, 14, 0, 2, 2, 4);
-            this.AddEntry(5, 12, 2, 0, 4, 0);
-            this.AddEntry(3, 7, 0, 2, 0, 4);
-            this.AddEntry(10, 2, 2, 0, 4, 0);
+            this.AddEntry(3, 1, 6, 2, 0, 4, 1);
+            this.AddEntry(3, 17, 8, 0, 2, 1, 4);
+            this.AddEntry(3, 15, 4, 2, 0, 4, 0);
+            this.AddEntry(3, 18, 9, 0, 2, 2, 4);
+            this.AddEntry(3, 11, 16, 1, 1, 3, 3);
+            this.AddEntry(3, 13, 14, 0, 2, 2, 4);
+            this.AddEntry(3, 5, 12, 2, 0, 4, 0);
+            this.AddEntry(3, 3, 7, 0, 2, 0, 4);
+            this.AddEntry(3, 10, 2, 2, 0, 4, 0);
 
             // Runde 4
-            this.AddEntry(10, 9, 0, 2, 1, 4);
-            this.AddEntry(2, 18, 0, 2, 0, 4);
-            this.AddEntry(7, 8, 0, 2, 2, 4);
-            this.AddEntry(3, 16, 0, 2, 2, 4);
-            this.AddEntry(12, 6, 2, 0, 4, 0);
-            this.AddEntry(5, 1, 1, 1, 2, 2);
-            this.AddEntry(14, 17, 0, 2, 0, 4);
-            this.AddEntry(13, 4, 2, 0, 4, 1);
-            this.AddEntry(11, 15, 1, 1, 3, 3);
+            this.AddEntry(4, 10, 9, 0, 2, 1, 4);
+            this.AddEntry(4, 2, 18, 0, 2, 0, 4);
+            this.AddEntry(4, 7, 8, 0, 2, 2, 4);
+            this.AddEntry(4, 3, 16, 0, 2, 2, 4);
+            this.AddEntry(4, 12, 6, 2, 0, 4, 0);
+            this.AddEntry(4, 5, 1, 1, 1, 2, 2);
+            this.AddEntry(4, 14, 17, 0, 2, 0, 4);
+            this.AddEntry(4, 13, 4, 2, 0, 4, 1);
+            this.AddEntry(4, 11, 15, 1, 1, 3, 3);
 
             // Runde 5
-            this.AddEntry(11, 13, 1, 1, 2, 2);
-            this.AddEntry(15, 14, 2, 0, 4, 2);
-            this.AddEntry(4, 2, 2, 0, 4, 0);
-            this.AddEntry(17, 7, 2, 0, 4, 0);
-            this.AddEntry(1, 12, 2, 0, 4, 2);
-            this.AddEntry(5, 8, 1, 1, 3, 3);
-            this.AddEntry(6, 10, 1, 1, 2, 2);
-            this.AddEntry(16, 9, 2, 0, 4, 0);
-            this.AddEntry(3, 18, 0, 2, 2, 4);
+            this.AddEntry(5, 11, 13, 1, 1, 2, 2);
+            this.AddEntry(5, 15, 14, 2, 0, 4, 2);
+            this.AddEntry(5, 4, 2, 2, 0, 4, 0);
+            this.AddEntry(5, 17, 7, 2, 0, 4, 0);
+            this.AddEntry(5, 1, 12, 2, 0, 4, 2);
+            this.AddEntry(5, 5, 8, 1, 1, 3, 3);
+            this.AddEntry(5, 6, 10, 1, 1, 2, 2);
+            this.AddEntry(5, 16, 9, 2, 0, 4, 0);
+            this.AddEntry(5, 3, 18, 0, 2, 2, 4);
             
 
             this.CalculateRanking();
