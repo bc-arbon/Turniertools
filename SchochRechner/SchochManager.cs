@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 
 namespace SchochRechner
@@ -94,6 +95,8 @@ namespace SchochRechner
                     team.Feinbuchholz += oppTeam.Buchholz;
                 }
             }
+
+            this.Teams.Sort(new SchochComparer());
         }
 
 
@@ -103,20 +106,80 @@ namespace SchochRechner
 
         public void AddMockData()
         {
-            this.AddTeam(1, "Viva");
-            this.AddTeam(2, "Pläuschler");
-            this.AddTeam(3, "Röhner");
-            this.AddTeam(4, "Hubabuba");
-            this.AddTeam(5, "Rollator");
-            this.AddTeam(6, "Hoblaschorsch");
+            this.AddTeam(1, "awit drop");
+            this.AddTeam(2, "awit smash");
+            this.AddTeam(3, "Beni&Sandro Crushers");
+            this.AddTeam(4, "Eigentlich Unihockeyaner");
+            this.AddTeam(5, "famafa");
+            this.AddTeam(6, "gegengegen");
+            this.AddTeam(7, "High-Fly");
+            this.AddTeam(8, "it takes drüü");
+            this.AddTeam(9, "No pina no gain");
+            this.AddTeam(10, "OBD Connection");
+            this.AddTeam(11, "PHTG Badminton");
+            this.AddTeam(12, "Pläuschler");
+            this.AddTeam(13, "ReLuk");
+            this.AddTeam(14, "Röhner");
+            this.AddTeam(15, "S.I.D.O.");
+            this.AddTeam(16, "Vier Schläger für ein Halleluja");
+            this.AddTeam(17, "VIVA");
+            this.AddTeam(18, "Pausenfüller");
 
-            this.AddEntry(1, 2, 2, 0, 4, 0);
-            this.AddEntry(3, 4, 2, 0, 4, 1);
-            this.AddEntry(5, 6, 0, 2, 4, 2);
+            // Runde 1
+            this.AddEntry(2, 3, 0, 2, 0, 4);
+            this.AddEntry(6, 4, 2, 0, 4, 2);
+            this.AddEntry(10, 8, 0, 2, 1, 4);
+            this.AddEntry(14, 11, 0, 2, 0, 4);
+            this.AddEntry(9, 7, 0, 2, 1, 4);
+            this.AddEntry(13, 1, 0, 2, 1, 4);
+            this.AddEntry(18, 17, 0, 2, 0, 4);
+            this.AddEntry(12, 16, 1, 1, 2, 2);
+            this.AddEntry(15, 5, 0, 2, 0, 4);
 
-            this.AddEntry(1, 4, 2, 0, 4, 2);
-            this.AddEntry(2, 5, 1, 1, 2, 2);
-            this.AddEntry(3, 6, 1, 1, 3, 3);
+            // Runde 2
+            this.AddEntry(8, 11, 2, 0, 4, 0);
+            this.AddEntry(5, 3, 1, 1, 2, 2);
+            this.AddEntry(1, 17, 0, 2, 2, 4);
+            this.AddEntry(16, 4, 1, 1, 2, 2);
+            this.AddEntry(15, 18, 1, 1, 2, 2);
+            this.AddEntry(7, 6, 2, 0, 4, 2);
+            this.AddEntry(12, 10, 2, 0, 4, 0);
+            this.AddEntry(13, 9, 2, 0, 4, 2);
+            this.AddEntry(14, 2, 2, 0, 4, 1);
+
+            // Runde 3
+            this.AddEntry(1, 6, 2, 0, 4, 1);
+            this.AddEntry(17, 8, 0, 2, 1, 4);
+            this.AddEntry(15, 4, 2, 0, 4, 0);
+            this.AddEntry(18, 9, 0, 2, 2, 4);
+            this.AddEntry(11, 16, 1, 1, 3, 3);
+            this.AddEntry(13, 14, 0, 2, 2, 4);
+            this.AddEntry(5, 12, 2, 0, 4, 0);
+            this.AddEntry(3, 7, 0, 2, 0, 4);
+            this.AddEntry(10, 2, 2, 0, 4, 0);
+
+            // Runde 4
+            this.AddEntry(10, 9, 0, 2, 1, 4);
+            this.AddEntry(2, 18, 0, 2, 0, 4);
+            this.AddEntry(7, 8, 0, 2, 2, 4);
+            this.AddEntry(3, 16, 0, 2, 2, 4);
+            this.AddEntry(12, 6, 2, 0, 4, 0);
+            this.AddEntry(5, 1, 1, 1, 2, 2);
+            this.AddEntry(14, 17, 0, 2, 0, 4);
+            this.AddEntry(13, 4, 2, 0, 4, 1);
+            this.AddEntry(11, 15, 1, 1, 3, 3);
+
+            // Runde 5
+            this.AddEntry(11, 13, 1, 1, 2, 2);
+            this.AddEntry(15, 14, 2, 0, 4, 2);
+            this.AddEntry(4, 2, 2, 0, 4, 0);
+            this.AddEntry(17, 7, 2, 0, 4, 0);
+            this.AddEntry(1, 12, 2, 0, 4, 2);
+            this.AddEntry(5, 8, 1, 1, 3, 3);
+            this.AddEntry(6, 10, 1, 1, 2, 2);
+            this.AddEntry(16, 9, 2, 0, 4, 0);
+            this.AddEntry(3, 18, 0, 2, 2, 4);
+            
 
             this.CalculateRanking();
         }

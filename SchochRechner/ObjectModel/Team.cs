@@ -1,6 +1,6 @@
 ﻿namespace SchochRechner.ObjectModel
 {
-    internal class Team
+    public class Team
     {
         public Team()
         {

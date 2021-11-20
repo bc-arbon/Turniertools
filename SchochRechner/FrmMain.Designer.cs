@@ -32,6 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LvwRanking = new System.Windows.Forms.ListView();
             this.ChrName = new System.Windows.Forms.ColumnHeader();
+            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
             this.ChrGameWins = new System.Windows.Forms.ColumnHeader();
             this.ChrGameLosses = new System.Windows.Forms.ColumnHeader();
             this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
@@ -41,7 +42,6 @@
             this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,7 +64,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Size = new System.Drawing.Size(1087, 549);
-            this.splitContainer1.SplitterDistance = 633;
+            this.splitContainer1.SplitterDistance = 734;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -73,7 +73,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(633, 549);
+            this.groupBox1.Size = new System.Drawing.Size(734, 549);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -91,10 +91,12 @@
             this.ChrSetsDiff,
             this.ChrBuchholz,
             this.ChrFeinbuchholz});
+            this.LvwRanking.Cursor = System.Windows.Forms.Cursors.Default;
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LvwRanking.FullRowSelect = true;
             this.LvwRanking.Location = new System.Drawing.Point(3, 19);
             this.LvwRanking.Name = "LvwRanking";
-            this.LvwRanking.Size = new System.Drawing.Size(627, 527);
+            this.LvwRanking.Size = new System.Drawing.Size(728, 527);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -102,6 +104,11 @@
             // ChrName
             // 
             this.ChrName.Text = "Name";
+            this.ChrName.Width = 120;
+            // 
+            // ChrRounds
+            // 
+            this.ChrRounds.Text = "Rounds";
             // 
             // ChrGameWins
             // 
@@ -137,17 +144,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 549);
+            this.groupBox2.Size = new System.Drawing.Size(349, 549);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
-            // 
-            // ChrRounds
-            // 
-            this.ChrRounds.Text = "Rounds";
             // 
             // FrmMain
             // 
