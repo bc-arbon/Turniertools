@@ -1,5 +1,6 @@
 using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
+using System.Drawing.Printing;
 
 namespace SchochRechner
 {
@@ -7,7 +8,7 @@ namespace SchochRechner
     {
         public FrmMain()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
         }
 
         private readonly SchochManager schochManager = new();
@@ -56,7 +57,7 @@ namespace SchochRechner
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 this.schochManager.AddEntry(frmEntry.Round, frmEntry.Team1, frmEntry.Team2, frmEntry.Games1, frmEntry.Games2, frmEntry.Sets1, frmEntry.Sets2);
-                this.schochManager.CalculateRanking();                
+                this.schochManager.CalculateRanking();
                 this.ShowEntries();
                 this.ShowRanking();
             }
@@ -152,6 +153,21 @@ namespace SchochRechner
         private void LvwEntries_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            var bitmap = new Bitmap(this.LvwRanking.Width, this.LvwRanking.Height);
+
+            this.LvwRanking.DrawToBitmap(bitmap, new Rectangle(0, 0, this.LvwRanking.Width, this.LvwRanking.Height));
+
+            var pd = new PrintDocument();
+
+            pd.PrintPage += (s, e) => e.Graphics.DrawImage(bitmap, 100, 100);
+
+            var preview = new PrintPreviewDialog();
+            preview.Document = pd;
+            preview.ShowDialog();
         }
     }
 }

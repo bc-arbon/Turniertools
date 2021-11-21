@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.SpcMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SpcRanking = new System.Windows.Forms.SplitContainer();
+            this.BtnPrint = new System.Windows.Forms.Button();
             this.LvwRanking = new System.Windows.Forms.ListView();
             this.ChrName = new System.Windows.Forms.ColumnHeader();
             this.ChrRounds = new System.Windows.Forms.ColumnHeader();
@@ -42,7 +44,7 @@
             this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.SpcEntries = new System.Windows.Forms.SplitContainer();
             this.BtnTeams = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
@@ -53,40 +55,44 @@
             this.ChrRound2 = new System.Windows.Forms.ColumnHeader();
             this.ChrGames = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).BeginInit();
+            this.SpcMain.Panel1.SuspendLayout();
+            this.SpcMain.Panel2.SuspendLayout();
+            this.SpcMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).BeginInit();
+            this.SpcRanking.Panel1.SuspendLayout();
+            this.SpcRanking.Panel2.SuspendLayout();
+            this.SpcRanking.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpcEntries)).BeginInit();
+            this.SpcEntries.Panel1.SuspendLayout();
+            this.SpcEntries.Panel2.SuspendLayout();
+            this.SpcEntries.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // SpcMain
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.SpcMain.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.SpcMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.SpcMain.Location = new System.Drawing.Point(0, 0);
+            this.SpcMain.Name = "SpcMain";
             // 
-            // splitContainer1.Panel1
+            // SpcMain.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.SpcMain.Panel1.Controls.Add(this.groupBox1);
             // 
-            // splitContainer1.Panel2
+            // SpcMain.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(995, 683);
-            this.splitContainer1.SplitterDistance = 578;
-            this.splitContainer1.TabIndex = 0;
+            this.SpcMain.Panel2.Controls.Add(this.groupBox2);
+            this.SpcMain.Size = new System.Drawing.Size(995, 683);
+            this.SpcMain.SplitterDistance = 578;
+            this.SpcMain.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.LvwRanking);
+            this.groupBox1.Controls.Add(this.SpcRanking);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -94,6 +100,37 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rangliste";
+            // 
+            // SpcRanking
+            // 
+            this.SpcRanking.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.SpcRanking.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpcRanking.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.SpcRanking.IsSplitterFixed = true;
+            this.SpcRanking.Location = new System.Drawing.Point(3, 19);
+            this.SpcRanking.Name = "SpcRanking";
+            this.SpcRanking.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // SpcRanking.Panel1
+            // 
+            this.SpcRanking.Panel1.Controls.Add(this.BtnPrint);
+            // 
+            // SpcRanking.Panel2
+            // 
+            this.SpcRanking.Panel2.Controls.Add(this.LvwRanking);
+            this.SpcRanking.Size = new System.Drawing.Size(572, 661);
+            this.SpcRanking.SplitterDistance = 30;
+            this.SpcRanking.TabIndex = 1;
+            // 
+            // BtnPrint
+            // 
+            this.BtnPrint.Location = new System.Drawing.Point(3, 3);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(75, 23);
+            this.BtnPrint.TabIndex = 1;
+            this.BtnPrint.Text = "Drucken";
+            this.BtnPrint.UseVisualStyleBackColor = true;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // LvwRanking
             // 
@@ -111,10 +148,10 @@
             this.LvwRanking.Cursor = System.Windows.Forms.Cursors.Default;
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwRanking.FullRowSelect = true;
-            this.LvwRanking.Location = new System.Drawing.Point(3, 19);
+            this.LvwRanking.Location = new System.Drawing.Point(0, 0);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(572, 661);
+            this.LvwRanking.Size = new System.Drawing.Size(572, 627);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -182,7 +219,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.splitContainer2);
+            this.groupBox2.Controls.Add(this.SpcEntries);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
@@ -192,29 +229,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Begegnungen";
             // 
-            // splitContainer2
+            // SpcEntries
             // 
-            this.splitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 19);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.SpcEntries.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SpcEntries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpcEntries.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.SpcEntries.IsSplitterFixed = true;
+            this.SpcEntries.Location = new System.Drawing.Point(3, 19);
+            this.SpcEntries.Name = "SpcEntries";
+            this.SpcEntries.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer2.Panel1
+            // SpcEntries.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.BtnTeams);
-            this.splitContainer2.Panel1.Controls.Add(this.BtnDelete);
-            this.splitContainer2.Panel1.Controls.Add(this.BtnEdit);
-            this.splitContainer2.Panel1.Controls.Add(this.BtnAdd);
+            this.SpcEntries.Panel1.Controls.Add(this.BtnTeams);
+            this.SpcEntries.Panel1.Controls.Add(this.BtnDelete);
+            this.SpcEntries.Panel1.Controls.Add(this.BtnEdit);
+            this.SpcEntries.Panel1.Controls.Add(this.BtnAdd);
             // 
-            // splitContainer2.Panel2
+            // SpcEntries.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.LvwEntries);
-            this.splitContainer2.Size = new System.Drawing.Size(407, 661);
-            this.splitContainer2.SplitterDistance = 30;
-            this.splitContainer2.TabIndex = 0;
+            this.SpcEntries.Panel2.Controls.Add(this.LvwEntries);
+            this.SpcEntries.Size = new System.Drawing.Size(407, 661);
+            this.SpcEntries.SplitterDistance = 30;
+            this.SpcEntries.TabIndex = 0;
             // 
             // BtnTeams
             // 
@@ -307,30 +344,34 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 683);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.SpcMain);
             this.DoubleBuffered = true;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schoch Rechner";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.SpcMain.Panel1.ResumeLayout(false);
+            this.SpcMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).EndInit();
+            this.SpcMain.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.SpcRanking.Panel1.ResumeLayout(false);
+            this.SpcRanking.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).EndInit();
+            this.SpcRanking.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.SpcEntries.Panel1.ResumeLayout(false);
+            this.SpcEntries.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpcEntries)).EndInit();
+            this.SpcEntries.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private SplitContainer splitContainer1;
+        private SplitContainer SpcMain;
         private GroupBox groupBox1;
         private ListView LvwRanking;
         private ColumnHeader ChrName;
@@ -350,10 +391,12 @@
         private ColumnHeader ChrRound2;
         private ColumnHeader ChrGames;
         private ColumnHeader ChrSets;
-        private SplitContainer splitContainer2;
+        private SplitContainer SpcEntries;
         private Button BtnDelete;
         private Button BtnEdit;
         private Button BtnAdd;
         private Button BtnTeams;
+        private Button BtnPrint;
+        private SplitContainer SpcRanking;
     }
 }
