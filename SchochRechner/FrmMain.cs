@@ -133,9 +133,7 @@ namespace SchochRechner
         {
             var frmTeams = new FrmTeams(this.schochManager);
             frmTeams.ShowDialog();
-
-            this.schochManager.CalculateRanking();
-            this.schochManager.Save();
+                        
             this.ShowAll();
         }
 

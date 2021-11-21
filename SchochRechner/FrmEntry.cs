@@ -19,7 +19,7 @@ namespace SchochRechner
 
         public FrmEntry(List<Team> teams) : this()
         {
-            var teamsSorted = teams.ToArray().OrderBy(x => x.Name).ToArray();            
+            var teamsSorted = teams.ToArray().OrderBy(x => x.Id).ToArray();            
             this.CbxTeam1.Items.AddRange(teamsSorted);
             this.CbxTeam2.Items.AddRange(teamsSorted);
         }

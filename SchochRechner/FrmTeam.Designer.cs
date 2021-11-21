@@ -75,6 +75,7 @@
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(221, 23);
             this.TxtName.TabIndex = 1;
+            this.TxtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtName_KeyDown);
             // 
             // TxtId
             // 

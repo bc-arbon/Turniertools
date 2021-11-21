@@ -34,6 +34,8 @@ namespace SchochRechner
             {
                 this.schochManager.AddTeam(frmTeam.Id, frmTeam.TeamName);
                 this.LoadTeams();
+                this.schochManager.CalculateRanking();
+                this.schochManager.Save();
             }
         }
 
@@ -48,6 +50,8 @@ namespace SchochRechner
                 team.Id = frmTeam.Id;
                 team.Name = frmTeam.TeamName;
                 this.LoadTeams();
+                this.schochManager.CalculateRanking();
+                this.schochManager.Save();
             }
         }
 
@@ -58,6 +62,8 @@ namespace SchochRechner
             var team = (Team)this.LvwTeams.SelectedItems[0].Tag;
             this.schochManager.DeleteTeam(team);
             this.LoadTeams();
+            this.schochManager.CalculateRanking();
+            this.schochManager.Save();
         }
 
         private void FrmTeams_Load(object sender, EventArgs e)

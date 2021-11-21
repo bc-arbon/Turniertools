@@ -81,7 +81,7 @@
             this.CbxTeam2.Location = new System.Drawing.Point(269, 22);
             this.CbxTeam2.Name = "CbxTeam2";
             this.CbxTeam2.Size = new System.Drawing.Size(223, 23);
-            this.CbxTeam2.TabIndex = 0;
+            this.CbxTeam2.TabIndex = 1;
             // 
             // CbxTeam1
             // 
@@ -121,7 +121,7 @@
             this.TxtGames2.Location = new System.Drawing.Point(269, 22);
             this.TxtGames2.Name = "TxtGames2";
             this.TxtGames2.Size = new System.Drawing.Size(36, 23);
-            this.TxtGames2.TabIndex = 0;
+            this.TxtGames2.TabIndex = 4;
             this.TxtGames2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtGames1
@@ -129,7 +129,7 @@
             this.TxtGames1.Location = new System.Drawing.Point(193, 22);
             this.TxtGames1.Name = "TxtGames1";
             this.TxtGames1.Size = new System.Drawing.Size(36, 23);
-            this.TxtGames1.TabIndex = 0;
+            this.TxtGames1.TabIndex = 3;
             this.TxtGames1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
@@ -160,7 +160,7 @@
             this.TxtSets2.Location = new System.Drawing.Point(269, 22);
             this.TxtSets2.Name = "TxtSets2";
             this.TxtSets2.Size = new System.Drawing.Size(36, 23);
-            this.TxtSets2.TabIndex = 0;
+            this.TxtSets2.TabIndex = 6;
             this.TxtSets2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtSets1
@@ -168,7 +168,7 @@
             this.TxtSets1.Location = new System.Drawing.Point(193, 22);
             this.TxtSets1.Name = "TxtSets1";
             this.TxtSets1.Size = new System.Drawing.Size(36, 23);
-            this.TxtSets1.TabIndex = 0;
+            this.TxtSets1.TabIndex = 5;
             this.TxtSets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BtnCancel
@@ -177,7 +177,7 @@
             this.BtnCancel.Location = new System.Drawing.Point(449, 283);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancel.TabIndex = 5;
+            this.BtnCancel.TabIndex = 8;
             this.BtnCancel.Text = "Abbrechen";
             this.BtnCancel.UseVisualStyleBackColor = true;
             // 
@@ -187,7 +187,7 @@
             this.BtnOk.Location = new System.Drawing.Point(368, 283);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(75, 23);
-            this.BtnOk.TabIndex = 6;
+            this.BtnOk.TabIndex = 7;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
             // 
@@ -207,7 +207,7 @@
             this.TxtRound.Location = new System.Drawing.Point(229, 22);
             this.TxtRound.Name = "TxtRound";
             this.TxtRound.Size = new System.Drawing.Size(36, 23);
-            this.TxtRound.TabIndex = 0;
+            this.TxtRound.TabIndex = 2;
             this.TxtRound.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmEntry

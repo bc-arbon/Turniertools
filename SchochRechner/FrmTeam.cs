@@ -15,10 +15,29 @@ namespace SchochRechner
             this.TxtName.Text = team.Name;
         }
 
-        public int Id { get { return Convert.ToInt32(this.TxtId.Text); }
+        public int Id 
+        { 
+            get 
+            { 
+                if (string.IsNullOrEmpty(this.TxtId.Text))
+                {
+                    return -1;
+                }
+
+                return Convert.ToInt32(this.TxtId.Text); 
+            }
         }
 
         public string TeamName { get { return this.TxtName.Text; }
+        }
+
+        private void TxtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

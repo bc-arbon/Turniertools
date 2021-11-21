@@ -68,32 +68,27 @@
             // 
             // ChrHidden
             // 
-            this.ChrHidden.DisplayIndex = 9;
             this.ChrHidden.Width = 0;
             // 
             // ChrRank
             // 
-            this.ChrRank.DisplayIndex = 0;
             this.ChrRank.Text = "Rang";
             this.ChrRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrRank.Width = 100;
             // 
             // ChrTeam
             // 
-            this.ChrTeam.DisplayIndex = 1;
             this.ChrTeam.Text = "Name";
             this.ChrTeam.Width = 700;
             // 
             // ChrRounds
             // 
-            this.ChrRounds.DisplayIndex = 2;
             this.ChrRounds.Text = "Runden";
             this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrRounds.Width = 140;
             // 
             // ChrGames
             // 
-            this.ChrGames.DisplayIndex = 3;
             this.ChrGames.Text = "Spiele";
             this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrGames.Width = 110;
@@ -106,7 +101,6 @@
             // 
             // ChrSets
             // 
-            this.ChrSets.DisplayIndex = 4;
             this.ChrSets.Text = "Sätze";
             this.ChrSets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrSets.Width = 110;
@@ -119,14 +113,12 @@
             // 
             // ChrBuchholz
             // 
-            this.ChrBuchholz.DisplayIndex = 6;
             this.ChrBuchholz.Text = "BHZ";
             this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrBuchholz.Width = 100;
             // 
             // ChrFeinbuchholz
             // 
-            this.ChrFeinbuchholz.DisplayIndex = 8;
             this.ChrFeinbuchholz.Text = "FBHZ";
             this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrFeinbuchholz.Width = 100;
