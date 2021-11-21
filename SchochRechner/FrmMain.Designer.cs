@@ -55,6 +55,8 @@
             this.ChrRound2 = new System.Windows.Forms.ColumnHeader();
             this.ChrGames = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
+            this.ChrRank = new System.Windows.Forms.ColumnHeader();
+            this.ChrId = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).BeginInit();
             this.SpcMain.Panel1.SuspendLayout();
             this.SpcMain.Panel2.SuspendLayout();
@@ -135,6 +137,8 @@
             // LvwRanking
             // 
             this.LvwRanking.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ChrRank,
+            this.ChrId,
             this.ChrName,
             this.ChrRounds,
             this.ChrGameWins,
@@ -339,6 +343,16 @@
             this.ChrSets.Text = "S";
             this.ChrSets.Width = 40;
             // 
+            // ChrRank
+            // 
+            this.ChrRank.Text = "Rang";
+            this.ChrRank.Width = 40;
+            // 
+            // ChrId
+            // 
+            this.ChrId.Text = "Id";
+            this.ChrId.Width = 30;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -398,5 +412,7 @@
         private Button BtnTeams;
         private Button BtnPrint;
         private SplitContainer SpcRanking;
+        private ColumnHeader ChrRank;
+        private ColumnHeader ChrId;
     }
 }

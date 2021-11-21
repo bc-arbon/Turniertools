@@ -16,10 +16,12 @@ namespace SchochRechner
         private void ShowRanking()
         {
             this.LvwRanking.Items.Clear();
-
+            var rank = 1;
             foreach (var team in this.schochManager.Teams)
             {
-                var item = new ListViewItem(team.Name);
+                var item = new ListViewItem(rank.ToString());
+                item.SubItems.Add(team.Id.ToString());
+                item.SubItems.Add(team.Name);
                 item.SubItems.Add(team.Rounds.ToString());
                 item.SubItems.Add(team.GameWins.ToString());
                 item.SubItems.Add(team.GameLosses.ToString());
@@ -30,6 +32,7 @@ namespace SchochRechner
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.Feinbuchholz.ToString());
                 this.LvwRanking.Items.Add(item);
+                rank++;
             }
         }
 
