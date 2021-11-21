@@ -71,6 +71,7 @@ namespace SchochRechner
             {
                 this.schochManager.AddEntry(frmEntry.Round, frmEntry.Team1, frmEntry.Team2, frmEntry.Games1, frmEntry.Games2, frmEntry.Sets1, frmEntry.Sets2);
                 this.schochManager.CalculateRanking();
+                this.schochManager.Save();
                 this.ShowAll();
             }
         }
@@ -95,6 +96,7 @@ namespace SchochRechner
                 entry.Sets2 = frmEntry.Sets2;
 
                 this.schochManager.CalculateRanking();
+                this.schochManager.Save();
                 this.ShowAll();
             }
         }
@@ -109,6 +111,7 @@ namespace SchochRechner
             var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
             this.schochManager.DeleteEntry(entry);
             this.schochManager.CalculateRanking();
+            this.schochManager.Save();
             this.ShowAll();
         }
 
@@ -119,8 +122,8 @@ namespace SchochRechner
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //this.schochManager.Load();
-            this.schochManager.AddExampleData();
+            this.schochManager.Load();
+            //this.schochManager.AddExampleData();
 
             this.frmDisplay.Show();
             this.ShowAll();                        
@@ -132,6 +135,7 @@ namespace SchochRechner
             frmTeams.ShowDialog();
 
             this.schochManager.CalculateRanking();
+            this.schochManager.Save();
             this.ShowAll();
         }
 

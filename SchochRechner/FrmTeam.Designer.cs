@@ -74,7 +74,7 @@
             this.TxtName.Location = new System.Drawing.Point(54, 51);
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(221, 23);
-            this.TxtName.TabIndex = 0;
+            this.TxtName.TabIndex = 1;
             // 
             // TxtId
             // 
@@ -90,7 +90,7 @@
             this.BtnCancel.Location = new System.Drawing.Point(218, 109);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancel.TabIndex = 1;
+            this.BtnCancel.TabIndex = 3;
             this.BtnCancel.Text = "Abbrechen";
             this.BtnCancel.UseVisualStyleBackColor = true;
             // 
@@ -100,7 +100,7 @@
             this.BtnOk.Location = new System.Drawing.Point(137, 109);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(75, 23);
-            this.BtnOk.TabIndex = 1;
+            this.BtnOk.TabIndex = 2;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
             // 

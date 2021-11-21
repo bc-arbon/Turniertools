@@ -8,11 +8,6 @@ namespace SchochRechner.Logic
         private readonly string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
         private readonly string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
 
-        public SchochManager()
-        {
-            //this.AddExampleData();
-        }
-
         public List<Entry> Entries { get; } = new();
         public List<Team> Teams { get; } = new();
 
@@ -42,6 +37,25 @@ namespace SchochRechner.Logic
 
         public void Save()
         {
+            var suffix = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+            if (File.Exists(this.entriesFilepath))
+            {
+                var newFilePath = Path.Combine(Application.StartupPath, "entries-" + suffix + ".json");
+                if (!File.Exists(newFilePath))
+                {
+                    File.Move(this.entriesFilepath, newFilePath);
+                }
+            }
+
+            if (File.Exists(this.teamsFilepath))
+            {
+                var newFilePath = Path.Combine(Application.StartupPath, "teams-" + suffix + ".json");
+                if (!File.Exists(newFilePath))
+                {
+                    File.Move(this.teamsFilepath, newFilePath);
+                }
+            }
+
             var content1 = JsonConvert.SerializeObject(this.Entries, Formatting.Indented);
             File.WriteAllText(this.entriesFilepath, content1);
 
