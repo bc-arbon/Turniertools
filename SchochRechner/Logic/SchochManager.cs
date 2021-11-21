@@ -5,40 +5,48 @@ namespace SchochRechner.Logic
 {
     internal class SchochManager
     {
+        private readonly string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
+        private readonly string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
+
         public SchochManager()
         {
-            this.AddExampleData();
+            //this.AddExampleData();
         }
 
         public List<Entry> Entries { get; } = new();
         public List<Team> Teams { get; } = new();
 
-        public void Load(string filepathEntries, string filepathTeams)
+        public void Load()
         {
-            var content1 = File.ReadAllText(filepathEntries);
-            var newEntries = JsonConvert.DeserializeObject<List<Entry>>(content1);
-            if (newEntries != null)
+            if (!File.Exists(this.entriesFilepath) || !File.Exists(this.teamsFilepath))
             {
-                this.Entries.Clear();
-                this.Entries.AddRange(newEntries);
+                return;
             }
 
-            var content2 = File.ReadAllText(filepathTeams);
+            var content2 = File.ReadAllText(this.teamsFilepath);
             var newTeams = JsonConvert.DeserializeObject<List<Team>>(content2);
             if (newTeams != null)
             {
                 this.Teams.Clear();
                 this.Teams.AddRange(newTeams);
             }
+
+            var content1 = File.ReadAllText(this.entriesFilepath);
+            var newEntries = JsonConvert.DeserializeObject<List<Entry>>(content1);
+            if (newEntries != null)
+            {
+                this.Entries.Clear();
+                this.Entries.AddRange(newEntries);
+            }
         }
 
-        public void Save(string filePathEntries, string filepathTeams)
+        public void Save()
         {
             var content1 = JsonConvert.SerializeObject(this.Entries, Formatting.Indented);
-            File.WriteAllText(filePathEntries, content1);
+            File.WriteAllText(this.entriesFilepath, content1);
 
             var content2 = JsonConvert.SerializeObject(this.Teams, Formatting.Indented);
-            File.WriteAllText(filepathTeams, content2);
+            File.WriteAllText(this.teamsFilepath, content2);
         }
 
         public void AddTeam(int id, string name)
@@ -48,7 +56,7 @@ namespace SchochRechner.Logic
 
         public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)
         {
-            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, Games1 = games1, Games2 = games2, Sets1 = sets1, Sets2 = sets2 } );            
+            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, Games1 = games1, Games2 = games2, Sets1 = sets1, Sets2 = sets2 });
         }
 
         public void DeleteEntry(Entry entry)
@@ -97,7 +105,7 @@ namespace SchochRechner.Logic
             foreach (var team in this.Teams)
             {
                 team.Buchholz = 0;
-                foreach(var opp in team.Opponents)
+                foreach (var opp in team.Opponents)
                 {
                     var oppTeam = this.Teams.Find(x => x.Id == opp);
                     if (oppTeam != null)

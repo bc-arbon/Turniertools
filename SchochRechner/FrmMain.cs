@@ -7,9 +7,7 @@ namespace SchochRechner
     {
         public FrmMain()
         {
-            this.InitializeComponent();
-            this.ShowRanking();
-            this.ShowEntries();
+            this.InitializeComponent();            
         }
 
         private readonly SchochManager schochManager = new();
@@ -45,7 +43,7 @@ namespace SchochRechner
                 var team1 = this.schochManager.Teams.Find(x => x.Id == entry.Team1);
                 var team2 = this.schochManager.Teams.Find(x => x.Id == entry.Team2);
                 item.SubItems.Add(team1 != null ? team1.Name : string.Empty);
-                item.SubItems.Add(team2 != null ? team2.Name : String.Empty);
+                item.SubItems.Add(team2 != null ? team2.Name : string.Empty);
                 item.SubItems.Add(entry.Games1 + ":" + entry.Games2);
                 item.SubItems.Add(entry.Sets1 + ":" + entry.Sets2);
                 this.listView1.Items.Add(item);
@@ -58,7 +56,7 @@ namespace SchochRechner
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 this.schochManager.AddEntry(frmEntry.Round, frmEntry.Team1, frmEntry.Team2, frmEntry.Games1, frmEntry.Games2, frmEntry.Sets1, frmEntry.Sets2);
-                this.schochManager.CalculateRanking();
+                this.schochManager.CalculateRanking();                
                 this.ShowEntries();
                 this.ShowRanking();
             }
@@ -101,6 +99,19 @@ namespace SchochRechner
             this.schochManager.CalculateRanking();
             this.ShowEntries();
             this.ShowRanking();
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.schochManager.Save();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            //this.schochManager.Load();
+            this.schochManager.AddExampleData();
+            this.ShowRanking();
+            this.ShowEntries();
         }
     }
 }
