@@ -9,9 +9,19 @@ namespace SchochRechner
         public FrmMain()
         {
             this.InitializeComponent();
+
+            this.frmDisplay = new FrmDisplay(this.schochManager);
         }
 
         private readonly SchochManager schochManager = new();
+        private readonly FrmDisplay frmDisplay;
+
+        private void ShowAll()
+        {
+            this.ShowEntries();
+            this.ShowRanking();
+            this.frmDisplay.ShowRanking();
+        }
 
         private void ShowRanking()
         {
@@ -25,10 +35,10 @@ namespace SchochRechner
                 item.SubItems.Add(team.Rounds.ToString());
                 item.SubItems.Add(team.GameWins.ToString());
                 item.SubItems.Add(team.GameLosses.ToString());
-                item.SubItems.Add(team.GamesDiff.ToString());
+                item.SubItems.Add(team.GameDiffText);
                 item.SubItems.Add(team.SetWins.ToString());
                 item.SubItems.Add(team.SetLosses.ToString());
-                item.SubItems.Add(team.SetDiff.ToString());
+                item.SubItems.Add(team.SetDiffText);
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.Feinbuchholz.ToString());
                 this.LvwRanking.Items.Add(item);
@@ -61,8 +71,7 @@ namespace SchochRechner
             {
                 this.schochManager.AddEntry(frmEntry.Round, frmEntry.Team1, frmEntry.Team2, frmEntry.Games1, frmEntry.Games2, frmEntry.Sets1, frmEntry.Sets2);
                 this.schochManager.CalculateRanking();
-                this.ShowEntries();
-                this.ShowRanking();
+                this.ShowAll();
             }
         }
 
@@ -86,8 +95,7 @@ namespace SchochRechner
                 entry.Sets2 = frmEntry.Sets2;
 
                 this.schochManager.CalculateRanking();
-                this.ShowEntries();
-                this.ShowRanking();
+                this.ShowAll();
             }
         }
 
@@ -101,8 +109,7 @@ namespace SchochRechner
             var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
             this.schochManager.DeleteEntry(entry);
             this.schochManager.CalculateRanking();
-            this.ShowEntries();
-            this.ShowRanking();
+            this.ShowAll();
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -114,8 +121,9 @@ namespace SchochRechner
         {
             //this.schochManager.Load();
             this.schochManager.AddExampleData();
-            this.ShowRanking();
-            this.ShowEntries();
+
+            this.frmDisplay.Show();
+            this.ShowAll();                        
         }
 
         private void BtnTeams_Click(object sender, EventArgs e)
@@ -124,8 +132,7 @@ namespace SchochRechner
             frmTeams.ShowDialog();
 
             this.schochManager.CalculateRanking();
-            this.ShowEntries();
-            this.ShowRanking();
+            this.ShowAll();
         }
 
         private void LvwRanking_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -171,6 +178,12 @@ namespace SchochRechner
             var preview = new PrintPreviewDialog();
             preview.Document = pd;
             preview.ShowDialog();
+        }
+
+        private void BtnDisplay_Click(object sender, EventArgs e)
+        {
+            // TODO
+            //this.frmDisplay.Show();
         }
     }
 }

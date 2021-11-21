@@ -31,8 +31,11 @@
             this.SpcMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SpcRanking = new System.Windows.Forms.SplitContainer();
+            this.BtnDisplay = new System.Windows.Forms.Button();
             this.BtnPrint = new System.Windows.Forms.Button();
             this.LvwRanking = new System.Windows.Forms.ListView();
+            this.ChrRank = new System.Windows.Forms.ColumnHeader();
+            this.ChrId = new System.Windows.Forms.ColumnHeader();
             this.ChrName = new System.Windows.Forms.ColumnHeader();
             this.ChrRounds = new System.Windows.Forms.ColumnHeader();
             this.ChrGameWins = new System.Windows.Forms.ColumnHeader();
@@ -55,8 +58,6 @@
             this.ChrRound2 = new System.Windows.Forms.ColumnHeader();
             this.ChrGames = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
-            this.ChrRank = new System.Windows.Forms.ColumnHeader();
-            this.ChrId = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).BeginInit();
             this.SpcMain.Panel1.SuspendLayout();
             this.SpcMain.Panel2.SuspendLayout();
@@ -105,7 +106,7 @@
             // 
             // SpcRanking
             // 
-            this.SpcRanking.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.SpcRanking.Cursor = System.Windows.Forms.Cursors.Default;
             this.SpcRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpcRanking.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.SpcRanking.IsSplitterFixed = true;
@@ -115,6 +116,7 @@
             // 
             // SpcRanking.Panel1
             // 
+            this.SpcRanking.Panel1.Controls.Add(this.BtnDisplay);
             this.SpcRanking.Panel1.Controls.Add(this.BtnPrint);
             // 
             // SpcRanking.Panel2
@@ -123,6 +125,16 @@
             this.SpcRanking.Size = new System.Drawing.Size(572, 661);
             this.SpcRanking.SplitterDistance = 30;
             this.SpcRanking.TabIndex = 1;
+            // 
+            // BtnDisplay
+            // 
+            this.BtnDisplay.Location = new System.Drawing.Point(84, 3);
+            this.BtnDisplay.Name = "BtnDisplay";
+            this.BtnDisplay.Size = new System.Drawing.Size(75, 23);
+            this.BtnDisplay.TabIndex = 2;
+            this.BtnDisplay.Text = "Display";
+            this.BtnDisplay.UseVisualStyleBackColor = true;
+            this.BtnDisplay.Click += new System.EventHandler(this.BtnDisplay_Click);
             // 
             // BtnPrint
             // 
@@ -161,6 +173,16 @@
             this.LvwRanking.View = System.Windows.Forms.View.Details;
             this.LvwRanking.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwRanking_DrawColumnHeader);
             this.LvwRanking.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwRanking_DrawItem);
+            // 
+            // ChrRank
+            // 
+            this.ChrRank.Text = "Rang";
+            this.ChrRank.Width = 40;
+            // 
+            // ChrId
+            // 
+            this.ChrId.Text = "Id";
+            this.ChrId.Width = 30;
             // 
             // ChrName
             // 
@@ -343,16 +365,6 @@
             this.ChrSets.Text = "S";
             this.ChrSets.Width = 40;
             // 
-            // ChrRank
-            // 
-            this.ChrRank.Text = "Rang";
-            this.ChrRank.Width = 40;
-            // 
-            // ChrId
-            // 
-            this.ChrId.Text = "Id";
-            this.ChrId.Width = 30;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -414,5 +426,6 @@
         private SplitContainer SpcRanking;
         private ColumnHeader ChrRank;
         private ColumnHeader ChrId;
+        private Button BtnDisplay;
     }
 }

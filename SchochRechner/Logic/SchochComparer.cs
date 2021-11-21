@@ -13,7 +13,7 @@ namespace SchochRechner.Logic
             var team1 = (Team)y;
             var team2 = (Team)x;
 
-            if (team1.GamesDiff != team2.GamesDiff) return team1.GamesDiff.CompareTo(team2.GamesDiff);
+            if (team1.GameDiff != team2.GameDiff) return team1.GameDiff.CompareTo(team2.GameDiff);
             //if (team1.GameWins != team2.GameWins) return team1.GameWins.CompareTo(team2.GameWins);
             //if (team1.GameLosses != team2.GameLosses) return team1.GameLosses.CompareTo(team2.GameLosses);
             if (team1.SetDiff != team2.SetDiff) return team1.SetDiff.CompareTo(team2.SetDiff);
