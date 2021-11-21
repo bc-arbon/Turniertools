@@ -183,9 +183,8 @@ namespace SchochRechner
         }
 
         private void BtnDisplay_Click(object sender, EventArgs e)
-        {
-            // TODO
-            //this.frmDisplay.Show();
+        {            
+            this.frmDisplay.Show();
         }
     }
 }

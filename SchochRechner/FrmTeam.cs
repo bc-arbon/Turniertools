@@ -18,13 +18,8 @@ namespace SchochRechner
         public int Id 
         { 
             get 
-            { 
-                if (string.IsNullOrEmpty(this.TxtId.Text))
-                {
-                    return -1;
-                }
-
-                return Convert.ToInt32(this.TxtId.Text); 
+            {
+                return string.IsNullOrEmpty(this.TxtId.Text) ? -1 : Convert.ToInt32(this.TxtId.Text);
             }
         }
 

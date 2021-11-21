@@ -131,6 +131,7 @@
             this.Controls.Add(this.LvwRanking);
             this.Name = "FrmDisplay";
             this.Text = "FrmDisplay";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDisplay_FormClosing);
             this.ResumeLayout(false);
 
         }

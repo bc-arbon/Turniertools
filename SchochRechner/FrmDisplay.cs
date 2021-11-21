@@ -53,5 +53,11 @@ namespace SchochRechner
         {
             e.DrawDefault = true;
         }
+
+        private void FrmDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
     }
 }
