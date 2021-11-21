@@ -3,7 +3,7 @@ using SchochRechner.ObjectModel;
 
 namespace SchochRechner.Logic
 {
-    internal class SchochManager
+    public class SchochManager
     {
         private readonly string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
         private readonly string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
@@ -52,6 +52,11 @@ namespace SchochRechner.Logic
         public void AddTeam(int id, string name)
         {
             this.Teams.Add(new Team { Id = id, Name = name });
+        }
+
+        public void DeleteTeam(Team team)
+        {
+            this.Teams.Remove(team);
         }
 
         public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)

@@ -113,5 +113,15 @@ namespace SchochRechner
             this.ShowRanking();
             this.ShowEntries();
         }
+
+        private void BtnTeams_Click(object sender, EventArgs e)
+        {
+            var frmTeams = new FrmTeams(this.schochManager);
+            frmTeams.ShowDialog();
+
+            this.schochManager.CalculateRanking();
+            this.ShowEntries();
+            this.ShowRanking();
+        }
     }
 }

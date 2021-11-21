@@ -58,12 +58,14 @@
             this.ChrId,
             this.ChrName});
             this.LvwTeams.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LvwTeams.FullRowSelect = true;
             this.LvwTeams.Location = new System.Drawing.Point(3, 19);
             this.LvwTeams.Name = "LvwTeams";
             this.LvwTeams.Size = new System.Drawing.Size(353, 358);
             this.LvwTeams.TabIndex = 0;
             this.LvwTeams.UseCompatibleStateImageBehavior = false;
             this.LvwTeams.View = System.Windows.Forms.View.Details;
+            this.LvwTeams.SelectedIndexChanged += new System.EventHandler(this.LvwTeams_SelectedIndexChanged);
             // 
             // ChrId
             // 
@@ -129,6 +131,7 @@
             this.Name = "FrmTeams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teams";
+            this.Load += new System.EventHandler(this.FrmTeams_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

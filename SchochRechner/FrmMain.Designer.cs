@@ -43,6 +43,7 @@
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.BtnTeams = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@
             // 
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -78,8 +80,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1236, 558);
-            this.splitContainer1.SplitterDistance = 696;
+            this.splitContainer1.Size = new System.Drawing.Size(995, 683);
+            this.splitContainer1.SplitterDistance = 578;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -88,7 +90,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(696, 558);
+            this.groupBox1.Size = new System.Drawing.Size(578, 683);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rangliste";
@@ -111,7 +113,7 @@
             this.LvwRanking.FullRowSelect = true;
             this.LvwRanking.Location = new System.Drawing.Point(3, 19);
             this.LvwRanking.Name = "LvwRanking";
-            this.LvwRanking.Size = new System.Drawing.Size(690, 536);
+            this.LvwRanking.Size = new System.Drawing.Size(572, 661);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -182,7 +184,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(536, 558);
+            this.groupBox2.Size = new System.Drawing.Size(413, 683);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Begegnungen";
@@ -191,12 +193,14 @@
             // 
             this.splitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(3, 19);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.BtnTeams);
             this.splitContainer2.Panel1.Controls.Add(this.BtnDelete);
             this.splitContainer2.Panel1.Controls.Add(this.BtnEdit);
             this.splitContainer2.Panel1.Controls.Add(this.BtnAdd);
@@ -204,9 +208,20 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.LvwEntries);
-            this.splitContainer2.Size = new System.Drawing.Size(530, 536);
-            this.splitContainer2.SplitterDistance = 29;
+            this.splitContainer2.Size = new System.Drawing.Size(407, 661);
+            this.splitContainer2.SplitterDistance = 30;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // BtnTeams
+            // 
+            this.BtnTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnTeams.Location = new System.Drawing.Point(323, 3);
+            this.BtnTeams.Name = "BtnTeams";
+            this.BtnTeams.Size = new System.Drawing.Size(75, 23);
+            this.BtnTeams.TabIndex = 1;
+            this.BtnTeams.Text = "Teams";
+            this.BtnTeams.UseVisualStyleBackColor = true;
+            this.BtnTeams.Click += new System.EventHandler(this.BtnTeams_Click);
             // 
             // BtnDelete
             // 
@@ -250,7 +265,7 @@
             this.LvwEntries.FullRowSelect = true;
             this.LvwEntries.Location = new System.Drawing.Point(0, 0);
             this.LvwEntries.Name = "LvwEntries";
-            this.LvwEntries.Size = new System.Drawing.Size(530, 503);
+            this.LvwEntries.Size = new System.Drawing.Size(407, 627);
             this.LvwEntries.TabIndex = 0;
             this.LvwEntries.UseCompatibleStateImageBehavior = false;
             this.LvwEntries.View = System.Windows.Forms.View.Details;
@@ -284,10 +299,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1236, 558);
+            this.ClientSize = new System.Drawing.Size(995, 683);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Schoch Rechner";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -330,5 +346,6 @@
         private Button BtnDelete;
         private Button BtnEdit;
         private Button BtnAdd;
+        private Button BtnTeams;
     }
 }
