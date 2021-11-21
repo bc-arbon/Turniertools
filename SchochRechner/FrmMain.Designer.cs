@@ -113,10 +113,13 @@
             this.LvwRanking.FullRowSelect = true;
             this.LvwRanking.Location = new System.Drawing.Point(3, 19);
             this.LvwRanking.Name = "LvwRanking";
+            this.LvwRanking.OwnerDraw = true;
             this.LvwRanking.Size = new System.Drawing.Size(572, 661);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
+            this.LvwRanking.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwRanking_DrawColumnHeader);
+            this.LvwRanking.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwRanking_DrawItem);
             // 
             // ChrName
             // 
@@ -194,6 +197,7 @@
             this.splitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(3, 19);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -265,10 +269,13 @@
             this.LvwEntries.FullRowSelect = true;
             this.LvwEntries.Location = new System.Drawing.Point(0, 0);
             this.LvwEntries.Name = "LvwEntries";
+            this.LvwEntries.OwnerDraw = true;
             this.LvwEntries.Size = new System.Drawing.Size(407, 627);
             this.LvwEntries.TabIndex = 0;
             this.LvwEntries.UseCompatibleStateImageBehavior = false;
             this.LvwEntries.View = System.Windows.Forms.View.Details;
+            this.LvwEntries.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwEntries_DrawColumnHeader);
+            this.LvwEntries.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwEntries_DrawItem);
             // 
             // ChrRound
             // 
@@ -301,6 +308,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 683);
             this.Controls.Add(this.splitContainer1);
+            this.DoubleBuffered = true;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schoch Rechner";

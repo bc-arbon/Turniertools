@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TxtId = new System.Windows.Forms.TextBox();
-            this.TxtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtName = new System.Windows.Forms.TextBox();
+            this.TxtId = new System.Windows.Forms.TextBox();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnOk = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -51,20 +51,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Team";
             // 
-            // TxtId
+            // label2
             // 
-            this.TxtId.Location = new System.Drawing.Point(54, 22);
-            this.TxtId.Name = "TxtId";
-            this.TxtId.Size = new System.Drawing.Size(46, 23);
-            this.TxtId.TabIndex = 0;
-            this.TxtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TxtName
-            // 
-            this.TxtName.Location = new System.Drawing.Point(54, 51);
-            this.TxtName.Name = "TxtName";
-            this.TxtName.Size = new System.Drawing.Size(221, 23);
-            this.TxtName.TabIndex = 0;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Name:";
             // 
             // label1
             // 
@@ -75,14 +69,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Id:";
             // 
-            // label2
+            // TxtName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name:";
+            this.TxtName.Location = new System.Drawing.Point(54, 51);
+            this.TxtName.Name = "TxtName";
+            this.TxtName.Size = new System.Drawing.Size(221, 23);
+            this.TxtName.TabIndex = 0;
+            // 
+            // TxtId
+            // 
+            this.TxtId.Location = new System.Drawing.Point(54, 22);
+            this.TxtId.Name = "TxtId";
+            this.TxtId.Size = new System.Drawing.Size(46, 23);
+            this.TxtId.TabIndex = 0;
+            this.TxtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BtnCancel
             // 
@@ -112,6 +112,7 @@
             this.Controls.Add(this.BtnOk);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmTeam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

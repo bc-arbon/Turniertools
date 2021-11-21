@@ -61,10 +61,13 @@
             this.LvwTeams.FullRowSelect = true;
             this.LvwTeams.Location = new System.Drawing.Point(3, 19);
             this.LvwTeams.Name = "LvwTeams";
+            this.LvwTeams.OwnerDraw = true;
             this.LvwTeams.Size = new System.Drawing.Size(353, 358);
             this.LvwTeams.TabIndex = 0;
             this.LvwTeams.UseCompatibleStateImageBehavior = false;
             this.LvwTeams.View = System.Windows.Forms.View.Details;
+            this.LvwTeams.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwTeams_DrawColumnHeader);
+            this.LvwTeams.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwTeams_DrawItem);
             this.LvwTeams.SelectedIndexChanged += new System.EventHandler(this.LvwTeams_SelectedIndexChanged);
             // 
             // ChrId
@@ -75,7 +78,7 @@
             // ChrName
             // 
             this.ChrName.Text = "Name";
-            this.ChrName.Width = 200;
+            this.ChrName.Width = 250;
             // 
             // BtnNew
             // 
@@ -128,6 +131,7 @@
             this.Controls.Add(this.BtnClose);
             this.Controls.Add(this.BtnNew);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.Name = "FrmTeams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teams";

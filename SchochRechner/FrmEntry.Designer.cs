@@ -122,6 +122,7 @@
             this.TxtGames2.Name = "TxtGames2";
             this.TxtGames2.Size = new System.Drawing.Size(36, 23);
             this.TxtGames2.TabIndex = 0;
+            this.TxtGames2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtGames1
             // 
@@ -129,7 +130,7 @@
             this.TxtGames1.Name = "TxtGames1";
             this.TxtGames1.Size = new System.Drawing.Size(36, 23);
             this.TxtGames1.TabIndex = 0;
-            this.TxtGames1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtGames1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
@@ -160,6 +161,7 @@
             this.TxtSets2.Name = "TxtSets2";
             this.TxtSets2.Size = new System.Drawing.Size(36, 23);
             this.TxtSets2.TabIndex = 0;
+            this.TxtSets2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtSets1
             // 
@@ -167,7 +169,7 @@
             this.TxtSets1.Name = "TxtSets1";
             this.TxtSets1.Size = new System.Drawing.Size(36, 23);
             this.TxtSets1.TabIndex = 0;
-            this.TxtSets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BtnCancel
             // 
@@ -219,6 +221,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
