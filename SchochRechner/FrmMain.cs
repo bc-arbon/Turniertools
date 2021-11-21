@@ -34,7 +34,7 @@ namespace SchochRechner
 
         private void ShowEntries()
         {
-            this.listView1.Items.Clear();
+            this.LvwEntries.Items.Clear();
 
             foreach (var entry in this.schochManager.Entries)
             {
@@ -46,7 +46,7 @@ namespace SchochRechner
                 item.SubItems.Add(team2 != null ? team2.Name : string.Empty);
                 item.SubItems.Add(entry.Games1 + ":" + entry.Games2);
                 item.SubItems.Add(entry.Sets1 + ":" + entry.Sets2);
-                this.listView1.Items.Add(item);
+                this.LvwEntries.Items.Add(item);
             }
         }
 
@@ -64,12 +64,12 @@ namespace SchochRechner
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (this.listView1.SelectedItems.Count == 0)
+            if (this.LvwEntries.SelectedItems.Count == 0)
             {
                 return;
             }
 
-            var entry = (Entry)this.listView1.SelectedItems[0].Tag;
+            var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
             var frmEntry = new FrmEntry(this.schochManager.Teams, entry);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
@@ -89,12 +89,12 @@ namespace SchochRechner
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (this.listView1.SelectedItems.Count == 0)
+            if (this.LvwEntries.SelectedItems.Count == 0)
             {
                 return;
             }
 
-            var entry = (Entry)this.listView1.SelectedItems[0].Tag;
+            var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
             this.schochManager.DeleteEntry(entry);
             this.schochManager.CalculateRanking();
             this.ShowEntries();

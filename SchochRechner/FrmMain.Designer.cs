@@ -46,7 +46,7 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.LvwEntries = new System.Windows.Forms.ListView();
             this.ChrRound = new System.Windows.Forms.ColumnHeader();
             this.ChrTeam1 = new System.Windows.Forms.ColumnHeader();
             this.ChrRound2 = new System.Windows.Forms.ColumnHeader();
@@ -203,7 +203,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.listView1);
+            this.splitContainer2.Panel2.Controls.Add(this.LvwEntries);
             this.splitContainer2.Size = new System.Drawing.Size(530, 536);
             this.splitContainer2.SplitterDistance = 29;
             this.splitContainer2.TabIndex = 0;
@@ -238,22 +238,22 @@
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
-            // listView1
+            // LvwEntries
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LvwEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ChrRound,
             this.ChrTeam1,
             this.ChrRound2,
             this.ChrGames,
             this.ChrSets});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(530, 503);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.LvwEntries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LvwEntries.FullRowSelect = true;
+            this.LvwEntries.Location = new System.Drawing.Point(0, 0);
+            this.LvwEntries.Name = "LvwEntries";
+            this.LvwEntries.Size = new System.Drawing.Size(530, 503);
+            this.LvwEntries.TabIndex = 0;
+            this.LvwEntries.UseCompatibleStateImageBehavior = false;
+            this.LvwEntries.View = System.Windows.Forms.View.Details;
             // 
             // ChrRound
             // 
@@ -320,7 +320,7 @@
         private ColumnHeader ChrSetLosses;
         private ColumnHeader ChrSetsDiff;
         private ColumnHeader ChrRounds;
-        private ListView listView1;
+        private ListView LvwEntries;
         private ColumnHeader ChrRound;
         private ColumnHeader ChrTeam1;
         private ColumnHeader ChrRound2;
