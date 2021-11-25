@@ -9,6 +9,7 @@ namespace SchochRechner
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
             Application.Run(new FrmMain());
         }
     }

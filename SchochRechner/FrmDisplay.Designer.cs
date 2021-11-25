@@ -57,9 +57,10 @@
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwRanking.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LvwRanking.Location = new System.Drawing.Point(0, 0);
+            this.LvwRanking.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(1904, 1041);
+            this.LvwRanking.Size = new System.Drawing.Size(3264, 1884);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -74,61 +75,63 @@
             // 
             this.ChrRank.Text = "Rang";
             this.ChrRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRank.Width = 100;
+            this.ChrRank.Width = 160;
             // 
             // ChrTeam
             // 
             this.ChrTeam.Text = "Name";
-            this.ChrTeam.Width = 700;
+            this.ChrTeam.Width = 900;
             // 
             // ChrRounds
             // 
             this.ChrRounds.Text = "Runden";
             this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRounds.Width = 140;
+            this.ChrRounds.Width = 250;
             // 
             // ChrGames
             // 
             this.ChrGames.Text = "Spiele";
             this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGames.Width = 110;
+            this.ChrGames.Width = 200;
             // 
             // ChrGamesDiff
             // 
             this.ChrGamesDiff.Text = "Diff";
             this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamesDiff.Width = 100;
+            this.ChrGamesDiff.Width = 140;
             // 
             // ChrSets
             // 
             this.ChrSets.Text = "Sätze";
             this.ChrSets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSets.Width = 110;
+            this.ChrSets.Width = 170;
             // 
             // ChrSetsDiff
             // 
             this.ChrSetsDiff.Text = "Diff";
             this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSetsDiff.Width = 100;
+            this.ChrSetsDiff.Width = 130;
             // 
             // ChrBuchholz
             // 
             this.ChrBuchholz.Text = "BHZ";
             this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrBuchholz.Width = 100;
+            this.ChrBuchholz.Width = 140;
             // 
             // ChrFeinbuchholz
             // 
             this.ChrFeinbuchholz.Text = "FBHZ";
             this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrFeinbuchholz.Width = 100;
+            this.ChrFeinbuchholz.Width = 0;
             // 
             // FrmDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(3264, 1884);
             this.Controls.Add(this.LvwRanking);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FrmDisplay";
             this.Text = "FrmDisplay";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDisplay_FormClosing);
