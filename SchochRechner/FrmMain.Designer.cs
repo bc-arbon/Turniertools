@@ -76,7 +76,7 @@
             // 
             // SpcMain
             // 
-            this.SpcMain.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SpcMain.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.SpcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.SpcMain.Location = new System.Drawing.Point(0, 0);
@@ -89,8 +89,8 @@
             // SpcMain.Panel2
             // 
             this.SpcMain.Panel2.Controls.Add(this.groupBox2);
-            this.SpcMain.Size = new System.Drawing.Size(975, 781);
-            this.SpcMain.SplitterDistance = 288;
+            this.SpcMain.Size = new System.Drawing.Size(1044, 740);
+            this.SpcMain.SplitterDistance = 663;
             this.SpcMain.TabIndex = 0;
             // 
             // groupBox1
@@ -99,7 +99,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 781);
+            this.groupBox1.Size = new System.Drawing.Size(663, 740);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rangliste";
@@ -120,8 +120,8 @@
             // SpcRanking.Panel2
             // 
             this.SpcRanking.Panel2.Controls.Add(this.LvwRanking);
-            this.SpcRanking.Size = new System.Drawing.Size(282, 759);
-            this.SpcRanking.SplitterDistance = 36;
+            this.SpcRanking.Size = new System.Drawing.Size(657, 718);
+            this.SpcRanking.SplitterDistance = 34;
             this.SpcRanking.SplitterWidth = 5;
             this.SpcRanking.TabIndex = 1;
             // 
@@ -166,7 +166,7 @@
             this.LvwRanking.Location = new System.Drawing.Point(0, 0);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(282, 718);
+            this.LvwRanking.Size = new System.Drawing.Size(657, 679);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -197,48 +197,49 @@
             // 
             this.ChrGameWins.Text = "G W";
             this.ChrGameWins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGameWins.Width = 55;
+            this.ChrGameWins.Width = 40;
             // 
             // ChrGameLosses
             // 
             this.ChrGameLosses.Text = "G L";
             this.ChrGameLosses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGameLosses.Width = 55;
+            this.ChrGameLosses.Width = 40;
             // 
             // ChrGamesDiff
             // 
             this.ChrGamesDiff.Text = "G Diff";
             this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamesDiff.Width = 70;
+            this.ChrGamesDiff.Width = 50;
             // 
             // ChrSetWins
             // 
             this.ChrSetWins.Text = "S W";
             this.ChrSetWins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrSetWins.Width = 40;
             // 
             // ChrSetLosses
             // 
             this.ChrSetLosses.Text = "S L";
             this.ChrSetLosses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSetLosses.Width = 50;
+            this.ChrSetLosses.Width = 40;
             // 
             // ChrSetsDiff
             // 
             this.ChrSetsDiff.Text = "S Diff";
             this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSetsDiff.Width = 65;
+            this.ChrSetsDiff.Width = 50;
             // 
             // ChrBuchholz
             // 
             this.ChrBuchholz.Text = "BHZ";
             this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrBuchholz.Width = 55;
+            this.ChrBuchholz.Width = 40;
             // 
             // ChrFeinbuchholz
             // 
             this.ChrFeinbuchholz.Text = "FBHZ";
             this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrFeinbuchholz.Width = 65;
+            this.ChrFeinbuchholz.Width = 45;
             // 
             // groupBox2
             // 
@@ -247,7 +248,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(683, 781);
+            this.groupBox2.Size = new System.Drawing.Size(377, 740);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Begegnungen";
@@ -270,15 +271,15 @@
             // SpcEntries.Panel2
             // 
             this.SpcEntries.Panel2.Controls.Add(this.LvwEntries);
-            this.SpcEntries.Size = new System.Drawing.Size(677, 759);
-            this.SpcEntries.SplitterDistance = 33;
+            this.SpcEntries.Size = new System.Drawing.Size(371, 718);
+            this.SpcEntries.SplitterDistance = 31;
             this.SpcEntries.SplitterWidth = 5;
             this.SpcEntries.TabIndex = 0;
             // 
             // BtnTeams
             // 
             this.BtnTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnTeams.Location = new System.Drawing.Point(595, 3);
+            this.BtnTeams.Location = new System.Drawing.Point(289, 3);
             this.BtnTeams.Name = "BtnTeams";
             this.BtnTeams.Size = new System.Drawing.Size(74, 26);
             this.BtnTeams.TabIndex = 1;
@@ -329,7 +330,7 @@
             this.LvwEntries.Location = new System.Drawing.Point(0, 0);
             this.LvwEntries.Name = "LvwEntries";
             this.LvwEntries.OwnerDraw = true;
-            this.LvwEntries.Size = new System.Drawing.Size(677, 721);
+            this.LvwEntries.Size = new System.Drawing.Size(371, 682);
             this.LvwEntries.TabIndex = 0;
             this.LvwEntries.UseCompatibleStateImageBehavior = false;
             this.LvwEntries.View = System.Windows.Forms.View.Details;
@@ -365,7 +366,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(975, 781);
+            this.ClientSize = new System.Drawing.Size(1044, 740);
             this.Controls.Add(this.SpcMain);
             this.DoubleBuffered = true;
             this.Name = "FrmMain";
