@@ -153,7 +153,7 @@ namespace SchochRechner
         }
 
         private void LvwEntries_DrawItem(object sender, DrawListViewItemEventArgs e)
-        {
+        {            
             e.DrawDefault = true;
             if ((e.ItemIndex % 2) == 1)
             {
