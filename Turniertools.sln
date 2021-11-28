@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{25CE7FD3-CECB-4643-8451-FF731FEED4AC}"
 	ProjectSection(SolutionItems) = preProject
 		docs\_config.yml = docs\_config.yml
+		docs\dpiunware.reg = docs\dpiunware.reg
 		docs\index.md = docs\index.md
 		README.md = README.md
 	EndProjectSection
