@@ -88,10 +88,10 @@ namespace SchochRechner.Logic
             // Clear all stats first
             foreach (var team in this.Teams)
             {
-                team.GameWins = 0;
-                team.GameLosses = 0;
-                team.SetWins = 0;
-                team.SetLosses = 0;
+                team.GamesWon = 0;
+                team.GamesLost = 0;
+                team.SetsWon = 0;
+                team.SetsLost = 0;
                 team.Opponents.Clear();
             }
 
@@ -106,15 +106,15 @@ namespace SchochRechner.Logic
                     continue;
                 }
 
-                team1.GameWins += entry.Games1;
-                team1.GameLosses += entry.Games2;
-                team2.GameWins += entry.Games2;
-                team2.GameLosses += entry.Games1;
+                team1.GamesWon += entry.Games1;
+                team1.GamesLost += entry.Games2;
+                team2.GamesWon += entry.Games2;
+                team2.GamesLost += entry.Games1;
 
-                team1.SetWins += entry.Sets1;
-                team1.SetLosses += entry.Sets2;
-                team2.SetWins += entry.Sets2;
-                team2.SetLosses += entry.Sets1;
+                team1.SetsWon += entry.Sets1;
+                team1.SetsLost += entry.Sets2;
+                team2.SetsWon += entry.Sets2;
+                team2.SetsLost += entry.Sets1;
 
                 team1.Opponents.Add(team2.Id);
                 team2.Opponents.Add(team1.Id);
@@ -129,7 +129,7 @@ namespace SchochRechner.Logic
                     var oppTeam = this.Teams.Find(x => x.Id == opp);
                     if (oppTeam != null)
                     {
-                        team.Buchholz += oppTeam.GameWins;
+                        team.Buchholz += oppTeam.GamesWon;
                     }
                 }
             }

@@ -27,10 +27,10 @@ namespace SchochRechner
                 item.SubItems.Add(rank.ToString());
                 item.SubItems.Add(team.Name);
                 item.SubItems.Add(team.Rounds.ToString());
-                item.SubItems.Add(team.GameWins.ToString() + ":" + team.GameLosses.ToString());
-                item.SubItems.Add(team.GameDiffText);
-                item.SubItems.Add(team.SetWins.ToString() + ":" + team.SetLosses.ToString());
-                item.SubItems.Add(team.SetDiffText);
+                item.SubItems.Add(team.GamesWon.ToString() + ":" + team.GamesLost.ToString());
+                item.SubItems.Add(team.GamesDiffText);
+                item.SubItems.Add(team.SetsWon.ToString() + ":" + team.SetsLost.ToString());
+                item.SubItems.Add(team.SetsDiffText);
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.Feinbuchholz.ToString());
                 

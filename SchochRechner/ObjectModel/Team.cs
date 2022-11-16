@@ -14,15 +14,15 @@
 
         public int Rounds { get { return this.Opponents.Count; } }
 
-        public int SetWins { get; set; }
-        public int SetLosses { get; set; }
-        public int SetDiff { get { return this.SetWins - this.SetLosses; } }  
-        public string SetDiffText { get { return this.SetDiff > 0 ? "+" + this.SetDiff : this.SetDiff.ToString(); } }
+        public int SetsWon { get; set; }
+        public int SetsLost { get; set; }
+        public int SetsDiff { get { return this.SetsWon - this.SetsLost; } }  
+        public string SetsDiffText { get { return this.SetsDiff > 0 ? "+" + this.SetsDiff : this.SetsDiff.ToString(); } }
 
-        public int GameWins { get; set; }
-        public int GameLosses { get; set; }        
-        public int GameDiff { get { return this.GameWins - this.GameLosses; } }
-        public string GameDiffText { get { return this.GameDiff > 0 ? "+" + this.GameDiff : this.GameDiff.ToString(); } }
+        public int GamesWon { get; set; }
+        public int GamesLost { get; set; }        
+        public int GamesDiff { get { return this.GamesWon - this.GamesLost; } }
+        public string GamesDiffText { get { return this.GamesDiff > 0 ? "+" + this.GamesDiff : this.GamesDiff.ToString(); } }
 
         public int Buchholz { get; set; }
 
