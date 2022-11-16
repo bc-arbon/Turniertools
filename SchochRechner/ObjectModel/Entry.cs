@@ -15,5 +15,9 @@
         public int Games1 { get; set; }
 
         public int Games2 { get; set; }
+
+        public int Points1 { get; set; }
+
+        public int Points2 { get; set; }
     }
 }

@@ -24,6 +24,12 @@
         public int GamesDiff { get { return this.GamesWon - this.GamesLost; } }
         public string GamesDiffText { get { return this.GamesDiff > 0 ? "+" + this.GamesDiff : this.GamesDiff.ToString(); } }
 
+        public int PointsWon { get; set; }
+        public int PointsLost { get; set; }
+        public int PointsDiff {  get { return this.PointsWon - this.PointsLost; } }
+        public string PointsDiffText { get { return this.PointsDiff > 0 ? "+" + this.PointsDiff : this.PointsDiff.ToString(); } }
+
+
         public int Buchholz { get; set; }
 
         public int Feinbuchholz { get; set; }
