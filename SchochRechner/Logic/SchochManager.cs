@@ -73,9 +73,38 @@ namespace SchochRechner.Logic
             this.Teams.Remove(team);
         }
 
-        public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2)
+        public void AddEntry(Entry entry)
         {
-            this.Entries.Add(new Entry { Round = round, Team1 = team1, Team2 = team2, Games1 = games1, Games2 = games2, Sets1 = sets1, Sets2 = sets2 });
+            this.Entries.Add(entry);
+        }
+
+        public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2, int points1, int points2, 
+            int single11, int single12, int single21, int single22, int single31, int single32,
+            int double11, int double12, int double21, int double22, int double31, int double32)
+        {
+            this.Entries.Add(
+                new Entry { 
+                    Round = round, 
+                    Team1 = team1, 
+                    Team2 = team2, 
+                    Games1 = games1, 
+                    Games2 = games2, 
+                    Sets1 = sets1, 
+                    Sets2 = sets2, 
+                    Points1 = points1, 
+                    Points2 = points2,
+                    Single11 = single11,
+                    Single12 = single12,
+                    Single21 = single21,
+                    Single22 = single22,
+                    Single31 = single31,
+                    Single32 = single32,
+                    Double11 = double11,
+                    Double12 = double12,
+                    Double21 = double21,
+                    Double22 = double22,
+                    Double31 = double31,
+                    Double32 = double32 });
         }
 
         public void DeleteEntry(Entry entry)
@@ -92,6 +121,8 @@ namespace SchochRechner.Logic
                 team.GamesLost = 0;
                 team.SetsWon = 0;
                 team.SetsLost = 0;
+                team.PointsWon = 0;
+                team.PointsLost = 0;
                 team.Opponents.Clear();
             }
 
@@ -115,6 +146,11 @@ namespace SchochRechner.Logic
                 team1.SetsLost += entry.Sets2;
                 team2.SetsWon += entry.Sets2;
                 team2.SetsLost += entry.Sets1;
+
+                team1.PointsWon += entry.Points1;
+                team1.PointsLost += entry.Points2;
+                team2.PointsWon += entry.Points2;
+                team2.PointsLost += entry.Points1;
 
                 team1.Opponents.Add(team2.Id);
                 team2.Opponents.Add(team1.Id);
@@ -176,59 +212,59 @@ namespace SchochRechner.Logic
             this.AddTeam(18, "Pausenfüller");
 
             // Runde 1
-            this.AddEntry(1, 2, 3, 0, 2, 0, 4);
-            this.AddEntry(1, 6, 4, 2, 0, 4, 2);
-            this.AddEntry(1, 10, 8, 0, 2, 1, 4);
-            this.AddEntry(1, 14, 11, 0, 2, 0, 4);
-            this.AddEntry(1, 9, 7, 0, 2, 1, 4);
-            this.AddEntry(1, 13, 1, 0, 2, 1, 4);
-            this.AddEntry(1, 18, 17, 0, 2, 0, 4);
-            this.AddEntry(1, 12, 16, 1, 1, 2, 2);
-            this.AddEntry(1, 15, 5, 0, 2, 0, 4);
+            this.AddEntry(1, 2, 3, 2, 0, 4, 0, 84, 76, 21, 19, 21, 19, -1, -1, 21, 19, 21, 19, -1, -1);
+            //this.AddEntry(1, 6, 4, 2, 0, 4, 2);
+            //this.AddEntry(1, 10, 8, 0, 2, 1, 4);
+            //this.AddEntry(1, 14, 11, 0, 2, 0, 4);
+            //this.AddEntry(1, 9, 7, 0, 2, 1, 4);
+            //this.AddEntry(1, 13, 1, 0, 2, 1, 4);
+            //this.AddEntry(1, 18, 17, 0, 2, 0, 4);
+            //this.AddEntry(1, 12, 16, 1, 1, 2, 2);
+            //this.AddEntry(1, 15, 5, 0, 2, 0, 4);
 
             // Runde 2
-            this.AddEntry(2, 8, 11, 2, 0, 4, 0);
-            this.AddEntry(2, 5, 3, 1, 1, 2, 2);
-            this.AddEntry(2, 1, 17, 0, 2, 2, 4);
-            this.AddEntry(2, 16, 4, 1, 1, 2, 2);
-            this.AddEntry(2, 15, 18, 1, 1, 2, 2);
-            this.AddEntry(2, 7, 6, 2, 0, 4, 2);
-            this.AddEntry(2, 12, 10, 2, 0, 4, 0);
-            this.AddEntry(2, 13, 9, 2, 0, 4, 2);
-            this.AddEntry(2, 14, 2, 2, 0, 4, 1);
+            //this.AddEntry(2, 8, 11, 2, 0, 4, 0);
+            //this.AddEntry(2, 5, 3, 1, 1, 2, 2);
+            //this.AddEntry(2, 1, 17, 0, 2, 2, 4);
+            //this.AddEntry(2, 16, 4, 1, 1, 2, 2);
+            //this.AddEntry(2, 15, 18, 1, 1, 2, 2);
+            //this.AddEntry(2, 7, 6, 2, 0, 4, 2);
+            //this.AddEntry(2, 12, 10, 2, 0, 4, 0);
+            //this.AddEntry(2, 13, 9, 2, 0, 4, 2);
+            //this.AddEntry(2, 14, 2, 2, 0, 4, 1);
 
             // Runde 3
-            this.AddEntry(3, 1, 6, 2, 0, 4, 1);
-            this.AddEntry(3, 17, 8, 0, 2, 1, 4);
-            this.AddEntry(3, 15, 4, 2, 0, 4, 0);
-            this.AddEntry(3, 18, 9, 0, 2, 2, 4);
-            this.AddEntry(3, 11, 16, 1, 1, 3, 3);
-            this.AddEntry(3, 13, 14, 0, 2, 2, 4);
-            this.AddEntry(3, 5, 12, 2, 0, 4, 0);
-            this.AddEntry(3, 3, 7, 0, 2, 0, 4);
-            this.AddEntry(3, 10, 2, 2, 0, 4, 0);
+            //this.AddEntry(3, 1, 6, 2, 0, 4, 1);
+            //this.AddEntry(3, 17, 8, 0, 2, 1, 4);
+            //this.AddEntry(3, 15, 4, 2, 0, 4, 0);
+            //this.AddEntry(3, 18, 9, 0, 2, 2, 4);
+            //this.AddEntry(3, 11, 16, 1, 1, 3, 3);
+            //this.AddEntry(3, 13, 14, 0, 2, 2, 4);
+            //this.AddEntry(3, 5, 12, 2, 0, 4, 0);
+            //this.AddEntry(3, 3, 7, 0, 2, 0, 4);
+            //this.AddEntry(3, 10, 2, 2, 0, 4, 0);
 
             // Runde 4
-            this.AddEntry(4, 10, 9, 0, 2, 1, 4);
-            this.AddEntry(4, 2, 18, 0, 2, 0, 4);
-            this.AddEntry(4, 7, 8, 0, 2, 2, 4);
-            this.AddEntry(4, 3, 16, 0, 2, 2, 4);
-            this.AddEntry(4, 12, 6, 2, 0, 4, 0);
-            this.AddEntry(4, 5, 1, 1, 1, 2, 2);
-            this.AddEntry(4, 14, 17, 0, 2, 0, 4);
-            this.AddEntry(4, 13, 4, 2, 0, 4, 1);
-            this.AddEntry(4, 11, 15, 1, 1, 3, 3);
+            //this.AddEntry(4, 10, 9, 0, 2, 1, 4);
+            //this.AddEntry(4, 2, 18, 0, 2, 0, 4);
+            //this.AddEntry(4, 7, 8, 0, 2, 2, 4);
+            //this.AddEntry(4, 3, 16, 0, 2, 2, 4);
+            //this.AddEntry(4, 12, 6, 2, 0, 4, 0);
+            //this.AddEntry(4, 5, 1, 1, 1, 2, 2);
+            //this.AddEntry(4, 14, 17, 0, 2, 0, 4);
+            //this.AddEntry(4, 13, 4, 2, 0, 4, 1);
+            //this.AddEntry(4, 11, 15, 1, 1, 3, 3);
 
             // Runde 5
-            this.AddEntry(5, 11, 13, 1, 1, 2, 2);
-            this.AddEntry(5, 15, 14, 2, 0, 4, 2);
-            this.AddEntry(5, 4, 2, 2, 0, 4, 0);
-            this.AddEntry(5, 17, 7, 2, 0, 4, 0);
-            this.AddEntry(5, 1, 12, 2, 0, 4, 2);
-            this.AddEntry(5, 5, 8, 1, 1, 3, 3);
-            this.AddEntry(5, 6, 10, 1, 1, 2, 2);
-            this.AddEntry(5, 16, 9, 2, 0, 4, 0);
-            this.AddEntry(5, 3, 18, 0, 2, 2, 4);
+            //this.AddEntry(5, 11, 13, 1, 1, 2, 2);
+            //this.AddEntry(5, 15, 14, 2, 0, 4, 2);
+            //this.AddEntry(5, 4, 2, 2, 0, 4, 0);
+            //this.AddEntry(5, 17, 7, 2, 0, 4, 0);
+            //this.AddEntry(5, 1, 12, 2, 0, 4, 2);
+            //this.AddEntry(5, 5, 8, 1, 1, 3, 3);
+            //this.AddEntry(5, 6, 10, 1, 1, 2, 2);
+            //this.AddEntry(5, 16, 9, 2, 0, 4, 0);
+            //this.AddEntry(5, 3, 18, 0, 2, 2, 4);
 
             this.CalculateRanking();
         }

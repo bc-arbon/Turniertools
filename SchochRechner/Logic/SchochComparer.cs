@@ -20,6 +20,8 @@ namespace SchochRechner.Logic
             if (team1.SetsWon != team2.SetsWon) return team1.SetsWon.CompareTo(team2.SetsWon);
             if (team1.SetsLost != team2.SetsLost) return team1.SetsLost.CompareTo(team2.SetsLost);
             if (team1.Buchholz != team2.Buchholz) return team1.Buchholz.CompareTo(team2.Buchholz);
+            if (team1.PointsWon != team2.PointsWon) return team1.PointsWon.CompareTo(team2.PointsWon);
+            if (team1.PointsLost != team2.PointsLost) return team1.PointsLost.CompareTo(team2.PointsLost);
             return team1.Feinbuchholz.CompareTo(team2.Feinbuchholz);
         }
     }

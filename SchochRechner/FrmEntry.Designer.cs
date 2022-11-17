@@ -44,10 +44,38 @@
             this.BtnOk = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TxtRound = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.BtnCalculate = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxtDouble32 = new System.Windows.Forms.TextBox();
+            this.TxtDouble31 = new System.Windows.Forms.TextBox();
+            this.TxtDouble22 = new System.Windows.Forms.TextBox();
+            this.TxtDouble21 = new System.Windows.Forms.TextBox();
+            this.TxtDouble12 = new System.Windows.Forms.TextBox();
+            this.TxtDouble11 = new System.Windows.Forms.TextBox();
+            this.TxtSingle32 = new System.Windows.Forms.TextBox();
+            this.TxtSingle31 = new System.Windows.Forms.TextBox();
+            this.TxtSingle22 = new System.Windows.Forms.TextBox();
+            this.TxtSingle21 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TxtSingle12 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TxtSingle11 = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.TxtPoints2 = new System.Windows.Forms.TextBox();
+            this.TxtPoints1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -99,7 +127,7 @@
             this.groupBox2.Controls.Add(this.TxtGames2);
             this.groupBox2.Controls.Add(this.TxtGames1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 145);
+            this.groupBox2.Location = new System.Drawing.Point(12, 246);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(512, 62);
             this.groupBox2.TabIndex = 1;
@@ -121,7 +149,7 @@
             this.TxtGames2.Location = new System.Drawing.Point(269, 22);
             this.TxtGames2.Name = "TxtGames2";
             this.TxtGames2.Size = new System.Drawing.Size(36, 23);
-            this.TxtGames2.TabIndex = 4;
+            this.TxtGames2.TabIndex = 17;
             this.TxtGames2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtGames1
@@ -129,7 +157,7 @@
             this.TxtGames1.Location = new System.Drawing.Point(193, 22);
             this.TxtGames1.Name = "TxtGames1";
             this.TxtGames1.Size = new System.Drawing.Size(36, 23);
-            this.TxtGames1.TabIndex = 3;
+            this.TxtGames1.TabIndex = 16;
             this.TxtGames1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
@@ -138,7 +166,7 @@
             this.groupBox3.Controls.Add(this.TxtSets2);
             this.groupBox3.Controls.Add(this.TxtSets1);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(12, 213);
+            this.groupBox3.Location = new System.Drawing.Point(12, 314);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(512, 62);
             this.groupBox3.TabIndex = 4;
@@ -160,7 +188,7 @@
             this.TxtSets2.Location = new System.Drawing.Point(269, 22);
             this.TxtSets2.Name = "TxtSets2";
             this.TxtSets2.Size = new System.Drawing.Size(36, 23);
-            this.TxtSets2.TabIndex = 6;
+            this.TxtSets2.TabIndex = 19;
             this.TxtSets2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtSets1
@@ -168,26 +196,28 @@
             this.TxtSets1.Location = new System.Drawing.Point(193, 22);
             this.TxtSets1.Name = "TxtSets1";
             this.TxtSets1.Size = new System.Drawing.Size(36, 23);
-            this.TxtSets1.TabIndex = 5;
+            this.TxtSets1.TabIndex = 18;
             this.TxtSets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BtnCancel
             // 
+            this.BtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancel.Location = new System.Drawing.Point(449, 283);
+            this.BtnCancel.Location = new System.Drawing.Point(449, 455);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancel.TabIndex = 8;
+            this.BtnCancel.TabIndex = 21;
             this.BtnCancel.Text = "Abbrechen";
             this.BtnCancel.UseVisualStyleBackColor = true;
             // 
             // BtnOk
             // 
+            this.BtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnOk.Location = new System.Drawing.Point(368, 283);
+            this.BtnOk.Location = new System.Drawing.Point(368, 455);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(75, 23);
-            this.BtnOk.TabIndex = 7;
+            this.BtnOk.TabIndex = 20;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
             // 
@@ -210,11 +240,284 @@
             this.TxtRound.TabIndex = 2;
             this.TxtRound.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.BtnCalculate);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.TxtDouble32);
+            this.groupBox5.Controls.Add(this.TxtDouble31);
+            this.groupBox5.Controls.Add(this.TxtDouble22);
+            this.groupBox5.Controls.Add(this.TxtDouble21);
+            this.groupBox5.Controls.Add(this.TxtDouble12);
+            this.groupBox5.Controls.Add(this.TxtDouble11);
+            this.groupBox5.Controls.Add(this.TxtSingle32);
+            this.groupBox5.Controls.Add(this.TxtSingle31);
+            this.groupBox5.Controls.Add(this.TxtSingle22);
+            this.groupBox5.Controls.Add(this.TxtSingle21);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.TxtSingle12);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.TxtSingle11);
+            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Location = new System.Drawing.Point(9, 145);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(512, 95);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Runde";
+            // 
+            // BtnCalculate
+            // 
+            this.BtnCalculate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCalculate.Location = new System.Drawing.Point(427, 38);
+            this.BtnCalculate.Name = "BtnCalculate";
+            this.BtnCalculate.Size = new System.Drawing.Size(79, 23);
+            this.BtnCalculate.TabIndex = 15;
+            this.BtnCalculate.Text = "Berechnen";
+            this.BtnCalculate.UseVisualStyleBackColor = true;
+            this.BtnCalculate.Click += new System.EventHandler(this.BtnCalculate_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(361, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(13, 21);
+            this.label11.TabIndex = 21;
+            this.label11.Text = ":";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(246, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(13, 21);
+            this.label10.TabIndex = 20;
+            this.label10.Text = ":";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(131, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 21);
+            this.label9.TabIndex = 19;
+            this.label9.Text = ":";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(361, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 21);
+            this.label8.TabIndex = 18;
+            this.label8.Text = ":";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(246, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(13, 21);
+            this.label7.TabIndex = 17;
+            this.label7.Text = ":";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(131, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(13, 21);
+            this.label6.TabIndex = 16;
+            this.label6.Text = ":";
+            // 
+            // TxtDouble32
+            // 
+            this.TxtDouble32.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble32.Location = new System.Drawing.Point(374, 56);
+            this.TxtDouble32.Name = "TxtDouble32";
+            this.TxtDouble32.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble32.TabIndex = 14;
+            this.TxtDouble32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtDouble31
+            // 
+            this.TxtDouble31.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble31.Location = new System.Drawing.Point(325, 56);
+            this.TxtDouble31.Name = "TxtDouble31";
+            this.TxtDouble31.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble31.TabIndex = 13;
+            this.TxtDouble31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtDouble22
+            // 
+            this.TxtDouble22.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble22.Location = new System.Drawing.Point(259, 56);
+            this.TxtDouble22.Name = "TxtDouble22";
+            this.TxtDouble22.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble22.TabIndex = 12;
+            this.TxtDouble22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtDouble21
+            // 
+            this.TxtDouble21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble21.Location = new System.Drawing.Point(210, 56);
+            this.TxtDouble21.Name = "TxtDouble21";
+            this.TxtDouble21.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble21.TabIndex = 11;
+            this.TxtDouble21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtDouble12
+            // 
+            this.TxtDouble12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble12.Location = new System.Drawing.Point(144, 56);
+            this.TxtDouble12.Name = "TxtDouble12";
+            this.TxtDouble12.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble12.TabIndex = 10;
+            this.TxtDouble12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtDouble11
+            // 
+            this.TxtDouble11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDouble11.Location = new System.Drawing.Point(95, 56);
+            this.TxtDouble11.Name = "TxtDouble11";
+            this.TxtDouble11.Size = new System.Drawing.Size(36, 23);
+            this.TxtDouble11.TabIndex = 9;
+            this.TxtDouble11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtSingle32
+            // 
+            this.TxtSingle32.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle32.Location = new System.Drawing.Point(374, 19);
+            this.TxtSingle32.Name = "TxtSingle32";
+            this.TxtSingle32.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle32.TabIndex = 8;
+            this.TxtSingle32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtSingle31
+            // 
+            this.TxtSingle31.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle31.Location = new System.Drawing.Point(325, 19);
+            this.TxtSingle31.Name = "TxtSingle31";
+            this.TxtSingle31.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle31.TabIndex = 7;
+            this.TxtSingle31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtSingle22
+            // 
+            this.TxtSingle22.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle22.Location = new System.Drawing.Point(259, 19);
+            this.TxtSingle22.Name = "TxtSingle22";
+            this.TxtSingle22.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle22.TabIndex = 6;
+            this.TxtSingle22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtSingle21
+            // 
+            this.TxtSingle21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle21.Location = new System.Drawing.Point(210, 19);
+            this.TxtSingle21.Name = "TxtSingle21";
+            this.TxtSingle21.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle21.TabIndex = 5;
+            this.TxtSingle21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(9, 59);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Doppel:";
+            // 
+            // TxtSingle12
+            // 
+            this.TxtSingle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle12.Location = new System.Drawing.Point(144, 19);
+            this.TxtSingle12.Name = "TxtSingle12";
+            this.TxtSingle12.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle12.TabIndex = 4;
+            this.TxtSingle12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(9, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Einzel:";
+            // 
+            // TxtSingle11
+            // 
+            this.TxtSingle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSingle11.Location = new System.Drawing.Point(95, 19);
+            this.TxtSingle11.Name = "TxtSingle11";
+            this.TxtSingle11.Size = new System.Drawing.Size(36, 23);
+            this.TxtSingle11.TabIndex = 3;
+            this.TxtSingle11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Controls.Add(this.TxtPoints2);
+            this.groupBox6.Controls.Add(this.TxtPoints1);
+            this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox6.Location = new System.Drawing.Point(12, 382);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(512, 62);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Punkte";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(237, 5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(28, 47);
+            this.label12.TabIndex = 3;
+            this.label12.Text = ":";
+            // 
+            // TxtPoints2
+            // 
+            this.TxtPoints2.Location = new System.Drawing.Point(269, 22);
+            this.TxtPoints2.Name = "TxtPoints2";
+            this.TxtPoints2.Size = new System.Drawing.Size(36, 23);
+            this.TxtPoints2.TabIndex = 19;
+            this.TxtPoints2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtPoints1
+            // 
+            this.TxtPoints1.Location = new System.Drawing.Point(193, 22);
+            this.TxtPoints1.Name = "TxtPoints1";
+            this.TxtPoints1.Size = new System.Drawing.Size(36, 23);
+            this.TxtPoints1.TabIndex = 18;
+            this.TxtPoints1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 316);
+            this.ClientSize = new System.Drawing.Size(540, 488);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.BtnOk);
             this.Controls.Add(this.BtnCancel);
@@ -236,6 +539,10 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +565,31 @@
         private Button BtnOk;
         private GroupBox groupBox4;
         private TextBox TxtRound;
+        private GroupBox groupBox5;
+        private TextBox TxtDouble32;
+        private TextBox TxtDouble31;
+        private TextBox TxtDouble22;
+        private TextBox TxtDouble21;
+        private TextBox TxtDouble12;
+        private TextBox TxtDouble11;
+        private TextBox TxtSingle32;
+        private TextBox TxtSingle31;
+        private TextBox TxtSingle22;
+        private TextBox TxtSingle21;
+        private Label label5;
+        private TextBox TxtSingle12;
+        private Label label4;
+        private TextBox TxtSingle11;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Button BtnCalculate;
+        private GroupBox groupBox6;
+        private Label label12;
+        private TextBox TxtPoints2;
+        private TextBox TxtPoints1;
     }
 }
