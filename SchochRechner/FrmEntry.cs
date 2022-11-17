@@ -1,4 +1,5 @@
 ﻿using SchochRechner.ObjectModel;
+using System.Reflection.Metadata.Ecma335;
 
 namespace SchochRechner
 {
@@ -16,6 +17,20 @@ namespace SchochRechner
         public int Games2 { get { return Convert.ToInt32(this.TxtGames2.Text); } }
         public int Sets1 { get { return Convert.ToInt32(this.TxtSets1.Text); } }
         public int Sets2 { get { return Convert.ToInt32(this.TxtSets2.Text); } }
+        public int Points1 { get { return Convert.ToInt32(this.TxtPoints1.Text); } }
+        public int Points2 { get { return Convert.ToInt32(this.TxtPoints2.Text); } }
+        public int Single11 { get { return Convert.ToInt32(this.TxtSingle11.Text); } }
+        public int Single12 { get { return Convert.ToInt32(this.TxtSingle12.Text); } }
+        public int Single21 { get { return Convert.ToInt32(this.TxtSingle21.Text); } }
+        public int Single22 { get { return Convert.ToInt32(this.TxtSingle22.Text); } }
+        public int Single31 { get { return string.IsNullOrEmpty(this.TxtSingle31.Text) ? -1 : Convert.ToInt32(this.TxtSingle31.Text); } }
+        public int Single32 { get { return string.IsNullOrEmpty(this.TxtSingle32.Text) ? -1 : Convert.ToInt32(this.TxtSingle32.Text); } }
+        public int Double11 { get { return Convert.ToInt32(this.TxtDouble11.Text); } }
+        public int Double12 { get { return Convert.ToInt32(this.TxtDouble12.Text); } }
+        public int Double21 { get { return Convert.ToInt32(this.TxtDouble21.Text); } }
+        public int Double22 { get { return Convert.ToInt32(this.TxtDouble22.Text); } }
+        public int Double31 { get { return string.IsNullOrEmpty(this.TxtDouble31.Text) ? -1 : Convert.ToInt32(this.TxtDouble31.Text); } }
+        public int Double32 { get { return string.IsNullOrEmpty(this.TxtDouble32.Text) ? -1 : Convert.ToInt32(this.TxtDouble32.Text); } }
 
         public FrmEntry(List<Team> teams) : this()
         {
@@ -37,6 +52,20 @@ namespace SchochRechner
             this.TxtGames2.Text = entry.Games2.ToString();
             this.TxtSets1.Text = entry.Sets1.ToString();
             this.TxtSets2.Text = entry.Sets2.ToString();
+            this.TxtSingle11.Text = entry.Single11.ToString();
+            this.TxtSingle12.Text = entry.Single12.ToString();
+            this.TxtSingle21.Text = entry.Single21.ToString();
+            this.TxtSingle22.Text = entry.Single22.ToString();
+            this.TxtSingle31.Text = entry.Single31.ToString();
+            this.TxtSingle32.Text = entry.Single32.ToString();
+            this.TxtDouble11.Text = entry.Double11.ToString();
+            this.TxtDouble12.Text = entry.Double12.ToString();
+            this.TxtDouble21.Text = entry.Double21.ToString();
+            this.TxtDouble22.Text = entry.Double22.ToString();
+            this.TxtDouble31.Text = entry.Double31.ToString();
+            this.TxtDouble32.Text = entry.Double32.ToString();
+            this.TxtPoints1.Text = entry.Points1.ToString();
+            this.TxtPoints2.Text = entry.Points2.ToString();
         }
 
         private void BtnCalculate_Click(object sender, EventArgs e)

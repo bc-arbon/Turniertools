@@ -31,6 +31,8 @@ namespace SchochRechner
                 item.SubItems.Add(team.GamesDiffText);
                 item.SubItems.Add(team.SetsWon.ToString() + ":" + team.SetsLost.ToString());
                 item.SubItems.Add(team.SetsDiffText);
+                item.SubItems.Add(team.PointsWon.ToString() + ":" + team.PointsLost.ToString());
+                item.SubItems.Add(team.PointsDiffText);
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.Feinbuchholz.ToString());
                 

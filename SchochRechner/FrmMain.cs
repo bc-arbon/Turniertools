@@ -36,11 +36,14 @@ namespace SchochRechner
                 item.SubItems.Add(team.GamesWon.ToString());
                 item.SubItems.Add(team.GamesLost.ToString());
                 item.SubItems.Add(team.GamesDiffText);
+                item.SubItems.Add(team.Buchholz.ToString());
+                item.SubItems.Add(team.Feinbuchholz.ToString());
                 item.SubItems.Add(team.SetsWon.ToString());
                 item.SubItems.Add(team.SetsLost.ToString());
                 item.SubItems.Add(team.SetsDiffText);
-                item.SubItems.Add(team.Buchholz.ToString());
-                item.SubItems.Add(team.Feinbuchholz.ToString());
+                item.SubItems.Add(team.PointsWon.ToString());
+                item.SubItems.Add(team.PointsLost.ToString());
+                item.SubItems.Add(team.PointsDiffText);
                 this.LvwRanking.Items.Add(item);
                 rank++;
             }
@@ -60,6 +63,7 @@ namespace SchochRechner
                 item.SubItems.Add(team2 != null ? team2.Name : string.Empty);
                 item.SubItems.Add(entry.Games1 + ":" + entry.Games2);
                 item.SubItems.Add(entry.Sets1 + ":" + entry.Sets2);
+                item.SubItems.Add(entry.Points1 + ":" + entry.Points2);
                 this.LvwEntries.Items.Add(item);
             }
         }
@@ -69,7 +73,7 @@ namespace SchochRechner
             var frmEntry = new FrmEntry(this.schochManager.Teams);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
-                this.schochManager.AddEntry(frmEntry.Round, frmEntry.Team1, frmEntry.Team2, frmEntry.Games1, frmEntry.Games2, frmEntry.Sets1, frmEntry.Sets2);
+                this.schochManager.AddEntry(Helpers.CreateEntry(frmEntry));
                 this.schochManager.CalculateRanking();
                 this.schochManager.Save();
                 this.ShowAll();
@@ -87,13 +91,7 @@ namespace SchochRechner
             var frmEntry = new FrmEntry(this.schochManager.Teams, entry);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
-                entry.Round = frmEntry.Round;
-                entry.Team1 = frmEntry.Team1;
-                entry.Team2 = frmEntry.Team2;
-                entry.Games1 = frmEntry.Games1;
-                entry.Games2 = frmEntry.Games2;
-                entry.Sets1 = frmEntry.Sets1;
-                entry.Sets2 = frmEntry.Sets2;
+                Helpers.UpdateEntry(entry, frmEntry);
 
                 this.schochManager.CalculateRanking();
                 this.schochManager.Save();

@@ -37,6 +37,8 @@
             this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
             this.ChrSetsDiff = new System.Windows.Forms.ColumnHeader();
+            this.ChrPoints = new System.Windows.Forms.ColumnHeader();
+            this.ChrPointsDiff = new System.Windows.Forms.ColumnHeader();
             this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
@@ -52,6 +54,8 @@
             this.ChrGamesDiff,
             this.ChrSets,
             this.ChrSetsDiff,
+            this.ChrPoints,
+            this.ChrPointsDiff,
             this.ChrBuchholz,
             this.ChrFeinbuchholz});
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -95,7 +99,7 @@
             // 
             // ChrGamesDiff
             // 
-            this.ChrGamesDiff.Text = "Diff";
+            this.ChrGamesDiff.Text = "";
             this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrGamesDiff.Width = 100;
             // 
@@ -107,9 +111,20 @@
             // 
             // ChrSetsDiff
             // 
-            this.ChrSetsDiff.Text = "Diff";
+            this.ChrSetsDiff.Text = "";
             this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrSetsDiff.Width = 100;
+            // 
+            // ChrPoints
+            // 
+            this.ChrPoints.Text = "Punkte";
+            this.ChrPoints.Width = 140;
+            // 
+            // ChrPointsDiff
+            // 
+            this.ChrPointsDiff.Text = "";
+            this.ChrPointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrPointsDiff.Width = 100;
             // 
             // ChrBuchholz
             // 
@@ -149,5 +164,7 @@
         private ColumnHeader ChrHidden;
         private ColumnHeader ChrGamesDiff;
         private ColumnHeader ChrSetsDiff;
+        private ColumnHeader ChrPoints;
+        private ColumnHeader ChrPointsDiff;
     }
 }
