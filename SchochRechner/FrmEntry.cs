@@ -56,14 +56,14 @@ namespace SchochRechner
             this.TxtSingle12.Text = entry.Single12.ToString();
             this.TxtSingle21.Text = entry.Single21.ToString();
             this.TxtSingle22.Text = entry.Single22.ToString();
-            this.TxtSingle31.Text = entry.Single31.ToString();
-            this.TxtSingle32.Text = entry.Single32.ToString();
+            this.TxtSingle31.Text = entry.Single31 > -1 ? entry.Single31.ToString() : null;
+            this.TxtSingle32.Text = entry.Single32 > -1 ? entry.Single32.ToString() : null;
             this.TxtDouble11.Text = entry.Double11.ToString();
             this.TxtDouble12.Text = entry.Double12.ToString();
             this.TxtDouble21.Text = entry.Double21.ToString();
             this.TxtDouble22.Text = entry.Double22.ToString();
-            this.TxtDouble31.Text = entry.Double31.ToString();
-            this.TxtDouble32.Text = entry.Double32.ToString();
+            this.TxtDouble31.Text = entry.Double31 > -1 ? entry.Double31.ToString() : null;
+            this.TxtDouble32.Text = entry.Double32 > -1 ? entry.Double32.ToString() : null;
             this.TxtPoints1.Text = entry.Points1.ToString();
             this.TxtPoints2.Text = entry.Points2.ToString();
         }
