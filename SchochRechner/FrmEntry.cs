@@ -38,5 +38,59 @@ namespace SchochRechner
             this.TxtSets1.Text = entry.Sets1.ToString();
             this.TxtSets2.Text = entry.Sets2.ToString();
         }
+
+        private void BtnCalculate_Click(object sender, EventArgs e)
+        {
+            var setsSingle1 = 0;
+            var setsSingle2 = 0;
+            var setsDouble1 = 0;
+            var setsDouble2 = 0;
+            var games1 = 0;
+            var games2 = 0;
+            var points1 = 0;
+            var points2 = 0;
+
+            var single11 = Convert.ToInt32(this.TxtSingle11.Text);
+            var single12 = Convert.ToInt32(this.TxtSingle12.Text);
+            var single21 = Convert.ToInt32(this.TxtSingle21.Text);
+            var single22 = Convert.ToInt32(this.TxtSingle22.Text);
+            var single31 = string.IsNullOrEmpty(this.TxtSingle31.Text) ? -1 : Convert.ToInt32(this.TxtSingle31.Text);
+            var single32 = string.IsNullOrEmpty(this.TxtSingle32.Text) ? -1 : Convert.ToInt32(this.TxtSingle32.Text);
+
+            var double11 = Convert.ToInt32(this.TxtDouble11.Text);
+            var double12 = Convert.ToInt32(this.TxtDouble12.Text);
+            var double21 = Convert.ToInt32(this.TxtDouble21.Text);
+            var double22 = Convert.ToInt32(this.TxtDouble22.Text);
+            var double31 = string.IsNullOrEmpty(this.TxtDouble31.Text) ? -1 : Convert.ToInt32(this.TxtDouble31.Text);
+            var double32 = string.IsNullOrEmpty(this.TxtDouble32.Text) ? -1 : Convert.ToInt32(this.TxtDouble32.Text);
+
+            if (single11 > single12) { setsSingle1++; } else { setsSingle2++; }
+            if (single21 > single22) { setsSingle1++; } else { setsSingle2++; }
+            if (single31 > -1 && single32 > -1 ) { if (single31 > single32) { setsSingle1++; } else { setsSingle2++; } }
+
+            if (double11 > double12) { setsDouble1++; } else { setsDouble2++; }
+            if (double21 > double22) { setsDouble1++; } else { setsDouble2++; }
+            if (double31 > -1 && double32 > -1) { if (double31 > double32) { setsDouble1++; } else { setsDouble2++; } }
+
+            if (setsSingle1 > setsSingle2) { games1++; } else { games2++; }
+            if (setsDouble1 > setsDouble2) { games1++; } else { games2++; }
+
+            points1 = single11 + single21;
+            points1 += single31 > -1 ? single31 : 0;
+            points1 += double11 + double21;
+            points1 += double31 > -1 ? double31 : 0;
+
+            points2 = single12 + single22;
+            points2 += single32 > -1 ? single32 : 0;
+            points2 += double12 + double22;
+            points2 += double32 > -1 ? double32 : 0;
+
+            this.TxtSets1.Text = (setsSingle1 + setsDouble1).ToString();
+            this.TxtSets2.Text = (setsSingle2 + setsDouble2).ToString();
+            this.TxtGames1.Text = games1.ToString();
+            this.TxtGames2.Text = games2.ToString();
+            this.TxtPoints1.Text = points1.ToString();
+            this.TxtPoints2.Text = points2.ToString();
+        }
     }
 }
