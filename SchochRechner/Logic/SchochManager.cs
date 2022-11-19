@@ -5,8 +5,8 @@ namespace SchochRechner.Logic
 {
     public class SchochManager
     {
-        private readonly string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
-        private readonly string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
+        private string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
+        private string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
 
         public List<Entry> Entries { get; } = new();
         public List<Team> Teams { get; } = new();
@@ -267,6 +267,14 @@ namespace SchochRechner.Logic
             //this.AddEntry(5, 3, 18, 0, 2, 2, 4);
 
             this.CalculateRanking();
+        }
+
+        public void AddExampleData2()
+        {
+            this.entriesFilepath = Path.Combine(Application.StartupPath, "sampledata", "entries-sample.json");
+            this.teamsFilepath = Path.Combine(Application.StartupPath, "sampledata", "teams-sample.json");
+            this.Load();
+
         }
     }
 }
