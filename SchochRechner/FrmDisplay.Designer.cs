@@ -32,15 +32,15 @@
             this.ChrHidden = new System.Windows.Forms.ColumnHeader();
             this.ChrRank = new System.Windows.Forms.ColumnHeader();
             this.ChrTeam = new System.Windows.Forms.ColumnHeader();
+            this.ChrPoints = new System.Windows.Forms.ColumnHeader();
             this.ChrRounds = new System.Windows.Forms.ColumnHeader();
+            this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrGames = new System.Windows.Forms.ColumnHeader();
             this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
             this.ChrSetsDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrPoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrPointsDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
-            this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
+            this.ChrGamepoints = new System.Windows.Forms.ColumnHeader();
+            this.ChrGamepointsDiff = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // LvwRanking
@@ -49,21 +49,22 @@
             this.ChrHidden,
             this.ChrRank,
             this.ChrTeam,
+            this.ChrPoints,
             this.ChrRounds,
+            this.ChrBuchholz,
             this.ChrGames,
             this.ChrGamesDiff,
             this.ChrSets,
             this.ChrSetsDiff,
-            this.ChrPoints,
-            this.ChrPointsDiff,
-            this.ChrBuchholz,
-            this.ChrFeinbuchholz});
+            this.ChrGamepoints,
+            this.ChrGamepointsDiff});
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwRanking.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LvwRanking.Location = new System.Drawing.Point(0, 0);
+            this.LvwRanking.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(1904, 1041);
+            this.LvwRanking.Size = new System.Drawing.Size(2720, 1735);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -85,17 +86,29 @@
             this.ChrTeam.Text = "Name";
             this.ChrTeam.Width = 700;
             // 
+            // ChrPoints
+            // 
+            this.ChrPoints.Text = "Punkte";
+            this.ChrPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrPoints.Width = 130;
+            // 
             // ChrRounds
             // 
             this.ChrRounds.Text = "Runden";
             this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrRounds.Width = 140;
             // 
+            // ChrBuchholz
+            // 
+            this.ChrBuchholz.Text = "BHZ";
+            this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrBuchholz.Width = 80;
+            // 
             // ChrGames
             // 
             this.ChrGames.Text = "Spiele";
             this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGames.Width = 110;
+            this.ChrGames.Width = 120;
             // 
             // ChrGamesDiff
             // 
@@ -115,35 +128,24 @@
             this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrSetsDiff.Width = 100;
             // 
-            // ChrPoints
+            // ChrGamepoints
             // 
-            this.ChrPoints.Text = "Punkte";
-            this.ChrPoints.Width = 140;
+            this.ChrGamepoints.Text = "SP";
+            this.ChrGamepoints.Width = 140;
             // 
-            // ChrPointsDiff
+            // ChrGamepointsDiff
             // 
-            this.ChrPointsDiff.Text = "";
-            this.ChrPointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrPointsDiff.Width = 100;
-            // 
-            // ChrBuchholz
-            // 
-            this.ChrBuchholz.Text = "BHZ";
-            this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrBuchholz.Width = 0;
-            // 
-            // ChrFeinbuchholz
-            // 
-            this.ChrFeinbuchholz.Text = "FBHZ";
-            this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrFeinbuchholz.Width = 0;
+            this.ChrGamepointsDiff.Text = "";
+            this.ChrGamepointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrGamepointsDiff.Width = 100;
             // 
             // FrmDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(2720, 1735);
             this.Controls.Add(this.LvwRanking);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmDisplay";
             this.Text = "FrmDisplay";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDisplay_FormClosing);
@@ -156,15 +158,15 @@
         private ListView LvwRanking;
         private ColumnHeader ChrRank;
         private ColumnHeader ChrTeam;
-        private ColumnHeader ChrGames;
+        private ColumnHeader ChrPoints;
         private ColumnHeader ChrSets;
         private ColumnHeader ChrBuchholz;
         private ColumnHeader ChrRounds;
-        private ColumnHeader ChrFeinbuchholz;
         private ColumnHeader ChrHidden;
         private ColumnHeader ChrGamesDiff;
         private ColumnHeader ChrSetsDiff;
-        private ColumnHeader ChrPoints;
-        private ColumnHeader ChrPointsDiff;
+        private ColumnHeader ChrGamepoints;
+        private ColumnHeader ChrGamepointsDiff;
+        private ColumnHeader ChrGames;
     }
 }
