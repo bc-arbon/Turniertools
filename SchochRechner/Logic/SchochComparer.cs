@@ -27,7 +27,7 @@ namespace SchochRechner.Logic
             if (team2.Opponents.Contains(99)) return 1;
             //if (team1.Buchholz != team2.Buchholz) return team1.Buchholz.CompareTo(team2.Buchholz);
             if (team1.SetsDiff != team2.SetsDiff) return team1.SetsDiff.CompareTo(team2.SetsDiff);
-            if (team1.SetsWon != team2.SetsWon) return team2.SetsWon.CompareTo(team1.SetsWon);
+            if (team1.SetsWon != team2.SetsWon) return team1.SetsWon.CompareTo(team2.SetsWon);
             if (team1.SetsLost != team2.SetsLost) return team2.SetsLost.CompareTo(team1.SetsLost);
             if (team1.PointsDiff != team2.PointsDiff) return team1.PointsDiff.CompareTo(team2.PointsDiff);
             if (team1.PointsWon != team2.PointsWon) return team2.PointsWon.CompareTo(team1.PointsWon);
