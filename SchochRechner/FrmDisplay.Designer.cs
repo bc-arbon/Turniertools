@@ -61,10 +61,9 @@
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwRanking.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LvwRanking.Location = new System.Drawing.Point(0, 0);
-            this.LvwRanking.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(2720, 1735);
+            this.LvwRanking.Size = new System.Drawing.Size(1653, 757);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -141,13 +140,12 @@
             // 
             // FrmDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2720, 1735);
+            this.ClientSize = new System.Drawing.Size(1653, 757);
             this.Controls.Add(this.LvwRanking);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmDisplay";
-            this.Text = "FrmDisplay";
+            this.Text = "Display";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDisplay_FormClosing);
             this.ResumeLayout(false);
 

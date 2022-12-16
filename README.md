@@ -19,3 +19,20 @@ Ideen für die Zukunft:
 
 ### V1.0 (2021)
 - Erste Version
+
+## Screenshots
+
+### Hauptansicht mit Rangliste und Begegnungen
+![Hauptansicht](mainview.png)
+
+### Display für Grossbildschirm
+![Ranking](ranking.png)
+
+### Auslosung
+![Auslosung](draws.png)]
+
+### Matchblatt
+![Matchblatt](matchcard.png)
+
+### Resultateingabe
+![Resultentry](resultentry.png)

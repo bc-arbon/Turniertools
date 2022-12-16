@@ -7,10 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchochRechner", "SchochRech
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{25CE7FD3-CECB-4643-8451-FF731FEED4AC}"
 	ProjectSection(SolutionItems) = preProject
-		docs\_config.yml = docs\_config.yml
 		docs\dpiunware.reg = docs\dpiunware.reg
+		docs\draws.png = docs\draws.png
 		docs\index.md = docs\index.md
+		docs\mainview.png = docs\mainview.png
+		docs\matchcard.png = docs\matchcard.png
+		docs\ranking.png = docs\ranking.png
 		README.md = README.md
+		docs\resultentry.png = docs\resultentry.png
+		docs\_config.yml = docs\_config.yml
 	EndProjectSection
 EndProject
 Global

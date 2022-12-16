@@ -43,7 +43,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(152, 498);
+            this.button1.Location = new System.Drawing.Point(12, 553);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -60,7 +60,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ctlMatchcard1);
             this.Name = "FrmMatchcard";
-            this.Text = "FrmMatchcard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Matchblatt";
             this.ResumeLayout(false);
 
         }
