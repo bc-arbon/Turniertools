@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.SpcMain = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TpgRanking = new System.Windows.Forms.TabPage();
             this.SpcRanking = new System.Windows.Forms.SplitContainer();
             this.BtnDisplay = new System.Windows.Forms.Button();
             this.BtnPrint = new System.Windows.Forms.Button();
@@ -37,16 +38,17 @@
             this.ChrRank = new System.Windows.Forms.ColumnHeader();
             this.ChrId = new System.Windows.Forms.ColumnHeader();
             this.ChrName = new System.Windows.Forms.ColumnHeader();
-            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
             this.ChrPoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrGames = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
+            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
             this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
             this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
+            this.ChrGames = new System.Windows.Forms.ColumnHeader();
+            this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
             this.ChrSets = new System.Windows.Forms.ColumnHeader();
             this.ChrSetsDiff = new System.Windows.Forms.ColumnHeader();
             this.ChrGamepoints = new System.Windows.Forms.ColumnHeader();
             this.ChrGamepointsDiff = new System.Windows.Forms.ColumnHeader();
+            this.TpgDraws = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SpcEntries = new System.Windows.Forms.SplitContainer();
             this.BtnTeams = new System.Windows.Forms.Button();
@@ -64,7 +66,8 @@
             this.SpcMain.Panel1.SuspendLayout();
             this.SpcMain.Panel2.SuspendLayout();
             this.SpcMain.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.TpgRanking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).BeginInit();
             this.SpcRanking.Panel1.SuspendLayout();
             this.SpcRanking.Panel2.SuspendLayout();
@@ -82,40 +85,46 @@
             this.SpcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.SpcMain.Location = new System.Drawing.Point(0, 0);
-            this.SpcMain.Margin = new System.Windows.Forms.Padding(4);
             this.SpcMain.Name = "SpcMain";
             // 
             // SpcMain.Panel1
             // 
-            this.SpcMain.Panel1.Controls.Add(this.groupBox1);
+            this.SpcMain.Panel1.Controls.Add(this.tabControl1);
             // 
             // SpcMain.Panel2
             // 
             this.SpcMain.Panel2.Controls.Add(this.groupBox2);
-            this.SpcMain.Size = new System.Drawing.Size(1916, 1110);
-            this.SpcMain.SplitterDistance = 1465;
-            this.SpcMain.SplitterWidth = 6;
+            this.SpcMain.Size = new System.Drawing.Size(1277, 740);
+            this.SpcMain.SplitterDistance = 826;
             this.SpcMain.TabIndex = 0;
             // 
-            // groupBox1
+            // tabControl1
             // 
-            this.groupBox1.Controls.Add(this.SpcRanking);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1465, 1110);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rangliste";
+            this.tabControl1.Controls.Add(this.TpgRanking);
+            this.tabControl1.Controls.Add(this.TpgDraws);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(826, 740);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // TpgRanking
+            // 
+            this.TpgRanking.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgRanking.Controls.Add(this.SpcRanking);
+            this.TpgRanking.Location = new System.Drawing.Point(4, 24);
+            this.TpgRanking.Name = "TpgRanking";
+            this.TpgRanking.Padding = new System.Windows.Forms.Padding(3);
+            this.TpgRanking.Size = new System.Drawing.Size(818, 712);
+            this.TpgRanking.TabIndex = 0;
+            this.TpgRanking.Text = "Rangliste";
             // 
             // SpcRanking
             // 
             this.SpcRanking.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.SpcRanking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpcRanking.Location = new System.Drawing.Point(4, 28);
-            this.SpcRanking.Margin = new System.Windows.Forms.Padding(4);
+            this.SpcRanking.Location = new System.Drawing.Point(3, 3);
             this.SpcRanking.Name = "SpcRanking";
             this.SpcRanking.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -127,17 +136,16 @@
             // SpcRanking.Panel2
             // 
             this.SpcRanking.Panel2.Controls.Add(this.LvwRanking);
-            this.SpcRanking.Size = new System.Drawing.Size(1457, 1078);
-            this.SpcRanking.SplitterDistance = 49;
-            this.SpcRanking.SplitterWidth = 8;
+            this.SpcRanking.Size = new System.Drawing.Size(812, 706);
+            this.SpcRanking.SplitterDistance = 32;
+            this.SpcRanking.SplitterWidth = 5;
             this.SpcRanking.TabIndex = 1;
             // 
             // BtnDisplay
             // 
-            this.BtnDisplay.Location = new System.Drawing.Point(123, 4);
-            this.BtnDisplay.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnDisplay.Location = new System.Drawing.Point(82, 3);
             this.BtnDisplay.Name = "BtnDisplay";
-            this.BtnDisplay.Size = new System.Drawing.Size(111, 39);
+            this.BtnDisplay.Size = new System.Drawing.Size(74, 26);
             this.BtnDisplay.TabIndex = 2;
             this.BtnDisplay.Text = "Display";
             this.BtnDisplay.UseVisualStyleBackColor = true;
@@ -145,10 +153,9 @@
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(4, 4);
-            this.BtnPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnPrint.Location = new System.Drawing.Point(3, 3);
             this.BtnPrint.Name = "BtnPrint";
-            this.BtnPrint.Size = new System.Drawing.Size(111, 39);
+            this.BtnPrint.Size = new System.Drawing.Size(74, 26);
             this.BtnPrint.TabIndex = 1;
             this.BtnPrint.Text = "Drucken";
             this.BtnPrint.UseVisualStyleBackColor = true;
@@ -173,10 +180,9 @@
             this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwRanking.FullRowSelect = true;
             this.LvwRanking.Location = new System.Drawing.Point(0, 0);
-            this.LvwRanking.Margin = new System.Windows.Forms.Padding(4);
             this.LvwRanking.Name = "LvwRanking";
             this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(1457, 1021);
+            this.LvwRanking.Size = new System.Drawing.Size(812, 669);
             this.LvwRanking.TabIndex = 0;
             this.LvwRanking.UseCompatibleStateImageBehavior = false;
             this.LvwRanking.View = System.Windows.Forms.View.Details;
@@ -197,29 +203,17 @@
             this.ChrName.Text = "Name";
             this.ChrName.Width = 150;
             // 
-            // ChrRounds
-            // 
-            this.ChrRounds.Text = "R";
-            this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRounds.Width = 30;
-            // 
             // ChrPoints
             // 
             this.ChrPoints.Text = "P";
             this.ChrPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrPoints.Width = 40;
             // 
-            // ChrGames
+            // ChrRounds
             // 
-            this.ChrGames.Text = "G";
-            this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGames.Width = 40;
-            // 
-            // ChrGamesDiff
-            // 
-            this.ChrGamesDiff.Text = "G Diff";
-            this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamesDiff.Width = 50;
+            this.ChrRounds.Text = "R";
+            this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrRounds.Width = 30;
             // 
             // ChrBuchholz
             // 
@@ -232,6 +226,18 @@
             this.ChrFeinbuchholz.Text = "FBHZ";
             this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ChrFeinbuchholz.Width = 45;
+            // 
+            // ChrGames
+            // 
+            this.ChrGames.Text = "G";
+            this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrGames.Width = 40;
+            // 
+            // ChrGamesDiff
+            // 
+            this.ChrGamesDiff.Text = "G Diff";
+            this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChrGamesDiff.Width = 50;
             // 
             // ChrSets
             // 
@@ -256,15 +262,23 @@
             this.ChrGamepointsDiff.Text = "P Diff";
             this.ChrGamepointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // TpgDraws
+            // 
+            this.TpgDraws.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgDraws.Location = new System.Drawing.Point(4, 24);
+            this.TpgDraws.Name = "TpgDraws";
+            this.TpgDraws.Padding = new System.Windows.Forms.Padding(3);
+            this.TpgDraws.Size = new System.Drawing.Size(818, 712);
+            this.TpgDraws.TabIndex = 1;
+            this.TpgDraws.Text = "Auslosungen";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.SpcEntries);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(445, 1110);
+            this.groupBox2.Size = new System.Drawing.Size(447, 740);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Begegnungen";
@@ -273,8 +287,7 @@
             // 
             this.SpcEntries.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.SpcEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpcEntries.Location = new System.Drawing.Point(4, 28);
-            this.SpcEntries.Margin = new System.Windows.Forms.Padding(4);
+            this.SpcEntries.Location = new System.Drawing.Point(3, 19);
             this.SpcEntries.Name = "SpcEntries";
             this.SpcEntries.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -288,18 +301,17 @@
             // SpcEntries.Panel2
             // 
             this.SpcEntries.Panel2.Controls.Add(this.LvwEntries);
-            this.SpcEntries.Size = new System.Drawing.Size(437, 1078);
-            this.SpcEntries.SplitterDistance = 45;
-            this.SpcEntries.SplitterWidth = 8;
+            this.SpcEntries.Size = new System.Drawing.Size(441, 718);
+            this.SpcEntries.SplitterDistance = 29;
+            this.SpcEntries.SplitterWidth = 5;
             this.SpcEntries.TabIndex = 0;
             // 
             // BtnTeams
             // 
             this.BtnTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnTeams.Location = new System.Drawing.Point(315, 4);
-            this.BtnTeams.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnTeams.Location = new System.Drawing.Point(360, 3);
             this.BtnTeams.Name = "BtnTeams";
-            this.BtnTeams.Size = new System.Drawing.Size(111, 39);
+            this.BtnTeams.Size = new System.Drawing.Size(74, 26);
             this.BtnTeams.TabIndex = 1;
             this.BtnTeams.Text = "Teams";
             this.BtnTeams.UseVisualStyleBackColor = true;
@@ -307,10 +319,9 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(280, 4);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnDelete.Location = new System.Drawing.Point(187, 3);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(129, 39);
+            this.BtnDelete.Size = new System.Drawing.Size(86, 26);
             this.BtnDelete.TabIndex = 0;
             this.BtnDelete.Text = "Löschen";
             this.BtnDelete.UseVisualStyleBackColor = true;
@@ -318,10 +329,9 @@
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Location = new System.Drawing.Point(142, 4);
-            this.BtnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnEdit.Location = new System.Drawing.Point(95, 3);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(129, 39);
+            this.BtnEdit.Size = new System.Drawing.Size(86, 26);
             this.BtnEdit.TabIndex = 0;
             this.BtnEdit.Text = "Bearbeiten...";
             this.BtnEdit.UseVisualStyleBackColor = true;
@@ -329,12 +339,11 @@
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(4, 4);
-            this.BtnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAdd.Location = new System.Drawing.Point(3, 3);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(129, 39);
+            this.BtnAdd.Size = new System.Drawing.Size(86, 26);
             this.BtnAdd.TabIndex = 0;
-            this.BtnAdd.Text = "Neu...";
+            this.BtnAdd.Text = "HInzufügen...";
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -350,10 +359,9 @@
             this.LvwEntries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvwEntries.FullRowSelect = true;
             this.LvwEntries.Location = new System.Drawing.Point(0, 0);
-            this.LvwEntries.Margin = new System.Windows.Forms.Padding(4);
             this.LvwEntries.Name = "LvwEntries";
             this.LvwEntries.OwnerDraw = true;
-            this.LvwEntries.Size = new System.Drawing.Size(437, 1025);
+            this.LvwEntries.Size = new System.Drawing.Size(441, 684);
             this.LvwEntries.TabIndex = 0;
             this.LvwEntries.UseCompatibleStateImageBehavior = false;
             this.LvwEntries.View = System.Windows.Forms.View.Details;
@@ -391,12 +399,11 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1916, 1110);
+            this.ClientSize = new System.Drawing.Size(1277, 740);
             this.Controls.Add(this.SpcMain);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schoch Rechner";
@@ -406,7 +413,8 @@
             this.SpcMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).EndInit();
             this.SpcMain.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.TpgRanking.ResumeLayout(false);
             this.SpcRanking.Panel1.ResumeLayout(false);
             this.SpcRanking.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).EndInit();
@@ -423,7 +431,6 @@
         #endregion
 
         private SplitContainer SpcMain;
-        private GroupBox groupBox1;
         private ListView LvwRanking;
         private ColumnHeader ChrName;
         private ColumnHeader ChrPoints;
@@ -454,5 +461,8 @@
         private ColumnHeader ChrResultsPoints;
         private ColumnHeader ChrGamepoints;
         private ColumnHeader ChrGamepointsDiff;
+        private TabControl tabControl1;
+        private TabPage TpgRanking;
+        private TabPage TpgDraws;
     }
 }
