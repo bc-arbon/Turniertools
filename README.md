@@ -23,16 +23,16 @@ Ideen für die Zukunft:
 ## Screenshots
 
 ### Hauptansicht mit Rangliste und Begegnungen
-![Hauptansicht](mainview.png)
+![Hauptansicht](docs/mainview.png)
 
 ### Display für Grossbildschirm
-![Ranking](ranking.png)
+![Ranking](docs/ranking.png)
 
 ### Auslosung
-![Auslosung](draws.png)]
+![Auslosung](docs/draws.png)]
 
 ### Matchblatt
-![Matchblatt](matchcard.png)
+![Matchblatt](docs/matchcard.png)
 
 ### Resultateingabe
-![Resultentry](resultentry.png)
+![Resultentry](docs/resultentry.png)
