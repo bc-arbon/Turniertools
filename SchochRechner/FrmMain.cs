@@ -123,14 +123,14 @@ namespace SchochRechner
             //this.schochManager.AddExampleData2();
 
             this.frmDisplay.Show();
-            this.ShowAll();                        
+            this.ShowAll();
         }
 
         private void BtnTeams_Click(object sender, EventArgs e)
         {
             var frmTeams = new FrmTeams(this.schochManager);
             frmTeams.ShowDialog();
-                        
+
             this.ShowAll();
         }
 
@@ -150,7 +150,7 @@ namespace SchochRechner
         }
 
         private void LvwEntries_DrawItem(object sender, DrawListViewItemEventArgs e)
-        {            
+        {
             e.DrawDefault = true;
             if ((e.ItemIndex % 2) == 1)
             {
@@ -180,8 +180,38 @@ namespace SchochRechner
         }
 
         private void BtnDisplay_Click(object sender, EventArgs e)
-        {            
+        {
             this.frmDisplay.Show();
+        }
+
+        private void BtnAddDraw_Click(object sender, EventArgs e)
+        {
+            var round = this.schochManager.CreateDraw();
+
+            var group = new ListViewGroup("Runde " + round.RoundActual);
+            this.LvwDraws.Groups.Add(group);
+
+            foreach (var draw in round.Draws)
+            {
+                var item = new ListViewItem(draw.Team1.Name);
+                item.SubItems.Add(draw.Team2.Name);
+                item.Tag = draw;
+                group.Items.Add(item);
+                this.LvwDraws.Items.Add(item);
+            }
+        }
+
+        private void LvwDraws_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // TBD, works for testing
+            if (this.LvwDraws.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
+            var frmMatchcard = new FrmMatchcard(draw);
+            frmMatchcard.ShowDialog();
         }
     }
 }

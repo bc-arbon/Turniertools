@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchochRechner.ObjectModel;
+using System.Text;
 
 namespace SchochRechner.Logic
 {
@@ -187,6 +188,53 @@ namespace SchochRechner.Logic
             this.Teams.Sort(new SchochComparer());
         }
 
+        public Round CreateDraw()
+        {
+            var round = new Round();
+            var ranking = 0;
+
+            foreach (var team in this.Teams)
+            {
+                // Is this team already in the draw?
+                if (this.AlreadyDrawn(round.Draws, team))
+                {
+                    ranking++;
+                    continue;
+                }
+
+                // Find next opponent                
+                var opponentFound = false;
+                var i = 1;
+                Team team2 = this.Teams[ranking + i];
+                while(!opponentFound)
+                {
+                    // Is already in draw
+                    if (this.AlreadyDrawn(round.Draws, team2))
+                    {
+                        i++;
+                        team2 = this.Teams[ranking + i];
+                        continue;
+                    }
+
+                    // Had already played against this team
+                    if (team.Opponents.Contains(team2.Id))
+                    {
+                        i++;
+                        team2 = this.Teams[ranking + i];
+                        continue;
+                    }
+
+                    opponentFound = true;
+                }
+
+                // Add draw
+                ranking++;
+                round.Draws.Add(new Draw { Team1 = team, Team2 = team2 });
+            }
+
+            return round;
+        }
+
         public void AddExampleData()
         {
             this.Teams.Clear();
@@ -275,6 +323,21 @@ namespace SchochRechner.Logic
             this.teamsFilepath = Path.Combine(Application.StartupPath, "sampledata", "teams-sample.json");
             this.Load();
 
+        }
+
+        private bool AlreadyDrawn(List<Draw> draws, Team team)
+        {
+            var teamAlreadyDrawn = false;
+            foreach (var draw in draws)
+            {
+                if (draw.Team1 == team || draw.Team2 == team)
+                {
+                    teamAlreadyDrawn = true;
+                    break;
+                }                
+            }
+
+            return teamAlreadyDrawn;
         }
     }
 }

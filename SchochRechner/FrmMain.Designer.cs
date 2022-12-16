@@ -49,6 +49,10 @@
             this.ChrGamepoints = new System.Windows.Forms.ColumnHeader();
             this.ChrGamepointsDiff = new System.Windows.Forms.ColumnHeader();
             this.TpgDraws = new System.Windows.Forms.TabPage();
+            this.BtnAddDraw = new System.Windows.Forms.Button();
+            this.LvwDraws = new System.Windows.Forms.ListView();
+            this.ChdDrawTeam1 = new System.Windows.Forms.ColumnHeader();
+            this.ChdDrawTeam2 = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SpcEntries = new System.Windows.Forms.SplitContainer();
             this.BtnTeams = new System.Windows.Forms.Button();
@@ -72,6 +76,7 @@
             this.SpcRanking.Panel1.SuspendLayout();
             this.SpcRanking.Panel2.SuspendLayout();
             this.SpcRanking.SuspendLayout();
+            this.TpgDraws.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpcEntries)).BeginInit();
             this.SpcEntries.Panel1.SuspendLayout();
@@ -81,7 +86,6 @@
             // 
             // SpcMain
             // 
-            this.SpcMain.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.SpcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.SpcMain.Location = new System.Drawing.Point(0, 0);
@@ -265,12 +269,47 @@
             // TpgDraws
             // 
             this.TpgDraws.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgDraws.Controls.Add(this.BtnAddDraw);
+            this.TpgDraws.Controls.Add(this.LvwDraws);
             this.TpgDraws.Location = new System.Drawing.Point(4, 24);
             this.TpgDraws.Name = "TpgDraws";
             this.TpgDraws.Padding = new System.Windows.Forms.Padding(3);
             this.TpgDraws.Size = new System.Drawing.Size(818, 712);
             this.TpgDraws.TabIndex = 1;
             this.TpgDraws.Text = "Auslosungen";
+            // 
+            // BtnAddDraw
+            // 
+            this.BtnAddDraw.Location = new System.Drawing.Point(8, 6);
+            this.BtnAddDraw.Name = "BtnAddDraw";
+            this.BtnAddDraw.Size = new System.Drawing.Size(149, 23);
+            this.BtnAddDraw.TabIndex = 2;
+            this.BtnAddDraw.Text = "Neue Auslosung";
+            this.BtnAddDraw.UseVisualStyleBackColor = true;
+            this.BtnAddDraw.Click += new System.EventHandler(this.BtnAddDraw_Click);
+            // 
+            // LvwDraws
+            // 
+            this.LvwDraws.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ChdDrawTeam1,
+            this.ChdDrawTeam2});
+            this.LvwDraws.Location = new System.Drawing.Point(8, 35);
+            this.LvwDraws.Name = "LvwDraws";
+            this.LvwDraws.Size = new System.Drawing.Size(547, 411);
+            this.LvwDraws.TabIndex = 1;
+            this.LvwDraws.UseCompatibleStateImageBehavior = false;
+            this.LvwDraws.View = System.Windows.Forms.View.Details;
+            this.LvwDraws.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvwDraws_MouseDoubleClick);
+            // 
+            // ChdDrawTeam1
+            // 
+            this.ChdDrawTeam1.Text = "Team 1";
+            this.ChdDrawTeam1.Width = 200;
+            // 
+            // ChdDrawTeam2
+            // 
+            this.ChdDrawTeam2.Text = "Team2";
+            this.ChdDrawTeam2.Width = 200;
             // 
             // groupBox2
             // 
@@ -419,6 +458,7 @@
             this.SpcRanking.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).EndInit();
             this.SpcRanking.ResumeLayout(false);
+            this.TpgDraws.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.SpcEntries.Panel1.ResumeLayout(false);
             this.SpcEntries.Panel2.ResumeLayout(false);
@@ -464,5 +504,9 @@
         private TabControl tabControl1;
         private TabPage TpgRanking;
         private TabPage TpgDraws;
+        private Button BtnAddDraw;
+        private ListView LvwDraws;
+        private ColumnHeader ChdDrawTeam1;
+        private ColumnHeader ChdDrawTeam2;
     }
 }
