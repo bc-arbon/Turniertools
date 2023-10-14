@@ -28,42 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctlMatchcard1 = new SchochRechner.CtlMatchcard();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            ctlMatchcard1 = new CtlMatchcard();
+            button1 = new Button();
+            SuspendLayout();
             // 
             // ctlMatchcard1
             // 
-            this.ctlMatchcard1.Location = new System.Drawing.Point(12, 59);
-            this.ctlMatchcard1.Name = "ctlMatchcard1";
-            this.ctlMatchcard1.Size = new System.Drawing.Size(949, 418);
-            this.ctlMatchcard1.TabIndex = 0;
-            this.ctlMatchcard1.Team1 = "Team 1";
-            this.ctlMatchcard1.Team2 = "Team 2";
+            ctlMatchcard1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ctlMatchcard1.Location = new Point(12, 59);
+            ctlMatchcard1.Name = "ctlMatchcard1";
+            ctlMatchcard1.Size = new Size(960, 461);
+            ctlMatchcard1.TabIndex = 0;
+            ctlMatchcard1.Team1 = "Team 1";
+            ctlMatchcard1.Team2 = "Team 2";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 553);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.Location = new Point(12, 576);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // FrmMatchcard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(973, 588);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.ctlMatchcard1);
-            this.Name = "FrmMatchcard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Matchblatt";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(984, 611);
+            Controls.Add(button1);
+            Controls.Add(ctlMatchcard1);
+            Name = "FrmMatchcard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Matchblatt";
+            Load += FrmMatchcard_Load;
+            ResumeLayout(false);
         }
 
         #endregion

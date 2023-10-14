@@ -205,7 +205,7 @@ namespace SchochRechner.Logic
                 // Find next opponent                
                 var opponentFound = false;
                 var i = 1;
-                Team team2 = this.Teams[ranking + i];
+                var team2 = this.Teams[ranking + i];
                 while(!opponentFound)
                 {
                     // Is already in draw

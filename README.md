@@ -4,14 +4,16 @@ Helferlein fürs Badmintonturnier
 ## SchochRechner
 Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 
+- Resultatverwaltung
+- Auslosung einer neuen Schochrunde
 - Berechnung der Buchholz- und Feinbuchholzzahl
 - Berechnung der Rangliste
 
-In Progress:
-- Schochauslosung
-- Erstellung Matchblätter
-
 ## Changelog
+
+### V1.2 (14.10.2023)
+- Auslosung gemäss Schochregeln
+- Erstellen und Ausdrucken der Matchblätter
 
 ### V1.1 (17.11.2022)
 - Eingabe der erspielten Punkte

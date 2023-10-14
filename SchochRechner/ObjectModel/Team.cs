@@ -29,7 +29,6 @@
         public int PointsDiff {  get { return this.PointsWon - this.PointsLost; } }
         public string PointsDiffText { get { return this.PointsDiff > 0 ? "+" + this.PointsDiff : this.PointsDiff.ToString(); } }
 
-
         public int Buchholz { get; set; }
 
         public int Feinbuchholz { get; set; }
