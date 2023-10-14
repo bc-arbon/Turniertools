@@ -28,444 +28,450 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SpcMain = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.TpgRanking = new System.Windows.Forms.TabPage();
-            this.SpcRanking = new System.Windows.Forms.SplitContainer();
-            this.BtnDisplay = new System.Windows.Forms.Button();
-            this.BtnPrint = new System.Windows.Forms.Button();
-            this.LvwRanking = new System.Windows.Forms.ListView();
-            this.ChrRank = new System.Windows.Forms.ColumnHeader();
-            this.ChrId = new System.Windows.Forms.ColumnHeader();
-            this.ChrName = new System.Windows.Forms.ColumnHeader();
-            this.ChrPoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
-            this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
-            this.ChrFeinbuchholz = new System.Windows.Forms.ColumnHeader();
-            this.ChrGames = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrSets = new System.Windows.Forms.ColumnHeader();
-            this.ChrSetsDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamepoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamepointsDiff = new System.Windows.Forms.ColumnHeader();
-            this.TpgDraws = new System.Windows.Forms.TabPage();
-            this.BtnAddDraw = new System.Windows.Forms.Button();
-            this.LvwDraws = new System.Windows.Forms.ListView();
-            this.ChdDrawTeam1 = new System.Windows.Forms.ColumnHeader();
-            this.ChdDrawTeam2 = new System.Windows.Forms.ColumnHeader();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.SpcEntries = new System.Windows.Forms.SplitContainer();
-            this.BtnTeams = new System.Windows.Forms.Button();
-            this.BtnDelete = new System.Windows.Forms.Button();
-            this.BtnEdit = new System.Windows.Forms.Button();
-            this.BtnAdd = new System.Windows.Forms.Button();
-            this.LvwEntries = new System.Windows.Forms.ListView();
-            this.ChrResultsRound = new System.Windows.Forms.ColumnHeader();
-            this.ChrResultsTeam1 = new System.Windows.Forms.ColumnHeader();
-            this.ChrResultsRound2 = new System.Windows.Forms.ColumnHeader();
-            this.ChrResultsGames = new System.Windows.Forms.ColumnHeader();
-            this.ChrResultsSets = new System.Windows.Forms.ColumnHeader();
-            this.ChrResultsPoints = new System.Windows.Forms.ColumnHeader();
-            ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).BeginInit();
-            this.SpcMain.Panel1.SuspendLayout();
-            this.SpcMain.Panel2.SuspendLayout();
-            this.SpcMain.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.TpgRanking.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).BeginInit();
-            this.SpcRanking.Panel1.SuspendLayout();
-            this.SpcRanking.Panel2.SuspendLayout();
-            this.SpcRanking.SuspendLayout();
-            this.TpgDraws.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpcEntries)).BeginInit();
-            this.SpcEntries.Panel1.SuspendLayout();
-            this.SpcEntries.Panel2.SuspendLayout();
-            this.SpcEntries.SuspendLayout();
-            this.SuspendLayout();
+            SpcMain = new SplitContainer();
+            tabControl1 = new TabControl();
+            TpgRanking = new TabPage();
+            SpcRanking = new SplitContainer();
+            BtnDisplay = new Button();
+            BtnPrint = new Button();
+            LvwRanking = new ListView();
+            ChrRank = new ColumnHeader();
+            ChrId = new ColumnHeader();
+            ChrName = new ColumnHeader();
+            ChrPoints = new ColumnHeader();
+            ChrRounds = new ColumnHeader();
+            ChrBuchholz = new ColumnHeader();
+            ChrFeinbuchholz = new ColumnHeader();
+            ChrGames = new ColumnHeader();
+            ChrGamesDiff = new ColumnHeader();
+            ChrSets = new ColumnHeader();
+            ChrSetsDiff = new ColumnHeader();
+            ChrGamepoints = new ColumnHeader();
+            ChrGamepointsDiff = new ColumnHeader();
+            TpgDraws = new TabPage();
+            BtnAddDraw = new Button();
+            LvwDraws = new ListView();
+            ChdOpp1 = new ColumnHeader();
+            ChdDrawTeam1 = new ColumnHeader();
+            ChdPoints1 = new ColumnHeader();
+            ChdPoints2 = new ColumnHeader();
+            ChdDrawTeam2 = new ColumnHeader();
+            ChdOpp2 = new ColumnHeader();
+            groupBox2 = new GroupBox();
+            SpcEntries = new SplitContainer();
+            BtnTeams = new Button();
+            BtnDelete = new Button();
+            BtnEdit = new Button();
+            BtnAdd = new Button();
+            LvwEntries = new ListView();
+            ChrResultsRound = new ColumnHeader();
+            ChrResultsTeam1 = new ColumnHeader();
+            ChrResultsRound2 = new ColumnHeader();
+            ChrResultsGames = new ColumnHeader();
+            ChrResultsSets = new ColumnHeader();
+            ChrResultsPoints = new ColumnHeader();
+            ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
+            SpcMain.Panel1.SuspendLayout();
+            SpcMain.Panel2.SuspendLayout();
+            SpcMain.SuspendLayout();
+            tabControl1.SuspendLayout();
+            TpgRanking.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpcRanking).BeginInit();
+            SpcRanking.Panel1.SuspendLayout();
+            SpcRanking.Panel2.SuspendLayout();
+            SpcRanking.SuspendLayout();
+            TpgDraws.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpcEntries).BeginInit();
+            SpcEntries.Panel1.SuspendLayout();
+            SpcEntries.Panel2.SuspendLayout();
+            SpcEntries.SuspendLayout();
+            SuspendLayout();
             // 
             // SpcMain
             // 
-            this.SpcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.SpcMain.Location = new System.Drawing.Point(0, 0);
-            this.SpcMain.Name = "SpcMain";
+            SpcMain.Dock = DockStyle.Fill;
+            SpcMain.FixedPanel = FixedPanel.Panel2;
+            SpcMain.Location = new Point(0, 0);
+            SpcMain.Name = "SpcMain";
             // 
             // SpcMain.Panel1
             // 
-            this.SpcMain.Panel1.Controls.Add(this.tabControl1);
+            SpcMain.Panel1.Controls.Add(tabControl1);
             // 
             // SpcMain.Panel2
             // 
-            this.SpcMain.Panel2.Controls.Add(this.groupBox2);
-            this.SpcMain.Size = new System.Drawing.Size(1277, 740);
-            this.SpcMain.SplitterDistance = 826;
-            this.SpcMain.TabIndex = 0;
+            SpcMain.Panel2.Controls.Add(groupBox2);
+            SpcMain.Size = new Size(1277, 740);
+            SpcMain.SplitterDistance = 826;
+            SpcMain.TabIndex = 0;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.TpgRanking);
-            this.tabControl1.Controls.Add(this.TpgDraws);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(826, 740);
-            this.tabControl1.TabIndex = 1;
+            tabControl1.Controls.Add(TpgRanking);
+            tabControl1.Controls.Add(TpgDraws);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(826, 740);
+            tabControl1.TabIndex = 1;
             // 
             // TpgRanking
             // 
-            this.TpgRanking.BackColor = System.Drawing.SystemColors.Control;
-            this.TpgRanking.Controls.Add(this.SpcRanking);
-            this.TpgRanking.Location = new System.Drawing.Point(4, 24);
-            this.TpgRanking.Name = "TpgRanking";
-            this.TpgRanking.Padding = new System.Windows.Forms.Padding(3);
-            this.TpgRanking.Size = new System.Drawing.Size(818, 712);
-            this.TpgRanking.TabIndex = 0;
-            this.TpgRanking.Text = "Rangliste";
+            TpgRanking.BackColor = SystemColors.Control;
+            TpgRanking.Controls.Add(SpcRanking);
+            TpgRanking.Location = new Point(4, 24);
+            TpgRanking.Name = "TpgRanking";
+            TpgRanking.Padding = new Padding(3);
+            TpgRanking.Size = new Size(818, 712);
+            TpgRanking.TabIndex = 0;
+            TpgRanking.Text = "Rangliste";
             // 
             // SpcRanking
             // 
-            this.SpcRanking.Cursor = System.Windows.Forms.Cursors.HSplit;
-            this.SpcRanking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpcRanking.Location = new System.Drawing.Point(3, 3);
-            this.SpcRanking.Name = "SpcRanking";
-            this.SpcRanking.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            SpcRanking.Cursor = Cursors.HSplit;
+            SpcRanking.Dock = DockStyle.Fill;
+            SpcRanking.Location = new Point(3, 3);
+            SpcRanking.Name = "SpcRanking";
+            SpcRanking.Orientation = Orientation.Horizontal;
             // 
             // SpcRanking.Panel1
             // 
-            this.SpcRanking.Panel1.Controls.Add(this.BtnDisplay);
-            this.SpcRanking.Panel1.Controls.Add(this.BtnPrint);
+            SpcRanking.Panel1.Controls.Add(BtnDisplay);
+            SpcRanking.Panel1.Controls.Add(BtnPrint);
             // 
             // SpcRanking.Panel2
             // 
-            this.SpcRanking.Panel2.Controls.Add(this.LvwRanking);
-            this.SpcRanking.Size = new System.Drawing.Size(812, 706);
-            this.SpcRanking.SplitterDistance = 32;
-            this.SpcRanking.SplitterWidth = 5;
-            this.SpcRanking.TabIndex = 1;
+            SpcRanking.Panel2.Controls.Add(LvwRanking);
+            SpcRanking.Size = new Size(812, 706);
+            SpcRanking.SplitterDistance = 32;
+            SpcRanking.SplitterWidth = 5;
+            SpcRanking.TabIndex = 1;
             // 
             // BtnDisplay
             // 
-            this.BtnDisplay.Location = new System.Drawing.Point(82, 3);
-            this.BtnDisplay.Name = "BtnDisplay";
-            this.BtnDisplay.Size = new System.Drawing.Size(74, 26);
-            this.BtnDisplay.TabIndex = 2;
-            this.BtnDisplay.Text = "Display";
-            this.BtnDisplay.UseVisualStyleBackColor = true;
-            this.BtnDisplay.Click += new System.EventHandler(this.BtnDisplay_Click);
+            BtnDisplay.Location = new Point(82, 3);
+            BtnDisplay.Name = "BtnDisplay";
+            BtnDisplay.Size = new Size(74, 26);
+            BtnDisplay.TabIndex = 2;
+            BtnDisplay.Text = "Display";
+            BtnDisplay.UseVisualStyleBackColor = true;
+            BtnDisplay.Click += BtnDisplay_Click;
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(3, 3);
-            this.BtnPrint.Name = "BtnPrint";
-            this.BtnPrint.Size = new System.Drawing.Size(74, 26);
-            this.BtnPrint.TabIndex = 1;
-            this.BtnPrint.Text = "Drucken";
-            this.BtnPrint.UseVisualStyleBackColor = true;
-            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            BtnPrint.Location = new Point(3, 3);
+            BtnPrint.Name = "BtnPrint";
+            BtnPrint.Size = new Size(74, 26);
+            BtnPrint.TabIndex = 1;
+            BtnPrint.Text = "Drucken";
+            BtnPrint.UseVisualStyleBackColor = true;
+            BtnPrint.Click += BtnPrint_Click;
             // 
             // LvwRanking
             // 
-            this.LvwRanking.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ChrRank,
-            this.ChrId,
-            this.ChrName,
-            this.ChrPoints,
-            this.ChrRounds,
-            this.ChrBuchholz,
-            this.ChrFeinbuchholz,
-            this.ChrGames,
-            this.ChrGamesDiff,
-            this.ChrSets,
-            this.ChrSetsDiff,
-            this.ChrGamepoints,
-            this.ChrGamepointsDiff});
-            this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LvwRanking.FullRowSelect = true;
-            this.LvwRanking.Location = new System.Drawing.Point(0, 0);
-            this.LvwRanking.Name = "LvwRanking";
-            this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(812, 669);
-            this.LvwRanking.TabIndex = 0;
-            this.LvwRanking.UseCompatibleStateImageBehavior = false;
-            this.LvwRanking.View = System.Windows.Forms.View.Details;
-            this.LvwRanking.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwRanking_DrawColumnHeader);
-            this.LvwRanking.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwRanking_DrawItem);
+            LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrRank, ChrId, ChrName, ChrPoints, ChrRounds, ChrBuchholz, ChrFeinbuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
+            LvwRanking.Dock = DockStyle.Fill;
+            LvwRanking.FullRowSelect = true;
+            LvwRanking.Location = new Point(0, 0);
+            LvwRanking.Name = "LvwRanking";
+            LvwRanking.OwnerDraw = true;
+            LvwRanking.Size = new Size(812, 669);
+            LvwRanking.TabIndex = 0;
+            LvwRanking.UseCompatibleStateImageBehavior = false;
+            LvwRanking.View = View.Details;
+            LvwRanking.DrawColumnHeader += LvwRanking_DrawColumnHeader;
+            LvwRanking.DrawItem += LvwRanking_DrawItem;
             // 
             // ChrRank
             // 
-            this.ChrRank.Text = "Rang";
+            ChrRank.Text = "Rang";
             // 
             // ChrId
             // 
-            this.ChrId.Text = "Id";
-            this.ChrId.Width = 50;
+            ChrId.Text = "Id";
+            ChrId.Width = 50;
             // 
             // ChrName
             // 
-            this.ChrName.Text = "Name";
-            this.ChrName.Width = 150;
+            ChrName.Text = "Name";
+            ChrName.Width = 150;
             // 
             // ChrPoints
             // 
-            this.ChrPoints.Text = "P";
-            this.ChrPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrPoints.Width = 40;
+            ChrPoints.Text = "P";
+            ChrPoints.TextAlign = HorizontalAlignment.Center;
+            ChrPoints.Width = 40;
             // 
             // ChrRounds
             // 
-            this.ChrRounds.Text = "R";
-            this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRounds.Width = 30;
+            ChrRounds.Text = "R";
+            ChrRounds.TextAlign = HorizontalAlignment.Center;
+            ChrRounds.Width = 30;
             // 
             // ChrBuchholz
             // 
-            this.ChrBuchholz.Text = "BHZ";
-            this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrBuchholz.Width = 40;
+            ChrBuchholz.Text = "BHZ";
+            ChrBuchholz.TextAlign = HorizontalAlignment.Center;
+            ChrBuchholz.Width = 40;
             // 
             // ChrFeinbuchholz
             // 
-            this.ChrFeinbuchholz.Text = "FBHZ";
-            this.ChrFeinbuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrFeinbuchholz.Width = 45;
+            ChrFeinbuchholz.Text = "FBHZ";
+            ChrFeinbuchholz.TextAlign = HorizontalAlignment.Center;
+            ChrFeinbuchholz.Width = 45;
             // 
             // ChrGames
             // 
-            this.ChrGames.Text = "G";
-            this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGames.Width = 40;
+            ChrGames.Text = "G";
+            ChrGames.TextAlign = HorizontalAlignment.Center;
+            ChrGames.Width = 40;
             // 
             // ChrGamesDiff
             // 
-            this.ChrGamesDiff.Text = "G Diff";
-            this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamesDiff.Width = 50;
+            ChrGamesDiff.Text = "G Diff";
+            ChrGamesDiff.TextAlign = HorizontalAlignment.Center;
+            ChrGamesDiff.Width = 50;
             // 
             // ChrSets
             // 
-            this.ChrSets.Text = "S";
-            this.ChrSets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSets.Width = 40;
+            ChrSets.Text = "S";
+            ChrSets.TextAlign = HorizontalAlignment.Center;
+            ChrSets.Width = 40;
             // 
             // ChrSetsDiff
             // 
-            this.ChrSetsDiff.Text = "S Diff";
-            this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSetsDiff.Width = 50;
+            ChrSetsDiff.Text = "S Diff";
+            ChrSetsDiff.TextAlign = HorizontalAlignment.Center;
+            ChrSetsDiff.Width = 50;
             // 
             // ChrGamepoints
             // 
-            this.ChrGamepoints.Text = "P";
-            this.ChrGamepoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamepoints.Width = 50;
+            ChrGamepoints.Text = "P";
+            ChrGamepoints.TextAlign = HorizontalAlignment.Center;
+            ChrGamepoints.Width = 50;
             // 
             // ChrGamepointsDiff
             // 
-            this.ChrGamepointsDiff.Text = "P Diff";
-            this.ChrGamepointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            ChrGamepointsDiff.Text = "P Diff";
+            ChrGamepointsDiff.TextAlign = HorizontalAlignment.Center;
             // 
             // TpgDraws
             // 
-            this.TpgDraws.BackColor = System.Drawing.SystemColors.Control;
-            this.TpgDraws.Controls.Add(this.BtnAddDraw);
-            this.TpgDraws.Controls.Add(this.LvwDraws);
-            this.TpgDraws.Location = new System.Drawing.Point(4, 24);
-            this.TpgDraws.Name = "TpgDraws";
-            this.TpgDraws.Padding = new System.Windows.Forms.Padding(3);
-            this.TpgDraws.Size = new System.Drawing.Size(818, 712);
-            this.TpgDraws.TabIndex = 1;
-            this.TpgDraws.Text = "Auslosungen";
+            TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnAddDraw);
+            TpgDraws.Controls.Add(LvwDraws);
+            TpgDraws.Location = new Point(4, 24);
+            TpgDraws.Name = "TpgDraws";
+            TpgDraws.Padding = new Padding(3);
+            TpgDraws.Size = new Size(818, 712);
+            TpgDraws.TabIndex = 1;
+            TpgDraws.Text = "Auslosungen";
             // 
             // BtnAddDraw
             // 
-            this.BtnAddDraw.Location = new System.Drawing.Point(8, 6);
-            this.BtnAddDraw.Name = "BtnAddDraw";
-            this.BtnAddDraw.Size = new System.Drawing.Size(149, 23);
-            this.BtnAddDraw.TabIndex = 2;
-            this.BtnAddDraw.Text = "Neue Auslosung";
-            this.BtnAddDraw.UseVisualStyleBackColor = true;
-            this.BtnAddDraw.Click += new System.EventHandler(this.BtnAddDraw_Click);
+            BtnAddDraw.Location = new Point(8, 6);
+            BtnAddDraw.Name = "BtnAddDraw";
+            BtnAddDraw.Size = new Size(149, 23);
+            BtnAddDraw.TabIndex = 2;
+            BtnAddDraw.Text = "Neue Auslosung";
+            BtnAddDraw.UseVisualStyleBackColor = true;
+            BtnAddDraw.Click += BtnAddDraw_Click;
             // 
             // LvwDraws
             // 
-            this.LvwDraws.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ChdDrawTeam1,
-            this.ChdDrawTeam2});
-            this.LvwDraws.Location = new System.Drawing.Point(8, 35);
-            this.LvwDraws.Name = "LvwDraws";
-            this.LvwDraws.Size = new System.Drawing.Size(547, 411);
-            this.LvwDraws.TabIndex = 1;
-            this.LvwDraws.UseCompatibleStateImageBehavior = false;
-            this.LvwDraws.View = System.Windows.Forms.View.Details;
-            this.LvwDraws.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvwDraws_MouseDoubleClick);
+            LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2 });
+            LvwDraws.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            LvwDraws.FullRowSelect = true;
+            LvwDraws.Location = new Point(8, 35);
+            LvwDraws.Name = "LvwDraws";
+            LvwDraws.Size = new Size(804, 669);
+            LvwDraws.TabIndex = 1;
+            LvwDraws.UseCompatibleStateImageBehavior = false;
+            LvwDraws.View = View.Details;
+            LvwDraws.MouseDoubleClick += LvwDraws_MouseDoubleClick;
+            // 
+            // ChdOpp1
+            // 
+            ChdOpp1.Text = "Gegner Team 1";
+            ChdOpp1.Width = 120;
             // 
             // ChdDrawTeam1
             // 
-            this.ChdDrawTeam1.Text = "Team 1";
-            this.ChdDrawTeam1.Width = 200;
+            ChdDrawTeam1.Text = "Team 1";
+            ChdDrawTeam1.Width = 230;
+            // 
+            // ChdPoints1
+            // 
+            ChdPoints1.Text = "";
+            ChdPoints1.TextAlign = HorizontalAlignment.Center;
+            ChdPoints1.Width = 30;
+            // 
+            // ChdPoints2
+            // 
+            ChdPoints2.Text = "";
+            ChdPoints2.TextAlign = HorizontalAlignment.Center;
+            ChdPoints2.Width = 30;
             // 
             // ChdDrawTeam2
             // 
-            this.ChdDrawTeam2.Text = "Team2";
-            this.ChdDrawTeam2.Width = 200;
+            ChdDrawTeam2.Text = "Team2";
+            ChdDrawTeam2.Width = 230;
+            // 
+            // ChdOpp2
+            // 
+            ChdOpp2.Text = "Gegner Team 2";
+            ChdOpp2.Width = 120;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.SpcEntries);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(447, 740);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Begegnungen";
+            groupBox2.Controls.Add(SpcEntries);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new Point(0, 0);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(447, 740);
+            groupBox2.TabIndex = 0;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Begegnungen";
             // 
             // SpcEntries
             // 
-            this.SpcEntries.Cursor = System.Windows.Forms.Cursors.HSplit;
-            this.SpcEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpcEntries.Location = new System.Drawing.Point(3, 19);
-            this.SpcEntries.Name = "SpcEntries";
-            this.SpcEntries.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            SpcEntries.Cursor = Cursors.HSplit;
+            SpcEntries.Dock = DockStyle.Fill;
+            SpcEntries.Location = new Point(3, 19);
+            SpcEntries.Name = "SpcEntries";
+            SpcEntries.Orientation = Orientation.Horizontal;
             // 
             // SpcEntries.Panel1
             // 
-            this.SpcEntries.Panel1.Controls.Add(this.BtnTeams);
-            this.SpcEntries.Panel1.Controls.Add(this.BtnDelete);
-            this.SpcEntries.Panel1.Controls.Add(this.BtnEdit);
-            this.SpcEntries.Panel1.Controls.Add(this.BtnAdd);
+            SpcEntries.Panel1.Controls.Add(BtnTeams);
+            SpcEntries.Panel1.Controls.Add(BtnDelete);
+            SpcEntries.Panel1.Controls.Add(BtnEdit);
+            SpcEntries.Panel1.Controls.Add(BtnAdd);
             // 
             // SpcEntries.Panel2
             // 
-            this.SpcEntries.Panel2.Controls.Add(this.LvwEntries);
-            this.SpcEntries.Size = new System.Drawing.Size(441, 718);
-            this.SpcEntries.SplitterDistance = 29;
-            this.SpcEntries.SplitterWidth = 5;
-            this.SpcEntries.TabIndex = 0;
+            SpcEntries.Panel2.Controls.Add(LvwEntries);
+            SpcEntries.Size = new Size(441, 718);
+            SpcEntries.SplitterDistance = 29;
+            SpcEntries.SplitterWidth = 5;
+            SpcEntries.TabIndex = 0;
             // 
             // BtnTeams
             // 
-            this.BtnTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnTeams.Location = new System.Drawing.Point(360, 3);
-            this.BtnTeams.Name = "BtnTeams";
-            this.BtnTeams.Size = new System.Drawing.Size(74, 26);
-            this.BtnTeams.TabIndex = 1;
-            this.BtnTeams.Text = "Teams";
-            this.BtnTeams.UseVisualStyleBackColor = true;
-            this.BtnTeams.Click += new System.EventHandler(this.BtnTeams_Click);
+            BtnTeams.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnTeams.Location = new Point(360, 3);
+            BtnTeams.Name = "BtnTeams";
+            BtnTeams.Size = new Size(74, 26);
+            BtnTeams.TabIndex = 1;
+            BtnTeams.Text = "Teams";
+            BtnTeams.UseVisualStyleBackColor = true;
+            BtnTeams.Click += BtnTeams_Click;
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(187, 3);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(86, 26);
-            this.BtnDelete.TabIndex = 0;
-            this.BtnDelete.Text = "Löschen";
-            this.BtnDelete.UseVisualStyleBackColor = true;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            BtnDelete.Location = new Point(187, 3);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(86, 26);
+            BtnDelete.TabIndex = 0;
+            BtnDelete.Text = "Löschen";
+            BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Location = new System.Drawing.Point(95, 3);
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(86, 26);
-            this.BtnEdit.TabIndex = 0;
-            this.BtnEdit.Text = "Bearbeiten...";
-            this.BtnEdit.UseVisualStyleBackColor = true;
-            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            BtnEdit.Location = new Point(95, 3);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(86, 26);
+            BtnEdit.TabIndex = 0;
+            BtnEdit.Text = "Bearbeiten...";
+            BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(3, 3);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(86, 26);
-            this.BtnAdd.TabIndex = 0;
-            this.BtnAdd.Text = "HInzufügen...";
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            BtnAdd.Location = new Point(3, 3);
+            BtnAdd.Name = "BtnAdd";
+            BtnAdd.Size = new Size(86, 26);
+            BtnAdd.TabIndex = 0;
+            BtnAdd.Text = "HInzufügen...";
+            BtnAdd.UseVisualStyleBackColor = true;
+            BtnAdd.Click += BtnAdd_Click;
             // 
             // LvwEntries
             // 
-            this.LvwEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ChrResultsRound,
-            this.ChrResultsTeam1,
-            this.ChrResultsRound2,
-            this.ChrResultsGames,
-            this.ChrResultsSets,
-            this.ChrResultsPoints});
-            this.LvwEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LvwEntries.FullRowSelect = true;
-            this.LvwEntries.Location = new System.Drawing.Point(0, 0);
-            this.LvwEntries.Name = "LvwEntries";
-            this.LvwEntries.OwnerDraw = true;
-            this.LvwEntries.Size = new System.Drawing.Size(441, 684);
-            this.LvwEntries.TabIndex = 0;
-            this.LvwEntries.UseCompatibleStateImageBehavior = false;
-            this.LvwEntries.View = System.Windows.Forms.View.Details;
-            this.LvwEntries.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwEntries_DrawColumnHeader);
-            this.LvwEntries.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwEntries_DrawItem);
+            LvwEntries.Columns.AddRange(new ColumnHeader[] { ChrResultsRound, ChrResultsTeam1, ChrResultsRound2, ChrResultsGames, ChrResultsSets, ChrResultsPoints });
+            LvwEntries.Dock = DockStyle.Fill;
+            LvwEntries.FullRowSelect = true;
+            LvwEntries.Location = new Point(0, 0);
+            LvwEntries.Name = "LvwEntries";
+            LvwEntries.OwnerDraw = true;
+            LvwEntries.Size = new Size(441, 684);
+            LvwEntries.TabIndex = 0;
+            LvwEntries.UseCompatibleStateImageBehavior = false;
+            LvwEntries.View = View.Details;
+            LvwEntries.DrawColumnHeader += LvwEntries_DrawColumnHeader;
+            LvwEntries.DrawItem += LvwEntries_DrawItem;
             // 
             // ChrResultsRound
             // 
-            this.ChrResultsRound.Text = "R";
-            this.ChrResultsRound.Width = 30;
+            ChrResultsRound.Text = "R";
+            ChrResultsRound.Width = 30;
             // 
             // ChrResultsTeam1
             // 
-            this.ChrResultsTeam1.Text = "Team 1";
-            this.ChrResultsTeam1.Width = 120;
+            ChrResultsTeam1.Text = "Team 1";
+            ChrResultsTeam1.Width = 120;
             // 
             // ChrResultsRound2
             // 
-            this.ChrResultsRound2.Text = "Team 2";
-            this.ChrResultsRound2.Width = 120;
+            ChrResultsRound2.Text = "Team 2";
+            ChrResultsRound2.Width = 120;
             // 
             // ChrResultsGames
             // 
-            this.ChrResultsGames.Text = "G";
-            this.ChrResultsGames.Width = 40;
+            ChrResultsGames.Text = "G";
+            ChrResultsGames.Width = 40;
             // 
             // ChrResultsSets
             // 
-            this.ChrResultsSets.Text = "S";
-            this.ChrResultsSets.Width = 40;
+            ChrResultsSets.Text = "S";
+            ChrResultsSets.Width = 40;
             // 
             // ChrResultsPoints
             // 
-            this.ChrResultsPoints.Text = "P";
+            ChrResultsPoints.Text = "P";
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1277, 740);
-            this.Controls.Add(this.SpcMain);
-            this.DoubleBuffered = true;
-            this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Schoch Rechner";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.SpcMain.Panel1.ResumeLayout(false);
-            this.SpcMain.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpcMain)).EndInit();
-            this.SpcMain.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.TpgRanking.ResumeLayout(false);
-            this.SpcRanking.Panel1.ResumeLayout(false);
-            this.SpcRanking.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpcRanking)).EndInit();
-            this.SpcRanking.ResumeLayout(false);
-            this.TpgDraws.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.SpcEntries.Panel1.ResumeLayout(false);
-            this.SpcEntries.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpcEntries)).EndInit();
-            this.SpcEntries.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(1277, 740);
+            Controls.Add(SpcMain);
+            DoubleBuffered = true;
+            Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Schoch Rechner";
+            FormClosing += FrmMain_FormClosing;
+            Load += FrmMain_Load;
+            SpcMain.Panel1.ResumeLayout(false);
+            SpcMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SpcMain).EndInit();
+            SpcMain.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            TpgRanking.ResumeLayout(false);
+            SpcRanking.Panel1.ResumeLayout(false);
+            SpcRanking.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SpcRanking).EndInit();
+            SpcRanking.ResumeLayout(false);
+            TpgDraws.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            SpcEntries.Panel1.ResumeLayout(false);
+            SpcEntries.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SpcEntries).EndInit();
+            SpcEntries.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -508,5 +514,9 @@
         private ListView LvwDraws;
         private ColumnHeader ChdDrawTeam1;
         private ColumnHeader ChdDrawTeam2;
+        private ColumnHeader ChdOpp1;
+        private ColumnHeader ChdOpp2;
+        private ColumnHeader ChdPoints1;
+        private ColumnHeader ChdPoints2;
     }
 }

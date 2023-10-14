@@ -7,9 +7,9 @@
             this.InitializeComponent();
         }
 
-        public string Team1 
-        { 
-            get { return this.LblTeam1.Text; } 
+        public string Team1
+        {
+            get { return this.LblTeam1.Text; }
             set { this.LblTeam1.Text = value; }
         }
 

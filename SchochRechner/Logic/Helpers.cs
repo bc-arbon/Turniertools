@@ -60,5 +60,22 @@ namespace SchochRechner.Logic
             entry.Double31 = frmEntry.Double31;
             entry.Double32 = frmEntry.Double32;
         }
+
+        public static string OpponentsAsList(List<int> opponents)
+        {
+            var result = "";
+            //opponents.Sort();
+            foreach (var opponent in opponents)
+            {
+                if (opponent < 10)
+                {
+                    result += " ";
+                }
+
+                result += opponent.ToString() + " ";
+            }
+
+            return result.Substring(0, result.Length - 1);
+        }
     }
 }

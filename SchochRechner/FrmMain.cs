@@ -193,8 +193,12 @@ namespace SchochRechner
 
             foreach (var draw in round.Draws)
             {
-                var item = new ListViewItem(draw.Team1.Name);
-                item.SubItems.Add(draw.Team2.Name);
+                var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
+                item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
+                item.SubItems.Add(draw.Team1.GamesWon.ToString());
+                item.SubItems.Add(draw.Team2.GamesWon.ToString());
+                item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
+                item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
                 item.Tag = draw;
                 group.Items.Add(item);
                 this.LvwDraws.Items.Add(item);
