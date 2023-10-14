@@ -137,6 +137,7 @@
             // 
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Dock = DockStyle.Fill;
+            label7.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.Location = new Point(206, 273);
             label7.Name = "label7";
             label7.Size = new Size(163, 137);
@@ -148,6 +149,7 @@
             // 
             label8.BorderStyle = BorderStyle.FixedSingle;
             label8.Dock = DockStyle.Fill;
+            label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.Location = new Point(375, 273);
             label8.Name = "label8";
             label8.Size = new Size(163, 137);
@@ -159,6 +161,7 @@
             // 
             label9.BorderStyle = BorderStyle.FixedSingle;
             label9.Dock = DockStyle.Fill;
+            label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label9.Location = new Point(544, 273);
             label9.Name = "label9";
             label9.Size = new Size(163, 137);
@@ -170,6 +173,7 @@
             // 
             label10.BorderStyle = BorderStyle.FixedSingle;
             label10.Dock = DockStyle.Fill;
+            label10.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(713, 273);
             label10.Name = "label10";
             label10.Size = new Size(167, 137);
@@ -181,6 +185,7 @@
             // 
             label11.BorderStyle = BorderStyle.FixedSingle;
             label11.Dock = DockStyle.Fill;
+            label11.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label11.Location = new Point(206, 410);
             label11.Name = "label11";
             label11.Size = new Size(163, 139);
@@ -192,6 +197,7 @@
             // 
             label12.BorderStyle = BorderStyle.FixedSingle;
             label12.Dock = DockStyle.Fill;
+            label12.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label12.Location = new Point(375, 410);
             label12.Name = "label12";
             label12.Size = new Size(163, 139);
@@ -203,6 +209,7 @@
             // 
             label13.BorderStyle = BorderStyle.FixedSingle;
             label13.Dock = DockStyle.Fill;
+            label13.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label13.Location = new Point(544, 410);
             label13.Name = "label13";
             label13.Size = new Size(163, 139);
@@ -214,6 +221,7 @@
             // 
             label14.BorderStyle = BorderStyle.FixedSingle;
             label14.Dock = DockStyle.Fill;
+            label14.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label14.Location = new Point(713, 410);
             label14.Name = "label14";
             label14.Size = new Size(167, 139);

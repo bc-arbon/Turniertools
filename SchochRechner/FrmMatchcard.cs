@@ -1,5 +1,4 @@
 ﻿using SchochRechner.ObjectModel;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Drawing.Text;
@@ -22,7 +21,7 @@ namespace SchochRechner
             this.ctlMatchcard1.Team2 = draw.Team2.Name;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnPrint_Click(object sender, EventArgs e)
         {
             var size = new Size(this.ctlMatchcard1.ClientSize.Width, this.ctlMatchcard1.ClientSize.Height + 100);
 

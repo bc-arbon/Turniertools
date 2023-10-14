@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             ctlMatchcard1 = new CtlMatchcard();
-            button1 = new Button();
+            BtnPrint = new Button();
             SuspendLayout();
             // 
             // ctlMatchcard1
@@ -42,16 +42,16 @@
             ctlMatchcard1.Team1 = "Team 1";
             ctlMatchcard1.Team2 = "Team 2";
             // 
-            // button1
+            // BtnPrint
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.Location = new Point(12, 576);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            BtnPrint.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnPrint.Location = new Point(12, 576);
+            BtnPrint.Name = "BtnPrint";
+            BtnPrint.Size = new Size(75, 23);
+            BtnPrint.TabIndex = 1;
+            BtnPrint.Text = "Drucken...";
+            BtnPrint.UseVisualStyleBackColor = true;
+            BtnPrint.Click += BtnPrint_Click;
             // 
             // FrmMatchcard
             // 
@@ -59,7 +59,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(984, 611);
-            Controls.Add(button1);
+            Controls.Add(BtnPrint);
             Controls.Add(ctlMatchcard1);
             Name = "FrmMatchcard";
             StartPosition = FormStartPosition.CenterScreen;
@@ -71,6 +71,6 @@
         #endregion
 
         private CtlMatchcard ctlMatchcard1;
-        private Button button1;
+        private Button BtnPrint;
     }
 }

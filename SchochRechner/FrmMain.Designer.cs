@@ -49,6 +49,7 @@
             ChrGamepoints = new ColumnHeader();
             ChrGamepointsDiff = new ColumnHeader();
             TpgDraws = new TabPage();
+            BtnClearDraws = new Button();
             BtnAddDraw = new Button();
             LvwDraws = new ListView();
             ChdOpp1 = new ColumnHeader();
@@ -260,6 +261,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnClearDraws);
             TpgDraws.Controls.Add(BtnAddDraw);
             TpgDraws.Controls.Add(LvwDraws);
             TpgDraws.Location = new Point(4, 24);
@@ -268,6 +270,17 @@
             TpgDraws.Size = new Size(818, 712);
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
+            // 
+            // BtnClearDraws
+            // 
+            BtnClearDraws.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnClearDraws.Location = new Point(743, 6);
+            BtnClearDraws.Name = "BtnClearDraws";
+            BtnClearDraws.Size = new Size(69, 23);
+            BtnClearDraws.TabIndex = 3;
+            BtnClearDraws.Text = "Löschen";
+            BtnClearDraws.UseVisualStyleBackColor = true;
+            BtnClearDraws.Click += BtnClearDraws_Click;
             // 
             // BtnAddDraw
             // 
@@ -281,15 +294,19 @@
             // 
             // LvwDraws
             // 
+            LvwDraws.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2 });
             LvwDraws.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point);
             LvwDraws.FullRowSelect = true;
             LvwDraws.Location = new Point(8, 35);
             LvwDraws.Name = "LvwDraws";
+            LvwDraws.OwnerDraw = true;
             LvwDraws.Size = new Size(804, 669);
             LvwDraws.TabIndex = 1;
             LvwDraws.UseCompatibleStateImageBehavior = false;
             LvwDraws.View = View.Details;
+            LvwDraws.DrawColumnHeader += LvwDraws_DrawColumnHeader;
+            LvwDraws.DrawItem += LvwDraws_DrawItem;
             LvwDraws.MouseDoubleClick += LvwDraws_MouseDoubleClick;
             // 
             // ChdOpp1
@@ -518,5 +535,6 @@
         private ColumnHeader ChdOpp2;
         private ColumnHeader ChdPoints1;
         private ColumnHeader ChdPoints2;
+        private Button BtnClearDraws;
     }
 }

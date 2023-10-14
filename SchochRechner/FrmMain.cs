@@ -202,6 +202,8 @@ namespace SchochRechner
                 item.Tag = draw;
                 group.Items.Add(item);
                 this.LvwDraws.Items.Add(item);
+                //Thread.Sleep(500);
+                //Application.DoEvents();
             }
         }
 
@@ -216,6 +218,27 @@ namespace SchochRechner
             var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
             var frmMatchcard = new FrmMatchcard(draw);
             frmMatchcard.ShowDialog();
+        }
+
+        private void BtnClearDraws_Click(object sender, EventArgs e)
+        {
+            this.LvwDraws.Items.Clear();
+            this.LvwDraws.Groups.Clear();
+        }
+
+        private void LvwDraws_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            if ((e.ItemIndex % 2) == 1)
+            {
+                e.Item.BackColor = Color.FromArgb(230, 230, 255);
+                e.Item.UseItemStyleForSubItems = true;
+            }
+        }
+
+        private void LvwDraws_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.DrawDefault = true;
         }
     }
 }
