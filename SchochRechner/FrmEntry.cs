@@ -34,7 +34,7 @@ namespace SchochRechner
 
         public FrmEntry(List<Team> teams) : this()
         {
-            var teamsSorted = teams.ToArray().OrderBy(x => x.Id).ToArray();            
+            var teamsSorted = teams.ToArray().OrderBy(x => x.Id).ToArray();
             this.CbxTeam1.Items.AddRange(teamsSorted);
             this.CbxTeam2.Items.AddRange(teamsSorted);
         }
@@ -72,6 +72,20 @@ namespace SchochRechner
         {
             try
             {
+                if (string.IsNullOrEmpty(this.TxtSingle11.Text) ||
+                    string.IsNullOrEmpty(this.TxtSingle12.Text) ||
+                    string.IsNullOrEmpty(this.TxtSingle21.Text) ||
+                    string.IsNullOrEmpty(this.TxtSingle22.Text) ||
+                    string.IsNullOrEmpty(this.TxtDouble11.Text) ||
+                    string.IsNullOrEmpty(this.TxtDouble12.Text) ||
+                    string.IsNullOrEmpty(this.TxtDouble21.Text) ||
+                    string.IsNullOrEmpty(this.TxtDouble22.Text))
+                {
+                    MessageBox.Show("Min. 1 Resultat fehlt", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
                 var setsSingle1 = 0;
                 var setsSingle2 = 0;
                 var setsDouble1 = 0;
