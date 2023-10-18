@@ -71,10 +71,17 @@ namespace SchochRechner
             var frmEntry = new FrmEntry(this.schochManager.Teams);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
-                this.schochManager.AddEntry(Helpers.CreateEntry(frmEntry));
-                this.schochManager.CalculateRanking();
-                this.schochManager.Save();
-                this.ShowAll();
+                try
+                {
+                    this.schochManager.AddEntry(Helpers.CreateEntry(frmEntry));
+                    this.schochManager.CalculateRanking();
+                    this.schochManager.Save();
+                    this.ShowAll();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Öppis isch nöd guet.\r\nHesch sicher vergesse Teams uswähle!\r\n\r\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

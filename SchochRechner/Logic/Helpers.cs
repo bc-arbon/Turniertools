@@ -75,7 +75,14 @@ namespace SchochRechner.Logic
                 result += opponent.ToString() + " ";
             }
 
-            return result.Substring(0, result.Length - 1);
+            if (string.IsNullOrEmpty(result))
+            {
+                return result;
+            }
+            else
+            {
+                return result.Substring(0, result.Length - 1);
+            }
         }
     }
 }
