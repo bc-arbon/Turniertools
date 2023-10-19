@@ -71,6 +71,7 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
+            BtnRandomDraw = new Button();
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -261,6 +262,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnRandomDraw);
             TpgDraws.Controls.Add(BtnClearDraws);
             TpgDraws.Controls.Add(BtnAddDraw);
             TpgDraws.Controls.Add(LvwDraws);
@@ -460,6 +462,16 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
+            // BtnRandomDraw
+            // 
+            BtnRandomDraw.Location = new Point(163, 6);
+            BtnRandomDraw.Name = "BtnRandomDraw";
+            BtnRandomDraw.Size = new Size(191, 23);
+            BtnRandomDraw.TabIndex = 4;
+            BtnRandomDraw.Text = "Neue Auslosung zufällig";
+            BtnRandomDraw.UseVisualStyleBackColor = true;
+            BtnRandomDraw.Click += BtnRandomDraw_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -536,5 +548,6 @@
         private ColumnHeader ChdPoints1;
         private ColumnHeader ChdPoints2;
         private Button BtnClearDraws;
+        private Button BtnRandomDraw;
     }
 }

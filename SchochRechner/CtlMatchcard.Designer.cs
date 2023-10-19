@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            label1 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -58,6 +59,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
+            tableLayoutPanel1.Controls.Add(label1, 0, 1);
             tableLayoutPanel1.Controls.Add(label3, 1, 2);
             tableLayoutPanel1.Controls.Add(label4, 2, 2);
             tableLayoutPanel1.Controls.Add(label5, 3, 2);
@@ -84,6 +86,17 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Size = new Size(883, 549);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Calibri", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(3, 137);
+            label1.Name = "label1";
+            label1.Size = new Size(197, 109);
+            label1.TabIndex = 17;
+            label1.Text = "Feld:";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
@@ -329,5 +342,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Label LblTeam1;
         private Label LblTeam2;
+        private Label label1;
     }
 }

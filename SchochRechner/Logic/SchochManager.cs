@@ -235,6 +235,32 @@ namespace SchochRechner.Logic
             return round;
         }
 
+        public Round CreateDrawRandom()
+        {
+            var round = new Round();
+            var randomizedList = this.Teams.ToList();
+            randomizedList.Shuffle();
+
+            for (var i = 0; i < randomizedList.Count; i++)
+            {
+                var team1 = randomizedList[i];
+
+                // Is this team already in the draw?
+                if (this.AlreadyDrawn(round.Draws, team1))
+                {                     
+                    continue;
+                }
+
+                // Find next opponent                
+                var team2 = randomizedList[i + 1];
+                
+                // Add draw                
+                round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });                
+            }
+
+            return round;
+        }
+
         public void AddExampleData()
         {
             this.Teams.Clear();

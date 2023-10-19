@@ -193,7 +193,34 @@ namespace SchochRechner
 
         private void BtnAddDraw_Click(object sender, EventArgs e)
         {
+            this.LvwDraws.Items.Clear();
+            this.LvwDraws.Groups.Clear();
             var round = this.schochManager.CreateDraw();
+
+            var group = new ListViewGroup("Runde " + round.RoundActual);
+            this.LvwDraws.Groups.Add(group);
+
+            foreach (var draw in round.Draws)
+            {
+                var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
+                item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
+                item.SubItems.Add(draw.Team1.GamesWon.ToString());
+                item.SubItems.Add(draw.Team2.GamesWon.ToString());
+                item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
+                item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
+                item.Tag = draw;
+                group.Items.Add(item);
+                this.LvwDraws.Items.Add(item);
+                //Thread.Sleep(500);
+                //Application.DoEvents();
+            }
+        }
+
+        private void BtnRandomDraw_Click(object sender, EventArgs e)
+        {
+            this.LvwDraws.Items.Clear();
+            this.LvwDraws.Groups.Clear();
+            var round = this.schochManager.CreateDrawRandom();
 
             var group = new ListViewGroup("Runde " + round.RoundActual);
             this.LvwDraws.Groups.Add(group);

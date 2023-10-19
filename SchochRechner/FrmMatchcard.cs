@@ -28,7 +28,7 @@ namespace SchochRechner
             //var myGraphics = this.CreateGraphics();
             memoryImage = new Bitmap(size.Width, size.Height);
             var memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X + 20, this.Location.Y + 20, 0, 0, size);
+            memoryGraphics.CopyFromScreen(this.Location.X + 20, this.Location.Y + 40, 0, 0, size);
 
             var preview = new PrintPreviewDialog();
             preview.Document = pd;
