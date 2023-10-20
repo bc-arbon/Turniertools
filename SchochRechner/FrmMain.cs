@@ -241,6 +241,11 @@ namespace SchochRechner
             }
         }
 
+        private void BtnEmptyMatchcard_Click(object sender, EventArgs e)
+        {
+            new FrmMatchcard().ShowDialog();
+        }
+
         private void LvwDraws_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // TBD, works for testing

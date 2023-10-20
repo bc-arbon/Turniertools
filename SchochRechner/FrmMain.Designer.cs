@@ -49,6 +49,8 @@
             ChrGamepoints = new ColumnHeader();
             ChrGamepointsDiff = new ColumnHeader();
             TpgDraws = new TabPage();
+            BtnEmptyMatchcard = new Button();
+            BtnRandomDraw = new Button();
             BtnClearDraws = new Button();
             BtnAddDraw = new Button();
             LvwDraws = new ListView();
@@ -71,7 +73,6 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
-            BtnRandomDraw = new Button();
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -262,6 +263,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnEmptyMatchcard);
             TpgDraws.Controls.Add(BtnRandomDraw);
             TpgDraws.Controls.Add(BtnClearDraws);
             TpgDraws.Controls.Add(BtnAddDraw);
@@ -272,6 +274,26 @@
             TpgDraws.Size = new Size(818, 712);
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
+            // 
+            // BtnEmptyMatchcard
+            // 
+            BtnEmptyMatchcard.Location = new Point(360, 6);
+            BtnEmptyMatchcard.Name = "BtnEmptyMatchcard";
+            BtnEmptyMatchcard.Size = new Size(151, 23);
+            BtnEmptyMatchcard.TabIndex = 5;
+            BtnEmptyMatchcard.Text = "Leeres Matchblatt";
+            BtnEmptyMatchcard.UseVisualStyleBackColor = true;
+            BtnEmptyMatchcard.Click += BtnEmptyMatchcard_Click;
+            // 
+            // BtnRandomDraw
+            // 
+            BtnRandomDraw.Location = new Point(163, 6);
+            BtnRandomDraw.Name = "BtnRandomDraw";
+            BtnRandomDraw.Size = new Size(191, 23);
+            BtnRandomDraw.TabIndex = 4;
+            BtnRandomDraw.Text = "Neue Auslosung zufällig";
+            BtnRandomDraw.UseVisualStyleBackColor = true;
+            BtnRandomDraw.Click += BtnRandomDraw_Click;
             // 
             // BtnClearDraws
             // 
@@ -462,16 +484,6 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
-            // BtnRandomDraw
-            // 
-            BtnRandomDraw.Location = new Point(163, 6);
-            BtnRandomDraw.Name = "BtnRandomDraw";
-            BtnRandomDraw.Size = new Size(191, 23);
-            BtnRandomDraw.TabIndex = 4;
-            BtnRandomDraw.Text = "Neue Auslosung zufällig";
-            BtnRandomDraw.UseVisualStyleBackColor = true;
-            BtnRandomDraw.Click += BtnRandomDraw_Click;
-            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -549,5 +561,6 @@
         private ColumnHeader ChdPoints2;
         private Button BtnClearDraws;
         private Button BtnRandomDraw;
+        private Button BtnEmptyMatchcard;
     }
 }
