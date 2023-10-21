@@ -23,6 +23,12 @@ namespace SchochRechner
             var rank = 1;
             foreach (var team in this.schochManager.Teams)
             {
+                if (team.Id == 99)
+                {
+                    // Skip the Freilos, does only create confusion among the players...
+                    continue;
+                }
+
                 var item = new ListViewItem(string.Empty);
                 item.SubItems.Add(rank.ToString());
                 item.SubItems.Add(team.Name);

@@ -73,6 +73,7 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
+            BtnCustomMatchcard = new Button();
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -263,6 +264,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnCustomMatchcard);
             TpgDraws.Controls.Add(BtnEmptyMatchcard);
             TpgDraws.Controls.Add(BtnRandomDraw);
             TpgDraws.Controls.Add(BtnClearDraws);
@@ -484,6 +486,16 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
+            // BtnCustomMatchcard
+            // 
+            BtnCustomMatchcard.Location = new Point(517, 6);
+            BtnCustomMatchcard.Name = "BtnCustomMatchcard";
+            BtnCustomMatchcard.Size = new Size(154, 23);
+            BtnCustomMatchcard.TabIndex = 6;
+            BtnCustomMatchcard.Text = "Eigenes Matchblatt";
+            BtnCustomMatchcard.UseVisualStyleBackColor = true;
+            BtnCustomMatchcard.Click += BtnCustomMatchcard_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -562,5 +574,6 @@
         private Button BtnClearDraws;
         private Button BtnRandomDraw;
         private Button BtnEmptyMatchcard;
+        private Button BtnCustomMatchcard;
     }
 }

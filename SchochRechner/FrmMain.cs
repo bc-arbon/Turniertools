@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 using System.Drawing.Printing;
@@ -278,6 +279,16 @@ namespace SchochRechner
         private void LvwDraws_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void BtnCustomMatchcard_Click(object sender, EventArgs e)
+        {
+            var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.Teams);
+            if (frmCustomMatchcard.ShowDialog() == DialogResult.OK)
+            {
+                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2);
+                frmMatchcard.ShowDialog();
+            }
         }
     }
 }

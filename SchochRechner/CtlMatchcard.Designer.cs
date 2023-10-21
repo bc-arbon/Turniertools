@@ -33,15 +33,12 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            label14 = new Label();
             label15 = new Label();
             label16 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -53,25 +50,21 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.0769176F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.2307682F));
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Controls.Add(label1, 0, 1);
             tableLayoutPanel1.Controls.Add(label3, 1, 2);
             tableLayoutPanel1.Controls.Add(label4, 2, 2);
             tableLayoutPanel1.Controls.Add(label5, 3, 2);
-            tableLayoutPanel1.Controls.Add(label6, 4, 2);
             tableLayoutPanel1.Controls.Add(label7, 1, 3);
             tableLayoutPanel1.Controls.Add(label8, 2, 3);
             tableLayoutPanel1.Controls.Add(label9, 3, 3);
-            tableLayoutPanel1.Controls.Add(label10, 4, 3);
             tableLayoutPanel1.Controls.Add(label11, 1, 4);
             tableLayoutPanel1.Controls.Add(label12, 2, 4);
             tableLayoutPanel1.Controls.Add(label13, 3, 4);
-            tableLayoutPanel1.Controls.Add(label14, 4, 4);
             tableLayoutPanel1.Controls.Add(label15, 0, 3);
             tableLayoutPanel1.Controls.Add(label16, 0, 4);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
@@ -93,7 +86,7 @@
             label1.Font = new Font("Calibri", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(3, 137);
             label1.Name = "label1";
-            label1.Size = new Size(197, 109);
+            label1.Size = new Size(214, 109);
             label1.TabIndex = 17;
             label1.Text = "Feld:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -103,9 +96,9 @@
             label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Calibri", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(206, 246);
+            label3.Location = new Point(223, 246);
             label3.Name = "label3";
-            label3.Size = new Size(163, 27);
+            label3.Size = new Size(214, 27);
             label3.TabIndex = 2;
             label3.Text = "1. Satz";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -115,9 +108,9 @@
             label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Calibri", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(375, 246);
+            label4.Location = new Point(443, 246);
             label4.Name = "label4";
-            label4.Size = new Size(163, 27);
+            label4.Size = new Size(214, 27);
             label4.TabIndex = 3;
             label4.Text = "2. Satz";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -127,33 +120,21 @@
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Dock = DockStyle.Fill;
             label5.Font = new Font("Calibri", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(544, 246);
+            label5.Location = new Point(663, 246);
             label5.Name = "label5";
-            label5.Size = new Size(163, 27);
+            label5.Size = new Size(217, 27);
             label5.TabIndex = 4;
             label5.Text = "3. Satz";
             label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Calibri", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(713, 246);
-            label6.Name = "label6";
-            label6.Size = new Size(167, 27);
-            label6.TabIndex = 5;
-            label6.Text = "Sätze";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(206, 273);
+            label7.Location = new Point(223, 273);
             label7.Name = "label7";
-            label7.Size = new Size(163, 137);
+            label7.Size = new Size(214, 137);
             label7.TabIndex = 6;
             label7.Text = ":";
             label7.TextAlign = ContentAlignment.MiddleCenter;
@@ -163,9 +144,9 @@
             label8.BorderStyle = BorderStyle.FixedSingle;
             label8.Dock = DockStyle.Fill;
             label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(375, 273);
+            label8.Location = new Point(443, 273);
             label8.Name = "label8";
-            label8.Size = new Size(163, 137);
+            label8.Size = new Size(214, 137);
             label8.TabIndex = 7;
             label8.Text = ":";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -175,33 +156,21 @@
             label9.BorderStyle = BorderStyle.FixedSingle;
             label9.Dock = DockStyle.Fill;
             label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(544, 273);
+            label9.Location = new Point(663, 273);
             label9.Name = "label9";
-            label9.Size = new Size(163, 137);
+            label9.Size = new Size(217, 137);
             label9.TabIndex = 8;
             label9.Text = ":";
             label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Dock = DockStyle.Fill;
-            label10.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(713, 273);
-            label10.Name = "label10";
-            label10.Size = new Size(167, 137);
-            label10.TabIndex = 9;
-            label10.Text = ":";
-            label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
             label11.BorderStyle = BorderStyle.FixedSingle;
             label11.Dock = DockStyle.Fill;
             label11.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(206, 410);
+            label11.Location = new Point(223, 410);
             label11.Name = "label11";
-            label11.Size = new Size(163, 139);
+            label11.Size = new Size(214, 139);
             label11.TabIndex = 10;
             label11.Text = ":";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -211,9 +180,9 @@
             label12.BorderStyle = BorderStyle.FixedSingle;
             label12.Dock = DockStyle.Fill;
             label12.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(375, 410);
+            label12.Location = new Point(443, 410);
             label12.Name = "label12";
-            label12.Size = new Size(163, 139);
+            label12.Size = new Size(214, 139);
             label12.TabIndex = 11;
             label12.Text = ":";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -223,24 +192,12 @@
             label13.BorderStyle = BorderStyle.FixedSingle;
             label13.Dock = DockStyle.Fill;
             label13.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(544, 410);
+            label13.Location = new Point(663, 410);
             label13.Name = "label13";
-            label13.Size = new Size(163, 139);
+            label13.Size = new Size(217, 139);
             label13.TabIndex = 12;
             label13.Text = ":";
             label13.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Dock = DockStyle.Fill;
-            label14.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(713, 410);
-            label14.Name = "label14";
-            label14.Size = new Size(167, 139);
-            label14.TabIndex = 13;
-            label14.Text = ":";
-            label14.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label15
             // 
@@ -249,7 +206,7 @@
             label15.Font = new Font("Calibri", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label15.Location = new Point(3, 273);
             label15.Name = "label15";
-            label15.Size = new Size(197, 137);
+            label15.Size = new Size(214, 137);
             label15.TabIndex = 14;
             label15.Text = "Einzel";
             label15.TextAlign = ContentAlignment.MiddleLeft;
@@ -261,7 +218,7 @@
             label16.Font = new Font("Calibri", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label16.Location = new Point(3, 410);
             label16.Name = "label16";
-            label16.Size = new Size(197, 139);
+            label16.Size = new Size(214, 139);
             label16.TabIndex = 15;
             label16.Text = "Doppel";
             label16.TextAlign = ContentAlignment.MiddleLeft;
@@ -328,15 +285,12 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
-        private Label label10;
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
         private Label label15;
         private Label label16;
         private TableLayoutPanel tableLayoutPanel2;
