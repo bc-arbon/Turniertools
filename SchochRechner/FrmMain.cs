@@ -127,7 +127,7 @@ namespace SchochRechner
         {
             this.schochManager.Load();
             //this.schochManager.AddExampleData();
-            this.schochManager.AddExampleData2();
+            //this.schochManager.AddExampleData2();
 
             this.frmDisplay.Show();
             this.ShowAll();
