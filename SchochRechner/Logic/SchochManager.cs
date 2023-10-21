@@ -79,20 +79,21 @@ namespace SchochRechner.Logic
             this.Entries.Add(entry);
         }
 
-        public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2, int points1, int points2, 
+        public void AddEntry(int round, int team1, int team2, int games1, int games2, int sets1, int sets2, int points1, int points2,
             int single11, int single12, int single21, int single22, int single31, int single32,
             int double11, int double12, int double21, int double22, int double31, int double32)
         {
             this.Entries.Add(
-                new Entry { 
-                    Round = round, 
-                    Team1 = team1, 
-                    Team2 = team2, 
-                    Games1 = games1, 
-                    Games2 = games2, 
-                    Sets1 = sets1, 
-                    Sets2 = sets2, 
-                    Points1 = points1, 
+                new Entry
+                {
+                    Round = round,
+                    Team1 = team1,
+                    Team2 = team2,
+                    Games1 = games1,
+                    Games2 = games2,
+                    Sets1 = sets1,
+                    Sets2 = sets2,
+                    Points1 = points1,
                     Points2 = points2,
                     Single11 = single11,
                     Single12 = single12,
@@ -105,7 +106,8 @@ namespace SchochRechner.Logic
                     Double21 = double21,
                     Double22 = double22,
                     Double31 = double31,
-                    Double32 = double32 });
+                    Double32 = double32
+                });
         }
 
         public void DeleteEntry(Entry entry)
@@ -193,43 +195,70 @@ namespace SchochRechner.Logic
             var round = new Round();
             var ranking = 0;
 
+            // Determine the Freilos, but only if a freilos is present
+            var hasFreilos = this.Teams.Where(x => x.Id == 99).ToArray();
+            if (hasFreilos.Length > 0)
+            {
+                for (var i = this.Teams.Count - 1; i >= 0; i--)
+                {
+                    if (this.Teams[i].Id == 99)
+                    {
+                        continue;
+                    }
+
+                    if (!this.Teams[i].Opponents.Contains(99))
+                    {
+                        round.Draws.Add(new Draw { Team1 = this.Teams[i], Team2 = this.Teams.Where(x => x.Id == 99).ToArray()[0] });
+                        break;
+                    }
+                }
+            }
+            
+            // Determine all other draws
             foreach (var team in this.Teams)
             {
-                // Is this team already in the draw?
-                if (this.AlreadyDrawn(round.Draws, team))
+                try
                 {
+                    // Is this team already in the draw?
+                    if (this.AlreadyDrawn(round.Draws, team))
+                    {
+                        ranking++;
+                        continue;
+                    }
+
+                    // Find next opponent                
+                    var opponentFound = false;
+                    var i = 1;
+                    var team2 = this.Teams[ranking + i];
+                    while (!opponentFound)
+                    {
+                        // Is already in draw
+                        if (this.AlreadyDrawn(round.Draws, team2))
+                        {
+                            i++;
+                            team2 = this.Teams[ranking + i];
+                            continue;
+                        }
+
+                        // Had already played against this team
+                        if (team.Opponents.Contains(team2.Id))
+                        {
+                            i++;
+                            team2 = this.Teams[ranking + i];
+                            continue;
+                        }
+
+                        opponentFound = true;
+                    }
+
+                    // Add draw
                     ranking++;
-                    continue;
+                    round.Draws.Add(new Draw { Team1 = team, Team2 = team2 });
                 }
-
-                // Find next opponent                
-                var opponentFound = false;
-                var i = 1;
-                var team2 = this.Teams[ranking + i];
-                while(!opponentFound)
+                catch (Exception ex)
                 {
-                    // Is already in draw
-                    if (this.AlreadyDrawn(round.Draws, team2))
-                    {
-                        i++;
-                        team2 = this.Teams[ranking + i];
-                        continue;
-                    }
-
-                    // Had already played against this team
-                    if (team.Opponents.Contains(team2.Id))
-                    {
-                        i++;
-                        team2 = this.Teams[ranking + i];
-                        continue;
-                    }
-
-                    opponentFound = true;
+                    MessageBox.Show("Öppis isch nöd guet (Auslosung ist nicht zu trauen):\n\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                // Add draw
-                ranking++;
-                round.Draws.Add(new Draw { Team1 = team, Team2 = team2 });
             }
 
             return round;
@@ -247,15 +276,15 @@ namespace SchochRechner.Logic
 
                 // Is this team already in the draw?
                 if (this.AlreadyDrawn(round.Draws, team1))
-                {                     
+                {
                     continue;
                 }
 
                 // Find next opponent                
                 var team2 = randomizedList[i + 1];
-                
+
                 // Add draw                
-                round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });                
+                round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
             }
 
             return round;
@@ -360,7 +389,7 @@ namespace SchochRechner.Logic
                 {
                     teamAlreadyDrawn = true;
                     break;
-                }                
+                }
             }
 
             return teamAlreadyDrawn;
