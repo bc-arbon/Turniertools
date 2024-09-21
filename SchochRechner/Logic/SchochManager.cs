@@ -208,12 +208,12 @@ namespace SchochRechner.Logic
 
                     if (!this.Teams[i].Opponents.Contains(99))
                     {
-                        round.Draws.Add(new Draw { Team1 = this.Teams[i], Team2 = this.Teams.Where(x => x.Id == 99).ToArray()[0] });
+                        round.Draws.Add(new Draw { Team1 = this.Teams[i], Team2 = hasFreilos[0] });
                         break;
                     }
                 }
             }
-            
+
             // Determine all other draws
             foreach (var team in this.Teams)
             {
@@ -228,15 +228,33 @@ namespace SchochRechner.Logic
 
                     // Find next opponent                
                     var opponentFound = false;
-                    var i = 1;
-                    var team2 = this.Teams[ranking + i];
+                    var i = ranking + 1;
+                    var team2 = this.Teams[i];
                     while (!opponentFound)
                     {
+                        // Is it the same team
+                        if (team == team2)
+                        {
+                            i++;
+                            if (i == this.Teams.Count)
+                            {
+                                i = 0;
+                            }
+
+                            team2 = this.Teams[i];
+                            continue;
+                        }
+
                         // Is already in draw
                         if (this.AlreadyDrawn(round.Draws, team2))
                         {
                             i++;
-                            team2 = this.Teams[ranking + i];
+                            if (i == this.Teams.Count)
+                            {
+                                i = 0;
+                            }
+
+                            team2 = this.Teams[i];
                             continue;
                         }
 
@@ -244,7 +262,12 @@ namespace SchochRechner.Logic
                         if (team.Opponents.Contains(team2.Id))
                         {
                             i++;
-                            team2 = this.Teams[ranking + i];
+                            if (i == this.Teams.Count)
+                            {
+                                i = 0;
+                            }
+
+                            team2 = this.Teams[i];
                             continue;
                         }
 
