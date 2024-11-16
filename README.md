@@ -7,7 +7,13 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 - Resultatverwaltung
 - Auslosung einer neuen Schochrunde
 - Berechnung der Buchholz- und Feinbuchholzzahl
-- Berechnung der Rangliste
+- Berechnung der Rangliste  
+
+## Todo
+- Druckqualität Resultatblatt verbessern
+- Resultatblatt ohne Sätze
+- Resultatblatt mit eigenem Text oder Teams auswählen
+- Global aktuelle Runde definieren (autofill bei Resultateingabe und Matchblatt)
 
 ## Changelog
 

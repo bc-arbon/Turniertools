@@ -23,6 +23,12 @@ namespace SchochRechner
             var rank = 1;
             foreach (var team in this.schochManager.Teams)
             {
+                if (team.Id == 99)
+                {
+                    // Skip the Freilos, does only create confusion among the players...
+                    continue;
+                }
+
                 var item = new ListViewItem(string.Empty);
                 item.SubItems.Add(rank.ToString());
                 item.SubItems.Add(team.Name);
@@ -36,7 +42,7 @@ namespace SchochRechner
                 item.SubItems.Add(team.PointsWon.ToString() + ":" + team.PointsLost.ToString());
                 item.SubItems.Add(team.PointsDiffText);
                 //item.SubItems.Add(team.Feinbuchholz.ToString());
-                
+
                 this.LvwRanking.Items.Add(item);
                 rank++;
             }
@@ -47,7 +53,7 @@ namespace SchochRechner
             e.DrawDefault = true;
             if ((e.ItemIndex % 2) == 1)
             {
-                e.Item.BackColor = Color.FromArgb(220, 220, 220);                
+                e.Item.BackColor = Color.FromArgb(220, 220, 220);
                 e.Item.UseItemStyleForSubItems = true;
             }
         }

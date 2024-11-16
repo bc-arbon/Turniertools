@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 using System.Drawing.Printing;
@@ -138,7 +139,7 @@ namespace SchochRechner
         {
             this.schochManager.Load();
             //this.schochManager.AddExampleData();
-            this.schochManager.AddExampleData2();
+            //this.schochManager.AddExampleData2();
 
             this.frmDisplay.Show();
             this.ShowAll();
@@ -309,6 +310,16 @@ namespace SchochRechner
                 {
                     MessageBox.Show("Öppis isch nöd guet.\r\nHesch sicher vergesse Teams uswähle!\r\n\r\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void BtnCustomMatchcard_Click(object sender, EventArgs e)
+        {
+            var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.Teams);
+            if (frmCustomMatchcard.ShowDialog() == DialogResult.OK)
+            {
+                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2);
+                frmMatchcard.ShowDialog();
             }
         }
     }

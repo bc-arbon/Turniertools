@@ -23,6 +23,12 @@ namespace SchochRechner
             this.ctlMatchcard1.Team2 = draw.Team2.Name;
         }
 
+        public FrmMatchcard(string team1, string team2) : this()
+        {
+            this.ctlMatchcard1.Team1 = team1;
+            this.ctlMatchcard1.Team2 = team2;
+        }
+
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             var size = new Size(this.ctlMatchcard1.ClientSize.Width, this.ctlMatchcard1.ClientSize.Height + 100);

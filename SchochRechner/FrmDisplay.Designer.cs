@@ -28,127 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LvwRanking = new System.Windows.Forms.ListView();
-            this.ChrHidden = new System.Windows.Forms.ColumnHeader();
-            this.ChrRank = new System.Windows.Forms.ColumnHeader();
-            this.ChrTeam = new System.Windows.Forms.ColumnHeader();
-            this.ChrPoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrRounds = new System.Windows.Forms.ColumnHeader();
-            this.ChrBuchholz = new System.Windows.Forms.ColumnHeader();
-            this.ChrGames = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamesDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrSets = new System.Windows.Forms.ColumnHeader();
-            this.ChrSetsDiff = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamepoints = new System.Windows.Forms.ColumnHeader();
-            this.ChrGamepointsDiff = new System.Windows.Forms.ColumnHeader();
-            this.SuspendLayout();
+            LvwRanking = new ListView();
+            ChrHidden = new ColumnHeader();
+            ChrRank = new ColumnHeader();
+            ChrTeam = new ColumnHeader();
+            ChrPoints = new ColumnHeader();
+            ChrRounds = new ColumnHeader();
+            ChrBuchholz = new ColumnHeader();
+            ChrGames = new ColumnHeader();
+            ChrGamesDiff = new ColumnHeader();
+            ChrSets = new ColumnHeader();
+            ChrSetsDiff = new ColumnHeader();
+            ChrGamepoints = new ColumnHeader();
+            ChrGamepointsDiff = new ColumnHeader();
+            SuspendLayout();
             // 
             // LvwRanking
             // 
-            this.LvwRanking.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ChrHidden,
-            this.ChrRank,
-            this.ChrTeam,
-            this.ChrPoints,
-            this.ChrRounds,
-            this.ChrBuchholz,
-            this.ChrGames,
-            this.ChrGamesDiff,
-            this.ChrSets,
-            this.ChrSetsDiff,
-            this.ChrGamepoints,
-            this.ChrGamepointsDiff});
-            this.LvwRanking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LvwRanking.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LvwRanking.Location = new System.Drawing.Point(0, 0);
-            this.LvwRanking.Name = "LvwRanking";
-            this.LvwRanking.OwnerDraw = true;
-            this.LvwRanking.Size = new System.Drawing.Size(1653, 757);
-            this.LvwRanking.TabIndex = 0;
-            this.LvwRanking.UseCompatibleStateImageBehavior = false;
-            this.LvwRanking.View = System.Windows.Forms.View.Details;
-            this.LvwRanking.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwRanking_DrawColumnHeader);
-            this.LvwRanking.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwRanking_DrawItem);
+            LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrHidden, ChrRank, ChrTeam, ChrRounds, ChrPoints, ChrBuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
+            LvwRanking.Dock = DockStyle.Fill;
+            LvwRanking.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LvwRanking.Location = new Point(0, 0);
+            LvwRanking.Name = "LvwRanking";
+            LvwRanking.OwnerDraw = true;
+            LvwRanking.Size = new Size(1653, 757);
+            LvwRanking.TabIndex = 0;
+            LvwRanking.UseCompatibleStateImageBehavior = false;
+            LvwRanking.View = View.Details;
+            LvwRanking.DrawColumnHeader += LvwRanking_DrawColumnHeader;
+            LvwRanking.DrawItem += LvwRanking_DrawItem;
             // 
             // ChrHidden
             // 
-            this.ChrHidden.Width = 0;
+            ChrHidden.Width = 0;
             // 
             // ChrRank
             // 
-            this.ChrRank.Text = "Rang";
-            this.ChrRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRank.Width = 100;
+            ChrRank.Text = "Rang";
+            ChrRank.TextAlign = HorizontalAlignment.Center;
+            ChrRank.Width = 100;
             // 
             // ChrTeam
             // 
-            this.ChrTeam.Text = "Name";
-            this.ChrTeam.Width = 700;
+            ChrTeam.Text = "Name";
+            ChrTeam.Width = 700;
             // 
             // ChrPoints
             // 
-            this.ChrPoints.Text = "Punkte";
-            this.ChrPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrPoints.Width = 130;
+            ChrPoints.Text = "Punkte";
+            ChrPoints.TextAlign = HorizontalAlignment.Center;
+            ChrPoints.Width = 130;
             // 
             // ChrRounds
             // 
-            this.ChrRounds.Text = "Runden";
-            this.ChrRounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrRounds.Width = 140;
+            ChrRounds.Text = "Runden";
+            ChrRounds.TextAlign = HorizontalAlignment.Center;
+            ChrRounds.Width = 140;
             // 
             // ChrBuchholz
             // 
-            this.ChrBuchholz.Text = "BHZ";
-            this.ChrBuchholz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrBuchholz.Width = 80;
+            ChrBuchholz.Text = "BHZ";
+            ChrBuchholz.TextAlign = HorizontalAlignment.Center;
+            ChrBuchholz.Width = 80;
             // 
             // ChrGames
             // 
-            this.ChrGames.Text = "Spiele";
-            this.ChrGames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGames.Width = 120;
+            ChrGames.Text = "Spiele";
+            ChrGames.TextAlign = HorizontalAlignment.Center;
+            ChrGames.Width = 120;
             // 
             // ChrGamesDiff
             // 
-            this.ChrGamesDiff.Text = "";
-            this.ChrGamesDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamesDiff.Width = 100;
+            ChrGamesDiff.Text = "";
+            ChrGamesDiff.TextAlign = HorizontalAlignment.Center;
+            ChrGamesDiff.Width = 100;
             // 
             // ChrSets
             // 
-            this.ChrSets.Text = "Sätze";
-            this.ChrSets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSets.Width = 110;
+            ChrSets.Text = "Sätze";
+            ChrSets.TextAlign = HorizontalAlignment.Center;
+            ChrSets.Width = 110;
             // 
             // ChrSetsDiff
             // 
-            this.ChrSetsDiff.Text = "";
-            this.ChrSetsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrSetsDiff.Width = 100;
+            ChrSetsDiff.Text = "";
+            ChrSetsDiff.TextAlign = HorizontalAlignment.Center;
+            ChrSetsDiff.Width = 100;
             // 
             // ChrGamepoints
             // 
-            this.ChrGamepoints.Text = "SP";
-            this.ChrGamepoints.Width = 140;
+            ChrGamepoints.Text = "SP";
+            ChrGamepoints.Width = 140;
             // 
             // ChrGamepointsDiff
             // 
-            this.ChrGamepointsDiff.Text = "";
-            this.ChrGamepointsDiff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChrGamepointsDiff.Width = 100;
+            ChrGamepointsDiff.Text = "";
+            ChrGamepointsDiff.TextAlign = HorizontalAlignment.Center;
+            ChrGamepointsDiff.Width = 100;
             // 
             // FrmDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1653, 757);
-            this.Controls.Add(this.LvwRanking);
-            this.Name = "FrmDisplay";
-            this.Text = "Display";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDisplay_FormClosing);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1653, 757);
+            Controls.Add(LvwRanking);
+            Name = "FrmDisplay";
+            Text = "Display";
+            FormClosing += FrmDisplay_FormClosing;
+            ResumeLayout(false);
         }
 
         #endregion

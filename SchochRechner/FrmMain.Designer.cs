@@ -49,6 +49,7 @@
             ChrGamepoints = new ColumnHeader();
             ChrGamepointsDiff = new ColumnHeader();
             TpgDraws = new TabPage();
+            BtnCustomMatchcard = new Button();
             BtnTest = new Button();
             BtnEmptyMatchcard = new Button();
             BtnRandomDraw = new Button();
@@ -266,6 +267,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(BtnCustomMatchcard);
             TpgDraws.Controls.Add(NudRound);
             TpgDraws.Controls.Add(BtnTest);
             TpgDraws.Controls.Add(BtnEmptyMatchcard);
@@ -280,6 +282,16 @@
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
             // 
+            // BtnCustomMatchcard
+            // 
+            BtnCustomMatchcard.Location = new Point(393, 6);
+            BtnCustomMatchcard.Name = "BtnCustomMatchcard";
+            BtnCustomMatchcard.Size = new Size(130, 23);
+            BtnCustomMatchcard.TabIndex = 6;
+            BtnCustomMatchcard.Text = "Eigenes Matchblatt";
+            BtnCustomMatchcard.UseVisualStyleBackColor = true;
+            BtnCustomMatchcard.Click += BtnCustomMatchcard_Click;
+            // 
             // BtnTest
             // 
             BtnTest.Location = new Point(568, 6);
@@ -292,9 +304,9 @@
             // 
             // BtnEmptyMatchcard
             // 
-            BtnEmptyMatchcard.Location = new Point(360, 6);
+            BtnEmptyMatchcard.Location = new Point(268, 6);
             BtnEmptyMatchcard.Name = "BtnEmptyMatchcard";
-            BtnEmptyMatchcard.Size = new Size(151, 23);
+            BtnEmptyMatchcard.Size = new Size(119, 23);
             BtnEmptyMatchcard.TabIndex = 5;
             BtnEmptyMatchcard.Text = "Leeres Matchblatt";
             BtnEmptyMatchcard.UseVisualStyleBackColor = true;
@@ -302,11 +314,11 @@
             // 
             // BtnRandomDraw
             // 
-            BtnRandomDraw.Location = new Point(163, 6);
+            BtnRandomDraw.Location = new Point(133, 6);
             BtnRandomDraw.Name = "BtnRandomDraw";
-            BtnRandomDraw.Size = new Size(191, 23);
+            BtnRandomDraw.Size = new Size(129, 23);
             BtnRandomDraw.TabIndex = 4;
-            BtnRandomDraw.Text = "Neue Auslosung zufällig";
+            BtnRandomDraw.Text = "Auslosung zufällig";
             BtnRandomDraw.UseVisualStyleBackColor = true;
             BtnRandomDraw.Click += BtnRandomDraw_Click;
             // 
@@ -325,9 +337,9 @@
             // 
             BtnAddDraw.Location = new Point(8, 6);
             BtnAddDraw.Name = "BtnAddDraw";
-            BtnAddDraw.Size = new Size(149, 23);
+            BtnAddDraw.Size = new Size(119, 23);
             BtnAddDraw.TabIndex = 2;
-            BtnAddDraw.Text = "Neue Auslosung";
+            BtnAddDraw.Text = "Auslosung Schoch";
             BtnAddDraw.UseVisualStyleBackColor = true;
             BtnAddDraw.Click += BtnAddDraw_Click;
             // 
@@ -451,7 +463,7 @@
             BtnAdd.Name = "BtnAdd";
             BtnAdd.Size = new Size(86, 26);
             BtnAdd.TabIndex = 0;
-            BtnAdd.Text = "HInzufügen...";
+            BtnAdd.Text = "Hinzufügen...";
             BtnAdd.UseVisualStyleBackColor = true;
             BtnAdd.Click += BtnAdd_Click;
             // 
@@ -589,5 +601,6 @@
         private Button BtnEmptyMatchcard;
         private Button BtnTest;
         private NumericUpDown NudRound;
+        private Button BtnCustomMatchcard;
     }
 }
