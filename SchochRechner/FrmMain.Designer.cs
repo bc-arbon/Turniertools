@@ -49,6 +49,7 @@
             ChrGamepoints = new ColumnHeader();
             ChrGamepointsDiff = new ColumnHeader();
             TpgDraws = new TabPage();
+            BtnTest = new Button();
             BtnEmptyMatchcard = new Button();
             BtnRandomDraw = new Button();
             BtnClearDraws = new Button();
@@ -73,6 +74,7 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
+            NudRound = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -89,6 +91,7 @@
             SpcEntries.Panel1.SuspendLayout();
             SpcEntries.Panel2.SuspendLayout();
             SpcEntries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NudRound).BeginInit();
             SuspendLayout();
             // 
             // SpcMain
@@ -263,6 +266,8 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(NudRound);
+            TpgDraws.Controls.Add(BtnTest);
             TpgDraws.Controls.Add(BtnEmptyMatchcard);
             TpgDraws.Controls.Add(BtnRandomDraw);
             TpgDraws.Controls.Add(BtnClearDraws);
@@ -274,6 +279,16 @@
             TpgDraws.Size = new Size(818, 712);
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
+            // 
+            // BtnTest
+            // 
+            BtnTest.Location = new Point(568, 6);
+            BtnTest.Name = "BtnTest";
+            BtnTest.Size = new Size(75, 23);
+            BtnTest.TabIndex = 6;
+            BtnTest.Text = "Test";
+            BtnTest.UseVisualStyleBackColor = true;
+            BtnTest.Click += BtnTest_Click;
             // 
             // BtnEmptyMatchcard
             // 
@@ -320,7 +335,7 @@
             // 
             LvwDraws.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2 });
-            LvwDraws.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            LvwDraws.Font = new Font("Consolas", 9F);
             LvwDraws.FullRowSelect = true;
             LvwDraws.Location = new Point(8, 35);
             LvwDraws.Name = "LvwDraws";
@@ -484,6 +499,15 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
+            // NudRound
+            // 
+            NudRound.Location = new Point(649, 8);
+            NudRound.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            NudRound.Name = "NudRound";
+            NudRound.Size = new Size(37, 23);
+            NudRound.TabIndex = 7;
+            NudRound.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -512,6 +536,7 @@
             SpcEntries.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SpcEntries).EndInit();
             SpcEntries.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)NudRound).EndInit();
             ResumeLayout(false);
         }
 
@@ -562,5 +587,7 @@
         private Button BtnClearDraws;
         private Button BtnRandomDraw;
         private Button BtnEmptyMatchcard;
+        private Button BtnTest;
+        private NumericUpDown NudRound;
     }
 }

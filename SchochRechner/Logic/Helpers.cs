@@ -1,9 +1,5 @@
 ﻿using SchochRechner.ObjectModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 namespace SchochRechner.Logic
 {
@@ -97,6 +93,87 @@ namespace SchochRechner.Logic
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static Entry GenerateResult(Draw draw, int round)
+        {
+            var entry = new Entry();
+            entry.Round = round;
+            entry.Team1 = draw.Team1.Id;
+            entry.Team2 = draw.Team2.Id;
+
+            // 3-set single?
+            var rand1 = rng.Next(0, 100);
+            var isSingle3Sets = rand1 >= 75;
+            var rand2 = rng.Next(0, 100);
+            var isDouble3Sets = rand2 >= 75;
+
+            var rand3 = rng.Next(0, 100);
+            entry.Single11 = rand3 < 50 ? 21 : rng.Next(0, 19);            
+            entry.Single12 = entry.Single11 == 21 ? rng.Next(0, 19) : 21;            
+
+            if (isSingle3Sets)
+            {
+                entry.Single21 = entry.Single11 == 21 ? rng.Next(0, 19) : 21;
+                entry.Single22 = entry.Single21 == 21 ? rng.Next(0, 19) : 21;
+                entry.Single31 = rng.Next(0, 21);
+                entry.Single32 = entry.Single31 == 21 ? 19 : rng.Next(0, 19);
+            }
+            else
+            {
+                entry.Single21 = entry.Single11 == 21 ? 21 : rng.Next(0, 19);
+                entry.Single22 = entry.Single21 == 21 ? rng.Next(0, 19) : 21;
+                entry.Single31 = 0;
+                entry.Single32 = 0;
+            }
+
+            entry.Sets1 = entry.Single11 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets1 = entry.Single21 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets1 = entry.Single31 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets2 = entry.Single12 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+            entry.Sets2 = entry.Single22 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+            entry.Sets2 = entry.Single32 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+
+            var rand4 = rng.Next(0, 100);
+            entry.Double11 = rand4 < 50 ? 21 : rng.Next(0, 19);
+            entry.Double12 = entry.Double12 == 21 ? 21 : rng.Next(0, 19);
+
+            if (isDouble3Sets)
+            {
+                entry.Double21 = entry.Double11 == 21 ? rng.Next(0, 19) : 21;
+                entry.Double22 = entry.Double21 == 21 ? rng.Next(0, 19) : 21;
+                entry.Double31 = rng.Next(0, 21);
+                entry.Double32 = entry.Double31 == 21 ? 19 : rng.Next(0, 19);
+            }
+            else
+            {
+                entry.Double21 = entry.Double11 == 21 ? 21 : rng.Next(0, 19);
+                entry.Double22 = entry.Double21 == 21 ? rng.Next(0, 19) : 21;
+                entry.Double31 = 0;
+                entry.Double32 = 0;
+            }
+
+            entry.Sets1 = entry.Double11 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets1 = entry.Double21 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets1 = entry.Double31 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
+            entry.Sets2 = entry.Double12 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+            entry.Sets2 = entry.Double22 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+            entry.Sets2 = entry.Double32 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
+
+            entry.Games1 = (entry.Single11 + entry.Single21 == 42 || entry.Single31 == 21) ? entry.Games1 + 1 : entry.Games1 + 0;
+            entry.Games2 = (entry.Single12 + entry.Single22 == 42 || entry.Single32 == 21) ? entry.Games2 + 1 : entry.Games2 + 0;
+            entry.Games1 = (entry.Double11 + entry.Double21 == 42 || entry.Double31 == 21) ? entry.Games1 + 1 : entry.Games1 + 0;
+            entry.Games2 = (entry.Double12 + entry.Double22 == 42 || entry.Double32 == 21) ? entry.Games2 + 1 : entry.Games2 + 0;
+
+            entry.Points1 = entry.Single11 + entry.Single21 + entry.Single31 + entry.Double11 + entry.Double21 + entry.Double31;
+            entry.Points2 = entry.Single12 + entry.Single22 + entry.Single32 + entry.Double12 + entry.Double22 + entry.Double32;
+            return entry;
+        }
+
+        public static int RandomPickTeam(int id1, int id2)
+        {
+            var rand = rng.Next(0, 100);
+            return rand < 50 ? id1 : id2;
         }
     }
 }

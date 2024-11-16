@@ -1,6 +1,7 @@
 using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 using System.Drawing.Printing;
+using System.Runtime.CompilerServices;
 
 namespace SchochRechner
 {
@@ -111,8 +112,18 @@ namespace SchochRechner
                 return;
             }
 
-            var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
-            this.schochManager.DeleteEntry(entry);
+            if (MessageBox.Show(this.LvwEntries.SelectedItems.Count + " Resultate löschen?", "Schochrecher", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            foreach (ListViewItem item in this.LvwEntries.SelectedItems)
+            {
+                var entry = (Entry)item.Tag;
+                this.schochManager.DeleteEntry(entry);
+                // Todo: Cleanup opponent lists
+            }
+
             this.schochManager.CalculateRanking();
             this.schochManager.Save();
             this.ShowAll();
@@ -278,6 +289,27 @@ namespace SchochRechner
         private void LvwDraws_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in this.LvwDraws.Items)
+            {
+                var draw = (Draw)item.Tag;
+
+                var entry = Helpers.GenerateResult(draw, (int)this.NudRound.Value);
+                try
+                {
+                    this.schochManager.AddEntry(entry);
+                    this.schochManager.CalculateRanking();
+                    this.schochManager.Save();
+                    this.ShowAll();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Öppis isch nöd guet.\r\nHesch sicher vergesse Teams uswähle!\r\n\r\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -190,37 +190,66 @@ namespace SchochRechner.Logic
 
         public Round CreateDraw()
         {
-            var round = new Round();
-            var ranking = 0;
+            var round = new Round();            
+            var team1Index = 0;
+            var team2Index = 0;
 
-            foreach (var team in this.Teams)
+            while (this.Teams.Count / 2 != round.Draws.Count)
             {
-                // Is this team already in the draw?
-                if (this.AlreadyDrawn(round.Draws, team))
+                if (team1Index >= this.Teams.Count)
                 {
-                    ranking++;
+                    team1Index = 0;
+                }
+
+                var team1 = this.Teams[team1Index];
+
+                // Is this team already in the draw?
+                if (this.AlreadyDrawn(round.Draws, team1))
+                {
+                    team1Index++;
                     continue;
                 }
 
-                // Find next opponent                
-                var opponentFound = false;
-                var i = 1;
-                var team2 = this.Teams[ranking + i];
-                while(!opponentFound)
+                if (team2Index >= this.Teams.Count)
                 {
-                    // Is already in draw
-                    if (this.AlreadyDrawn(round.Draws, team2))
-                    {
-                        i++;
-                        team2 = this.Teams[ranking + i];
-                        continue;
-                    }
+                    team2Index = 0;
+                }
 
-                    // Had already played against this team
-                    if (team.Opponents.Contains(team2.Id))
+                var team2 = this.Teams[team2Index];
+
+                var opponentFound = false;
+                var loopDetector = 0;
+                var loopDetector2 = 1;
+                while (!opponentFound)
+                {
+                    loopDetector++;
+
+                    // Is already in draw or same team
+                    // or is the same team
+                    // or has already played against this team
+                    if (this.AlreadyDrawn(round.Draws, team2)
+                        || team1.Id == team2.Id
+                        || team1.Opponents.Contains(team2.Id))
                     {
-                        i++;
-                        team2 = this.Teams[ranking + i];
+                        team2Index++;
+                        if (team2Index >= this.Teams.Count)
+                        {
+                            team2Index = 0;
+                        }
+
+                        team2 = this.Teams[team2Index];
+
+                        if (loopDetector > 50)
+                        {
+                            for (var i = 0; i < loopDetector2; i++)
+                            {
+                                round.Draws.RemoveAt(round.Draws.Count - 1);
+                            }
+
+                            loopDetector = 0;
+                            loopDetector2++;
+                        }
+
                         continue;
                     }
 
@@ -228,8 +257,9 @@ namespace SchochRechner.Logic
                 }
 
                 // Add draw
-                ranking++;
-                round.Draws.Add(new Draw { Team1 = team, Team2 = team2 });
+                team1Index++;
+                round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
+
             }
 
             return round;
