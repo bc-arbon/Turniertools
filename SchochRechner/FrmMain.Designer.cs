@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             SpcMain = new SplitContainer();
             tabControl1 = new TabControl();
             TpgRanking = new TabPage();
@@ -49,7 +50,9 @@
             ChrGamepoints = new ColumnHeader();
             ChrGamepointsDiff = new ColumnHeader();
             TpgDraws = new TabPage();
+            label1 = new Label();
             BtnCustomMatchcard = new Button();
+            NudRound = new NumericUpDown();
             BtnTest = new Button();
             BtnEmptyMatchcard = new Button();
             BtnRandomDraw = new Button();
@@ -62,6 +65,18 @@
             ChdPoints2 = new ColumnHeader();
             ChdDrawTeam2 = new ColumnHeader();
             ChdOpp2 = new ColumnHeader();
+            ChdCourt = new ColumnHeader();
+            CmsCourt = new ContextMenuStrip(components);
+            MnuCourtNone = new ToolStripMenuItem();
+            SepCourt = new ToolStripSeparator();
+            MnuCourt1 = new ToolStripMenuItem();
+            MnuCourt2 = new ToolStripMenuItem();
+            MnuCourt3 = new ToolStripMenuItem();
+            MnuCourt4 = new ToolStripMenuItem();
+            MnuCourt5 = new ToolStripMenuItem();
+            MnuCourt6 = new ToolStripMenuItem();
+            MnuCourt7 = new ToolStripMenuItem();
+            MnuCourt8 = new ToolStripMenuItem();
             groupBox2 = new GroupBox();
             SpcEntries = new SplitContainer();
             BtnTeams = new Button();
@@ -75,7 +90,6 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
-            NudRound = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -87,12 +101,13 @@
             SpcRanking.Panel2.SuspendLayout();
             SpcRanking.SuspendLayout();
             TpgDraws.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NudRound).BeginInit();
+            CmsCourt.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpcEntries).BeginInit();
             SpcEntries.Panel1.SuspendLayout();
             SpcEntries.Panel2.SuspendLayout();
             SpcEntries.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)NudRound).BeginInit();
             SuspendLayout();
             // 
             // SpcMain
@@ -109,8 +124,8 @@
             // SpcMain.Panel2
             // 
             SpcMain.Panel2.Controls.Add(groupBox2);
-            SpcMain.Size = new Size(1277, 740);
-            SpcMain.SplitterDistance = 826;
+            SpcMain.Size = new Size(1398, 818);
+            SpcMain.SplitterDistance = 947;
             SpcMain.TabIndex = 0;
             // 
             // tabControl1
@@ -121,7 +136,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(826, 740);
+            tabControl1.Size = new Size(947, 818);
             tabControl1.TabIndex = 1;
             // 
             // TpgRanking
@@ -131,7 +146,7 @@
             TpgRanking.Location = new Point(4, 24);
             TpgRanking.Name = "TpgRanking";
             TpgRanking.Padding = new Padding(3);
-            TpgRanking.Size = new Size(818, 712);
+            TpgRanking.Size = new Size(939, 790);
             TpgRanking.TabIndex = 0;
             TpgRanking.Text = "Rangliste";
             // 
@@ -151,8 +166,8 @@
             // SpcRanking.Panel2
             // 
             SpcRanking.Panel2.Controls.Add(LvwRanking);
-            SpcRanking.Size = new Size(812, 706);
-            SpcRanking.SplitterDistance = 32;
+            SpcRanking.Size = new Size(933, 784);
+            SpcRanking.SplitterDistance = 35;
             SpcRanking.SplitterWidth = 5;
             SpcRanking.TabIndex = 1;
             // 
@@ -184,7 +199,7 @@
             LvwRanking.Location = new Point(0, 0);
             LvwRanking.Name = "LvwRanking";
             LvwRanking.OwnerDraw = true;
-            LvwRanking.Size = new Size(812, 669);
+            LvwRanking.Size = new Size(933, 744);
             LvwRanking.TabIndex = 0;
             LvwRanking.UseCompatibleStateImageBehavior = false;
             LvwRanking.View = View.Details;
@@ -267,6 +282,7 @@
             // TpgDraws
             // 
             TpgDraws.BackColor = SystemColors.Control;
+            TpgDraws.Controls.Add(label1);
             TpgDraws.Controls.Add(BtnCustomMatchcard);
             TpgDraws.Controls.Add(NudRound);
             TpgDraws.Controls.Add(BtnTest);
@@ -278,9 +294,18 @@
             TpgDraws.Location = new Point(4, 24);
             TpgDraws.Name = "TpgDraws";
             TpgDraws.Padding = new Padding(3);
-            TpgDraws.Size = new Size(818, 712);
+            TpgDraws.Size = new Size(939, 790);
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(605, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 8;
+            label1.Text = "Runde:";
             // 
             // BtnCustomMatchcard
             // 
@@ -292,9 +317,19 @@
             BtnCustomMatchcard.UseVisualStyleBackColor = true;
             BtnCustomMatchcard.Click += BtnCustomMatchcard_Click;
             // 
+            // NudRound
+            // 
+            NudRound.Location = new Point(649, 8);
+            NudRound.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            NudRound.Name = "NudRound";
+            NudRound.Size = new Size(37, 23);
+            NudRound.TabIndex = 7;
+            NudRound.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            NudRound.ValueChanged += NudRound_ValueChanged;
+            // 
             // BtnTest
             // 
-            BtnTest.Location = new Point(568, 6);
+            BtnTest.Location = new Point(701, 6);
             BtnTest.Name = "BtnTest";
             BtnTest.Size = new Size(75, 23);
             BtnTest.TabIndex = 6;
@@ -325,12 +360,13 @@
             // BtnClearDraws
             // 
             BtnClearDraws.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnClearDraws.Location = new Point(743, 6);
+            BtnClearDraws.Location = new Point(864, 6);
             BtnClearDraws.Name = "BtnClearDraws";
             BtnClearDraws.Size = new Size(69, 23);
             BtnClearDraws.TabIndex = 3;
             BtnClearDraws.Text = "Löschen";
             BtnClearDraws.UseVisualStyleBackColor = true;
+            BtnClearDraws.Visible = false;
             BtnClearDraws.Click += BtnClearDraws_Click;
             // 
             // BtnAddDraw
@@ -346,13 +382,14 @@
             // LvwDraws
             // 
             LvwDraws.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2 });
+            LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2, ChdCourt });
+            LvwDraws.ContextMenuStrip = CmsCourt;
             LvwDraws.Font = new Font("Consolas", 9F);
             LvwDraws.FullRowSelect = true;
             LvwDraws.Location = new Point(8, 35);
             LvwDraws.Name = "LvwDraws";
             LvwDraws.OwnerDraw = true;
-            LvwDraws.Size = new Size(804, 669);
+            LvwDraws.Size = new Size(925, 747);
             LvwDraws.TabIndex = 1;
             LvwDraws.UseCompatibleStateImageBehavior = false;
             LvwDraws.View = View.Details;
@@ -392,13 +429,102 @@
             ChdOpp2.Text = "Gegner Team 2";
             ChdOpp2.Width = 120;
             // 
+            // ChdCourt
+            // 
+            ChdCourt.Text = "Feld";
+            ChdCourt.Width = 50;
+            // 
+            // CmsCourt
+            // 
+            CmsCourt.Items.AddRange(new ToolStripItem[] { MnuCourtNone, SepCourt, MnuCourt1, MnuCourt2, MnuCourt3, MnuCourt4, MnuCourt5, MnuCourt6, MnuCourt7, MnuCourt8 });
+            CmsCourt.Name = "CmsCourt";
+            CmsCourt.Size = new Size(105, 208);
+            CmsCourt.Opening += CmsCourt_Opening;
+            // 
+            // MnuCourtNone
+            // 
+            MnuCourtNone.Name = "MnuCourtNone";
+            MnuCourtNone.Size = new Size(104, 22);
+            MnuCourtNone.Tag = "0";
+            MnuCourtNone.Text = "(kein)";
+            MnuCourtNone.Click += MnuCourt_Click;
+            // 
+            // SepCourt
+            // 
+            SepCourt.Name = "SepCourt";
+            SepCourt.Size = new Size(101, 6);
+            // 
+            // MnuCourt1
+            // 
+            MnuCourt1.Name = "MnuCourt1";
+            MnuCourt1.Size = new Size(104, 22);
+            MnuCourt1.Tag = "1";
+            MnuCourt1.Text = "1";
+            MnuCourt1.Click += MnuCourt_Click;
+            // 
+            // MnuCourt2
+            // 
+            MnuCourt2.Name = "MnuCourt2";
+            MnuCourt2.Size = new Size(104, 22);
+            MnuCourt2.Tag = "2";
+            MnuCourt2.Text = "2";
+            MnuCourt2.Click += MnuCourt_Click;
+            // 
+            // MnuCourt3
+            // 
+            MnuCourt3.Name = "MnuCourt3";
+            MnuCourt3.Size = new Size(104, 22);
+            MnuCourt3.Tag = "3";
+            MnuCourt3.Text = "3";
+            MnuCourt3.Click += MnuCourt_Click;
+            // 
+            // MnuCourt4
+            // 
+            MnuCourt4.Name = "MnuCourt4";
+            MnuCourt4.Size = new Size(104, 22);
+            MnuCourt4.Tag = "4";
+            MnuCourt4.Text = "4";
+            MnuCourt4.Click += MnuCourt_Click;
+            // 
+            // MnuCourt5
+            // 
+            MnuCourt5.Name = "MnuCourt5";
+            MnuCourt5.Size = new Size(104, 22);
+            MnuCourt5.Tag = "5";
+            MnuCourt5.Text = "5";
+            MnuCourt5.Click += MnuCourt_Click;
+            // 
+            // MnuCourt6
+            // 
+            MnuCourt6.Name = "MnuCourt6";
+            MnuCourt6.Size = new Size(104, 22);
+            MnuCourt6.Tag = "6";
+            MnuCourt6.Text = "6";
+            MnuCourt6.Click += MnuCourt_Click;
+            // 
+            // MnuCourt7
+            // 
+            MnuCourt7.Name = "MnuCourt7";
+            MnuCourt7.Size = new Size(104, 22);
+            MnuCourt7.Tag = "7";
+            MnuCourt7.Text = "7";
+            MnuCourt7.Click += MnuCourt_Click;
+            // 
+            // MnuCourt8
+            // 
+            MnuCourt8.Name = "MnuCourt8";
+            MnuCourt8.Size = new Size(104, 22);
+            MnuCourt8.Tag = "8";
+            MnuCourt8.Text = "8";
+            MnuCourt8.Click += MnuCourt_Click;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(SpcEntries);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(447, 740);
+            groupBox2.Size = new Size(447, 818);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Begegnungen";
@@ -421,8 +547,8 @@
             // SpcEntries.Panel2
             // 
             SpcEntries.Panel2.Controls.Add(LvwEntries);
-            SpcEntries.Size = new Size(441, 718);
-            SpcEntries.SplitterDistance = 29;
+            SpcEntries.Size = new Size(441, 796);
+            SpcEntries.SplitterDistance = 32;
             SpcEntries.SplitterWidth = 5;
             SpcEntries.TabIndex = 0;
             // 
@@ -475,7 +601,7 @@
             LvwEntries.Location = new Point(0, 0);
             LvwEntries.Name = "LvwEntries";
             LvwEntries.OwnerDraw = true;
-            LvwEntries.Size = new Size(441, 684);
+            LvwEntries.Size = new Size(441, 759);
             LvwEntries.TabIndex = 0;
             LvwEntries.UseCompatibleStateImageBehavior = false;
             LvwEntries.View = View.Details;
@@ -511,20 +637,11 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
-            // NudRound
-            // 
-            NudRound.Location = new Point(649, 8);
-            NudRound.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            NudRound.Name = "NudRound";
-            NudRound.Size = new Size(37, 23);
-            NudRound.TabIndex = 7;
-            NudRound.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1277, 740);
+            ClientSize = new Size(1398, 818);
             Controls.Add(SpcMain);
             DoubleBuffered = true;
             Name = "FrmMain";
@@ -543,12 +660,14 @@
             ((System.ComponentModel.ISupportInitialize)SpcRanking).EndInit();
             SpcRanking.ResumeLayout(false);
             TpgDraws.ResumeLayout(false);
+            TpgDraws.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)NudRound).EndInit();
+            CmsCourt.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             SpcEntries.Panel1.ResumeLayout(false);
             SpcEntries.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SpcEntries).EndInit();
             SpcEntries.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)NudRound).EndInit();
             ResumeLayout(false);
         }
 
@@ -602,5 +721,18 @@
         private Button BtnTest;
         private NumericUpDown NudRound;
         private Button BtnCustomMatchcard;
+        private ColumnHeader ChdCourt;
+        private ContextMenuStrip CmsCourt;
+        private ToolStripMenuItem MnuCourtNone;
+        private ToolStripSeparator SepCourt;
+        private ToolStripMenuItem MnuCourt1;
+        private ToolStripMenuItem MnuCourt2;
+        private ToolStripMenuItem MnuCourt3;
+        private ToolStripMenuItem MnuCourt4;
+        private ToolStripMenuItem MnuCourt5;
+        private ToolStripMenuItem MnuCourt6;
+        private ToolStripMenuItem MnuCourt7;
+        private ToolStripMenuItem MnuCourt8;
+        private Label label1;
     }
 }

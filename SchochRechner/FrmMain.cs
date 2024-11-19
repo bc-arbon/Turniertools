@@ -1,8 +1,6 @@
-using Newtonsoft.Json.Linq;
 using SchochRechner.Logic;
 using SchochRechner.ObjectModel;
 using System.Drawing.Printing;
-using System.Runtime.CompilerServices;
 
 namespace SchochRechner
 {
@@ -21,6 +19,7 @@ namespace SchochRechner
         private void ShowAll()
         {
             this.ShowEntries();
+            this.ShowRound();
             this.ShowRanking();
             this.frmDisplay.ShowRanking();
         }
@@ -49,6 +48,33 @@ namespace SchochRechner
             }
         }
 
+        public void ShowRound()
+        {
+            this.NudRound.Value = this.schochManager.Round.RoundActual;
+
+            this.LvwDraws.Items.Clear();
+            this.LvwDraws.Groups.Clear();
+
+            var group = new ListViewGroup("Runde " + this.schochManager.Round.RoundActual);
+            this.LvwDraws.Groups.Add(group);
+
+            foreach (var draw in this.schochManager.Round.Draws)
+            {
+                var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
+                item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
+                item.SubItems.Add(draw.Team1.GamesWon.ToString());
+                item.SubItems.Add(draw.Team2.GamesWon.ToString());
+                item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
+                item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
+                item.SubItems.Add(draw.Court == null ? string.Empty : draw.Court.ToString());
+                item.Tag = draw;
+                group.Items.Add(item);
+                this.LvwDraws.Items.Add(item);
+                //Thread.Sleep(500);
+                //Application.DoEvents();
+            }
+        }
+
         private void ShowEntries()
         {
             this.LvwEntries.Items.Clear();
@@ -70,7 +96,7 @@ namespace SchochRechner
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var frmEntry = new FrmEntry(this.schochManager.Teams);
+            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -205,52 +231,16 @@ namespace SchochRechner
 
         private void BtnAddDraw_Click(object sender, EventArgs e)
         {
-            this.LvwDraws.Items.Clear();
-            this.LvwDraws.Groups.Clear();
-            var round = this.schochManager.CreateDraw();
-
-            var group = new ListViewGroup("Runde " + round.RoundActual);
-            this.LvwDraws.Groups.Add(group);
-
-            foreach (var draw in round.Draws)
-            {
-                var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
-                item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
-                item.SubItems.Add(draw.Team1.GamesWon.ToString());
-                item.SubItems.Add(draw.Team2.GamesWon.ToString());
-                item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
-                item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
-                item.Tag = draw;
-                group.Items.Add(item);
-                this.LvwDraws.Items.Add(item);
-                //Thread.Sleep(500);
-                //Application.DoEvents();
-            }
+            this.schochManager.CreateDraw((int)this.NudRound.Value);
+            this.schochManager.Save();
+            this.ShowRound();
         }
 
         private void BtnRandomDraw_Click(object sender, EventArgs e)
         {
-            this.LvwDraws.Items.Clear();
-            this.LvwDraws.Groups.Clear();
-            var round = this.schochManager.CreateDrawRandom();
-
-            var group = new ListViewGroup("Runde " + round.RoundActual);
-            this.LvwDraws.Groups.Add(group);
-
-            foreach (var draw in round.Draws)
-            {
-                var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
-                item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
-                item.SubItems.Add(draw.Team1.GamesWon.ToString());
-                item.SubItems.Add(draw.Team2.GamesWon.ToString());
-                item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
-                item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
-                item.Tag = draw;
-                group.Items.Add(item);
-                this.LvwDraws.Items.Add(item);
-                //Thread.Sleep(500);
-                //Application.DoEvents();
-            }
+            this.schochManager.CreateDrawRandom((int)this.NudRound.Value);
+            this.schochManager.Save();
+            this.ShowRound();
         }
 
         private void BtnEmptyMatchcard_Click(object sender, EventArgs e)
@@ -267,7 +257,7 @@ namespace SchochRechner
             }
 
             var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
-            var frmMatchcard = new FrmMatchcard(draw);
+            var frmMatchcard = new FrmMatchcard(draw, this.schochManager.Round.RoundActual);
             frmMatchcard.ShowDialog();
         }
 
@@ -318,9 +308,35 @@ namespace SchochRechner
             var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.Teams);
             if (frmCustomMatchcard.ShowDialog() == DialogResult.OK)
             {
-                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2);
+                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2, "Runde:", "Feld:");
                 frmMatchcard.ShowDialog();
             }
+        }
+
+        private void CmsCourt_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (this.LvwDraws.SelectedItems.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void MnuCourt_Click(object sender, EventArgs e)
+        {
+            if (this.LvwDraws.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            var court = ((ToolStripMenuItem)sender).Tag.ToString();
+            this.LvwDraws.SelectedItems[0].SubItems[6].Text = court;
+            ((Draw)this.LvwDraws.SelectedItems[0].Tag).Court = court;            
+            this.schochManager.Save();
+        }
+
+        private void NudRound_ValueChanged(object sender, EventArgs e)
+        {
+            this.schochManager.SetRoundNumber((int)this.NudRound.Value);
         }
     }
 }

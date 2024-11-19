@@ -32,14 +32,15 @@ namespace SchochRechner
         public int Double31 { get { return string.IsNullOrEmpty(this.TxtDouble31.Text) ? -1 : Convert.ToInt32(this.TxtDouble31.Text); } }
         public int Double32 { get { return string.IsNullOrEmpty(this.TxtDouble32.Text) ? -1 : Convert.ToInt32(this.TxtDouble32.Text); } }
 
-        public FrmEntry(List<Team> teams) : this()
+        public FrmEntry(List<Team> teams, int round) : this()
         {
             var teamsSorted = teams.ToArray().OrderBy(x => x.Id).ToArray();
             this.CbxTeam1.Items.AddRange(teamsSorted);
             this.CbxTeam2.Items.AddRange(teamsSorted);
+            this.TxtRound.Text = round.ToString();
         }
 
-        public FrmEntry(List<Team> teams, Entry entry) : this(teams)
+        public FrmEntry(List<Team> teams, Entry entry) : this(teams, entry.Round)
         {
             var team1 = teams.Find(x => x.Id == entry.Team1);
             var team2 = teams.Find(x => x.Id == entry.Team2);
@@ -84,7 +85,6 @@ namespace SchochRechner
                     MessageBox.Show("Min. 1 Resultat fehlt", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
 
                 var setsSingle1 = 0;
                 var setsSingle2 = 0;
