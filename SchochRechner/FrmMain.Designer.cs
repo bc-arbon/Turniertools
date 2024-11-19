@@ -39,8 +39,8 @@
             ChrRank = new ColumnHeader();
             ChrId = new ColumnHeader();
             ChrName = new ColumnHeader();
-            ChrPoints = new ColumnHeader();
             ChrRounds = new ColumnHeader();
+            ChrPoints = new ColumnHeader();
             ChrBuchholz = new ColumnHeader();
             ChrFeinbuchholz = new ColumnHeader();
             ChrGames = new ColumnHeader();
@@ -67,8 +67,10 @@
             ChdOpp2 = new ColumnHeader();
             ChdCourt = new ColumnHeader();
             CmsCourt = new ContextMenuStrip(components);
+            MnuMatchcard = new ToolStripMenuItem();
+            MnuEnterResult = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
             MnuCourtNone = new ToolStripMenuItem();
-            SepCourt = new ToolStripSeparator();
             MnuCourt1 = new ToolStripMenuItem();
             MnuCourt2 = new ToolStripMenuItem();
             MnuCourt3 = new ToolStripMenuItem();
@@ -193,7 +195,7 @@
             // 
             // LvwRanking
             // 
-            LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrRank, ChrId, ChrName, ChrPoints, ChrRounds, ChrBuchholz, ChrFeinbuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
+            LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrRank, ChrId, ChrName, ChrRounds, ChrPoints, ChrBuchholz, ChrFeinbuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
             LvwRanking.Dock = DockStyle.Fill;
             LvwRanking.FullRowSelect = true;
             LvwRanking.Location = new Point(0, 0);
@@ -220,17 +222,17 @@
             ChrName.Text = "Name";
             ChrName.Width = 150;
             // 
-            // ChrPoints
-            // 
-            ChrPoints.Text = "P";
-            ChrPoints.TextAlign = HorizontalAlignment.Center;
-            ChrPoints.Width = 40;
-            // 
             // ChrRounds
             // 
             ChrRounds.Text = "R";
             ChrRounds.TextAlign = HorizontalAlignment.Center;
             ChrRounds.Width = 30;
+            // 
+            // ChrPoints
+            // 
+            ChrPoints.Text = "P";
+            ChrPoints.TextAlign = HorizontalAlignment.Center;
+            ChrPoints.Width = 40;
             // 
             // ChrBuchholz
             // 
@@ -301,7 +303,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(605, 10);
+            label1.Location = new Point(268, 10);
             label1.Name = "label1";
             label1.Size = new Size(44, 15);
             label1.TabIndex = 8;
@@ -309,7 +311,7 @@
             // 
             // BtnCustomMatchcard
             // 
-            BtnCustomMatchcard.Location = new Point(393, 6);
+            BtnCustomMatchcard.Location = new Point(647, 6);
             BtnCustomMatchcard.Name = "BtnCustomMatchcard";
             BtnCustomMatchcard.Size = new Size(130, 23);
             BtnCustomMatchcard.TabIndex = 6;
@@ -319,7 +321,7 @@
             // 
             // NudRound
             // 
-            NudRound.Location = new Point(649, 8);
+            NudRound.Location = new Point(318, 8);
             NudRound.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NudRound.Name = "NudRound";
             NudRound.Size = new Size(37, 23);
@@ -329,7 +331,7 @@
             // 
             // BtnTest
             // 
-            BtnTest.Location = new Point(701, 6);
+            BtnTest.Location = new Point(783, 6);
             BtnTest.Name = "BtnTest";
             BtnTest.Size = new Size(75, 23);
             BtnTest.TabIndex = 6;
@@ -339,7 +341,7 @@
             // 
             // BtnEmptyMatchcard
             // 
-            BtnEmptyMatchcard.Location = new Point(268, 6);
+            BtnEmptyMatchcard.Location = new Point(522, 6);
             BtnEmptyMatchcard.Name = "BtnEmptyMatchcard";
             BtnEmptyMatchcard.Size = new Size(119, 23);
             BtnEmptyMatchcard.TabIndex = 5;
@@ -436,86 +438,100 @@
             // 
             // CmsCourt
             // 
-            CmsCourt.Items.AddRange(new ToolStripItem[] { MnuCourtNone, SepCourt, MnuCourt1, MnuCourt2, MnuCourt3, MnuCourt4, MnuCourt5, MnuCourt6, MnuCourt7, MnuCourt8 });
+            CmsCourt.Items.AddRange(new ToolStripItem[] { MnuMatchcard, MnuEnterResult, toolStripSeparator1, MnuCourtNone, MnuCourt1, MnuCourt2, MnuCourt3, MnuCourt4, MnuCourt5, MnuCourt6, MnuCourt7, MnuCourt8 });
             CmsCourt.Name = "CmsCourt";
-            CmsCourt.Size = new Size(105, 208);
+            CmsCourt.Size = new Size(170, 252);
             CmsCourt.Opening += CmsCourt_Opening;
+            // 
+            // MnuMatchcard
+            // 
+            MnuMatchcard.Name = "MnuMatchcard";
+            MnuMatchcard.Size = new Size(169, 22);
+            MnuMatchcard.Text = "Matchblatt";
+            MnuMatchcard.Click += MnuMatchcard_Click;
+            // 
+            // MnuEnterResult
+            // 
+            MnuEnterResult.Name = "MnuEnterResult";
+            MnuEnterResult.Size = new Size(169, 22);
+            MnuEnterResult.Text = "Resultat eintragen";
+            MnuEnterResult.Click += MnuEnterResult_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(166, 6);
             // 
             // MnuCourtNone
             // 
             MnuCourtNone.Name = "MnuCourtNone";
-            MnuCourtNone.Size = new Size(104, 22);
+            MnuCourtNone.Size = new Size(169, 22);
             MnuCourtNone.Tag = "0";
-            MnuCourtNone.Text = "(kein)";
+            MnuCourtNone.Text = "kein Feld";
             MnuCourtNone.Click += MnuCourt_Click;
-            // 
-            // SepCourt
-            // 
-            SepCourt.Name = "SepCourt";
-            SepCourt.Size = new Size(101, 6);
             // 
             // MnuCourt1
             // 
             MnuCourt1.Name = "MnuCourt1";
-            MnuCourt1.Size = new Size(104, 22);
+            MnuCourt1.Size = new Size(169, 22);
             MnuCourt1.Tag = "1";
-            MnuCourt1.Text = "1";
+            MnuCourt1.Text = "Feld 1";
             MnuCourt1.Click += MnuCourt_Click;
             // 
             // MnuCourt2
             // 
             MnuCourt2.Name = "MnuCourt2";
-            MnuCourt2.Size = new Size(104, 22);
+            MnuCourt2.Size = new Size(169, 22);
             MnuCourt2.Tag = "2";
-            MnuCourt2.Text = "2";
+            MnuCourt2.Text = "Feld 2";
             MnuCourt2.Click += MnuCourt_Click;
             // 
             // MnuCourt3
             // 
             MnuCourt3.Name = "MnuCourt3";
-            MnuCourt3.Size = new Size(104, 22);
+            MnuCourt3.Size = new Size(169, 22);
             MnuCourt3.Tag = "3";
-            MnuCourt3.Text = "3";
+            MnuCourt3.Text = "Feld 3";
             MnuCourt3.Click += MnuCourt_Click;
             // 
             // MnuCourt4
             // 
             MnuCourt4.Name = "MnuCourt4";
-            MnuCourt4.Size = new Size(104, 22);
+            MnuCourt4.Size = new Size(169, 22);
             MnuCourt4.Tag = "4";
-            MnuCourt4.Text = "4";
+            MnuCourt4.Text = "Feld 4";
             MnuCourt4.Click += MnuCourt_Click;
             // 
             // MnuCourt5
             // 
             MnuCourt5.Name = "MnuCourt5";
-            MnuCourt5.Size = new Size(104, 22);
+            MnuCourt5.Size = new Size(169, 22);
             MnuCourt5.Tag = "5";
-            MnuCourt5.Text = "5";
+            MnuCourt5.Text = "Feld 5";
             MnuCourt5.Click += MnuCourt_Click;
             // 
             // MnuCourt6
             // 
             MnuCourt6.Name = "MnuCourt6";
-            MnuCourt6.Size = new Size(104, 22);
+            MnuCourt6.Size = new Size(169, 22);
             MnuCourt6.Tag = "6";
-            MnuCourt6.Text = "6";
+            MnuCourt6.Text = "Feld 6";
             MnuCourt6.Click += MnuCourt_Click;
             // 
             // MnuCourt7
             // 
             MnuCourt7.Name = "MnuCourt7";
-            MnuCourt7.Size = new Size(104, 22);
+            MnuCourt7.Size = new Size(169, 22);
             MnuCourt7.Tag = "7";
-            MnuCourt7.Text = "7";
+            MnuCourt7.Text = "Feld 7";
             MnuCourt7.Click += MnuCourt_Click;
             // 
             // MnuCourt8
             // 
             MnuCourt8.Name = "MnuCourt8";
-            MnuCourt8.Size = new Size(104, 22);
+            MnuCourt8.Size = new Size(169, 22);
             MnuCourt8.Tag = "8";
-            MnuCourt8.Text = "8";
+            MnuCourt8.Text = "Feld 8";
             MnuCourt8.Click += MnuCourt_Click;
             // 
             // groupBox2
@@ -607,6 +623,7 @@
             LvwEntries.View = View.Details;
             LvwEntries.DrawColumnHeader += LvwEntries_DrawColumnHeader;
             LvwEntries.DrawItem += LvwEntries_DrawItem;
+            LvwEntries.MouseDoubleClick += LvwEntries_MouseDoubleClick;
             // 
             // ChrResultsRound
             // 
@@ -646,7 +663,7 @@
             DoubleBuffered = true;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Schoch Rechner";
+            Text = "Sir Schoch-A-Lot 1.4";
             FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
             SpcMain.Panel1.ResumeLayout(false);
@@ -724,7 +741,6 @@
         private ColumnHeader ChdCourt;
         private ContextMenuStrip CmsCourt;
         private ToolStripMenuItem MnuCourtNone;
-        private ToolStripSeparator SepCourt;
         private ToolStripMenuItem MnuCourt1;
         private ToolStripMenuItem MnuCourt2;
         private ToolStripMenuItem MnuCourt3;
@@ -734,5 +750,8 @@
         private ToolStripMenuItem MnuCourt7;
         private ToolStripMenuItem MnuCourt8;
         private Label label1;
+        private ToolStripMenuItem MnuMatchcard;
+        private ToolStripMenuItem MnuEnterResult;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }

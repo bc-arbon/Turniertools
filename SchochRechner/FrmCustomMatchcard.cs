@@ -6,6 +6,8 @@ namespace SchochRechner
     {
         public string Team1 { get; private set; } = string.Empty;
         public string Team2 { get; private set; } = string.Empty;
+        public int Round { get; private set; } = -1;
+        public int Court { get; private set; } = -1;
 
         public FrmCustomMatchcard()
         {
@@ -20,7 +22,7 @@ namespace SchochRechner
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
-        {            
+        {
             if (!string.IsNullOrEmpty(this.TxtTeam1.Text))
             {
                 this.Team1 = this.TxtTeam1.Text;
@@ -28,7 +30,17 @@ namespace SchochRechner
 
             if (!string.IsNullOrEmpty(this.TxtTeam2.Text))
             {
-                Team2 = this.TxtTeam2.Text;
+                this.Team2 = this.TxtTeam2.Text;
+            }
+
+            if (!string.IsNullOrEmpty(this.TxtRound.Text))
+            {
+                this.Round = Convert.ToInt32(this.TxtRound.Text);
+            }
+
+            if (!string.IsNullOrEmpty(this.TxtCourt.Text))
+            {
+                this.Court = Convert.ToInt32(this.TxtCourt.Text);
             }
 
             this.DialogResult = DialogResult.OK;

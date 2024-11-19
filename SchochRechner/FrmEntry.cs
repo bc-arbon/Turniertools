@@ -1,5 +1,4 @@
 ﻿using SchochRechner.ObjectModel;
-using System.Reflection.Metadata.Ecma335;
 
 namespace SchochRechner
 {
@@ -13,6 +12,7 @@ namespace SchochRechner
         public int Team1 { get { return ((Team)this.CbxTeam1.SelectedItem).Id; } }
         public int Team2 { get { return ((Team)this.CbxTeam2.SelectedItem).Id; } }
         public int Round { get { return Convert.ToInt32(this.TxtRound.Text); } }
+        public int Court { get { return Convert.ToInt32(this.TxtCourt.Text); } }
         public int Games1 { get { return Convert.ToInt32(this.TxtGames1.Text); } }
         public int Games2 { get { return Convert.ToInt32(this.TxtGames2.Text); } }
         public int Sets1 { get { return Convert.ToInt32(this.TxtSets1.Text); } }
@@ -32,22 +32,29 @@ namespace SchochRechner
         public int Double31 { get { return string.IsNullOrEmpty(this.TxtDouble31.Text) ? -1 : Convert.ToInt32(this.TxtDouble31.Text); } }
         public int Double32 { get { return string.IsNullOrEmpty(this.TxtDouble32.Text) ? -1 : Convert.ToInt32(this.TxtDouble32.Text); } }
 
-        public FrmEntry(List<Team> teams, int round) : this()
+        public FrmEntry(List<Team> teams, int round, int court, int preselectTeam1, int preselectTeam2) : this()
         {
             var teamsSorted = teams.ToArray().OrderBy(x => x.Id).ToArray();
             this.CbxTeam1.Items.AddRange(teamsSorted);
             this.CbxTeam2.Items.AddRange(teamsSorted);
             this.TxtRound.Text = round.ToString();
+            this.TxtCourt.Text = court == -1 ? string.Empty : court.ToString();
+
+            if (preselectTeam1 != null)
+            {
+                var team1 = teams.Find(x => x.Id == preselectTeam1);
+                this.CbxTeam1.SelectedItem = team1;
+            }
+
+            if (preselectTeam2 != null)
+            {
+                var team2 = teams.Find(x => x.Id == preselectTeam2);
+                this.CbxTeam2.SelectedItem = team2;
+            }
         }
 
-        public FrmEntry(List<Team> teams, Entry entry) : this(teams, entry.Round)
+        public FrmEntry(List<Team> teams, Entry entry) : this(teams, entry.Round, entry.Court, entry.Team1, entry.Team2)
         {
-            var team1 = teams.Find(x => x.Id == entry.Team1);
-            var team2 = teams.Find(x => x.Id == entry.Team2);
-
-            this.CbxTeam1.SelectedItem = team1;
-            this.CbxTeam2.SelectedItem = team2;
-
             this.TxtRound.Text = entry.Round.ToString();
             this.TxtGames1.Text = entry.Games1.ToString();
             this.TxtGames2.Text = entry.Games2.ToString();
@@ -71,6 +78,11 @@ namespace SchochRechner
 
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
+            this.Calculate();
+        }
+
+        private bool Calculate()
+        {
             try
             {
                 if (string.IsNullOrEmpty(this.TxtSingle11.Text) ||
@@ -83,7 +95,7 @@ namespace SchochRechner
                     string.IsNullOrEmpty(this.TxtDouble22.Text))
                 {
                     MessageBox.Show("Min. 1 Resultat fehlt", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    return false;
                 }
 
                 var setsSingle1 = 0;
@@ -136,10 +148,34 @@ namespace SchochRechner
                 this.TxtGames2.Text = games2.ToString();
                 this.TxtPoints1.Text = points1.ToString();
                 this.TxtPoints2.Text = points2.ToString();
+
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Öppis isch nöd guet:\r\n\r\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void BtnOk_Click(object sender, EventArgs e)
+        {
+            if (this.CbxTeam1.SelectedItem == null)
+            {
+                MessageBox.Show("Team 1 fehlt", "Sir Schoch-A-Lot", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                return;
+            }
+
+            if (this.CbxTeam2.SelectedItem == null)
+            {
+                MessageBox.Show("Team 2 fehlt", "Sir Schoch-A-Lot", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (this.Calculate())
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
     }

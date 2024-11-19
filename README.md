@@ -17,6 +17,11 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 
 ## Changelog
 
+### V1.4 (19.11.2024)
+- Feldzuweisung für ausgeloste Paarung
+- Aktuelle Runde festlegen
+- Resultat direkt vom Draw aus eintragen
+
 ### V1.3 (16.11.2024)
 - Wechseln zu .NET 8.0
 - Auslosung Schochregeln überarbeitet (weniger Abstürze, getestet bis Runde 17)

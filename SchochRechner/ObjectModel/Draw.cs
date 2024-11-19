@@ -6,6 +6,6 @@
 
         public Team? Team2 { get; set; }
 
-        public string Court { get; set; }
+        public int Court { get; set; }
     }
 }

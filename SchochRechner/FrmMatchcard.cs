@@ -19,16 +19,16 @@ namespace SchochRechner
             this.ctlMatchcard1.Court = "Feld:";
         }
 
-        public FrmMatchcard(Draw draw, int round) : this(draw.Team1.Name, draw.Team2.Name, round.ToString(), draw.Court)
+        public FrmMatchcard(Draw draw, int round) : this(draw.Team1.Name, draw.Team2.Name, round, draw.Court)
         {
         }
 
-        public FrmMatchcard(string team1, string team2, string round, string court) : this()
+        public FrmMatchcard(string team1, string team2, int round, int court) : this()
         {
             this.ctlMatchcard1.Team1 = team1;
             this.ctlMatchcard1.Team2 = team2;
-            this.ctlMatchcard1.Court = court;
-            this.ctlMatchcard1.Round = round;
+            this.ctlMatchcard1.Court = court.ToString();
+            this.ctlMatchcard1.Round = round.ToString();
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)

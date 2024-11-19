@@ -108,8 +108,7 @@ namespace SchochRechner.Logic
             var rand2 = rng.Next(0, 100);
             var isDouble3Sets = rand2 >= 75;
 
-            var rand3 = rng.Next(0, 100);
-            entry.Single11 = rand3 < 50 ? 21 : rng.Next(0, 19);            
+            entry.Single11 = rng.Next(0, 21);
             entry.Single12 = entry.Single11 == 21 ? rng.Next(0, 19) : 21;            
 
             if (isSingle3Sets)
@@ -117,14 +116,14 @@ namespace SchochRechner.Logic
                 entry.Single21 = entry.Single11 == 21 ? rng.Next(0, 19) : 21;
                 entry.Single22 = entry.Single21 == 21 ? rng.Next(0, 19) : 21;
                 entry.Single31 = rng.Next(0, 21);
-                entry.Single32 = entry.Single31 == 21 ? 19 : rng.Next(0, 19);
+                entry.Single32 = entry.Single31 == 21 ? rng.Next(0, 19) : 21;
             }
             else
             {
                 entry.Single21 = entry.Single11 == 21 ? 21 : rng.Next(0, 19);
                 entry.Single22 = entry.Single21 == 21 ? rng.Next(0, 19) : 21;
-                entry.Single31 = 0;
-                entry.Single32 = 0;
+                entry.Single31 = -1;
+                entry.Single32 = -1;
             }
 
             entry.Sets1 = entry.Single11 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;
@@ -134,23 +133,22 @@ namespace SchochRechner.Logic
             entry.Sets2 = entry.Single22 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
             entry.Sets2 = entry.Single32 == 21 ? entry.Sets2 + 1 : entry.Sets2 + 0;
 
-            var rand4 = rng.Next(0, 100);
-            entry.Double11 = rand4 < 50 ? 21 : rng.Next(0, 19);
-            entry.Double12 = entry.Double12 == 21 ? 21 : rng.Next(0, 19);
+            entry.Double11 = rng.Next(0, 21);
+            entry.Double12 = entry.Double11 == 21 ? rng.Next(0, 19) : 21;
 
             if (isDouble3Sets)
             {
                 entry.Double21 = entry.Double11 == 21 ? rng.Next(0, 19) : 21;
                 entry.Double22 = entry.Double21 == 21 ? rng.Next(0, 19) : 21;
                 entry.Double31 = rng.Next(0, 21);
-                entry.Double32 = entry.Double31 == 21 ? 19 : rng.Next(0, 19);
+                entry.Double32 = entry.Double31 == 21 ? rng.Next(0, 19) : 21;
             }
             else
             {
                 entry.Double21 = entry.Double11 == 21 ? 21 : rng.Next(0, 19);
                 entry.Double22 = entry.Double21 == 21 ? rng.Next(0, 19) : 21;
-                entry.Double31 = 0;
-                entry.Double32 = 0;
+                entry.Double31 = -1;
+                entry.Double32 = -1;
             }
 
             entry.Sets1 = entry.Double11 == 21 ? entry.Sets1 + 1 : entry.Sets1 + 0;

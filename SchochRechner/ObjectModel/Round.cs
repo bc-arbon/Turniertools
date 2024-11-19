@@ -5,6 +5,7 @@
         public Round()
         {
             this.Draws = new List<Draw>();
+            this.RoundActual = 1;
         }
 
         public int RoundActual { get; set; }

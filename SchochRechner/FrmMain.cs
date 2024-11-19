@@ -33,8 +33,8 @@ namespace SchochRechner
                 var item = new ListViewItem(rank.ToString());
                 item.SubItems.Add(team.Id.ToString());
                 item.SubItems.Add(team.Name);
-                item.SubItems.Add(team.GamesWon.ToString());
                 item.SubItems.Add(team.Rounds.ToString());
+                item.SubItems.Add(team.GamesWon.ToString());
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.Feinbuchholz.ToString());
                 item.SubItems.Add(team.GamesWon.ToString() + ":" + team.GamesLost.ToString());
@@ -66,7 +66,7 @@ namespace SchochRechner
                 item.SubItems.Add(draw.Team2.GamesWon.ToString());
                 item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
                 item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
-                item.SubItems.Add(draw.Court == null ? string.Empty : draw.Court.ToString());
+                item.SubItems.Add(draw.Court == 0 ? string.Empty : draw.Court.ToString());
                 item.Tag = draw;
                 group.Items.Add(item);
                 this.LvwDraws.Items.Add(item);
@@ -94,9 +94,22 @@ namespace SchochRechner
             }
         }
 
+        private void ShowMatchcard()
+        {
+            // TBD, works for testing
+            if (this.LvwDraws.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
+            var frmMatchcard = new FrmMatchcard(draw, this.schochManager.Round.RoundActual);
+            frmMatchcard.ShowDialog();
+        }
+
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value);
+            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value, -1, -1, -1);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -115,21 +128,7 @@ namespace SchochRechner
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (this.LvwEntries.SelectedItems.Count == 0)
-            {
-                return;
-            }
-
-            var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
-            var frmEntry = new FrmEntry(this.schochManager.Teams, entry);
-            if (frmEntry.ShowDialog() == DialogResult.OK)
-            {
-                Helpers.UpdateEntry(entry, frmEntry);
-
-                this.schochManager.CalculateRanking();
-                this.schochManager.Save();
-                this.ShowAll();
-            }
+            this.EditEntry();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -231,6 +230,11 @@ namespace SchochRechner
 
         private void BtnAddDraw_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Sicher neu auslosen?", "Sir Schoch-A-Lot", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            {
+                return;
+            }
+
             this.schochManager.CreateDraw((int)this.NudRound.Value);
             this.schochManager.Save();
             this.ShowRound();
@@ -238,6 +242,11 @@ namespace SchochRechner
 
         private void BtnRandomDraw_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Sicher neu auslosen?", "Sir Schoch-A-Lot", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            {
+                return;
+            }
+
             this.schochManager.CreateDrawRandom((int)this.NudRound.Value);
             this.schochManager.Save();
             this.ShowRound();
@@ -250,15 +259,7 @@ namespace SchochRechner
 
         private void LvwDraws_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            // TBD, works for testing
-            if (this.LvwDraws.SelectedItems.Count == 0)
-            {
-                return;
-            }
-
-            var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
-            var frmMatchcard = new FrmMatchcard(draw, this.schochManager.Round.RoundActual);
-            frmMatchcard.ShowDialog();
+            this.ShowMatchcard();
         }
 
         private void BtnClearDraws_Click(object sender, EventArgs e)
@@ -308,7 +309,7 @@ namespace SchochRechner
             var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.Teams);
             if (frmCustomMatchcard.ShowDialog() == DialogResult.OK)
             {
-                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2, "Runde:", "Feld:");
+                var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2, frmCustomMatchcard.Round, frmCustomMatchcard.Court);
                 frmMatchcard.ShowDialog();
             }
         }
@@ -330,13 +331,68 @@ namespace SchochRechner
 
             var court = ((ToolStripMenuItem)sender).Tag.ToString();
             this.LvwDraws.SelectedItems[0].SubItems[6].Text = court;
-            ((Draw)this.LvwDraws.SelectedItems[0].Tag).Court = court;            
+            ((Draw)this.LvwDraws.SelectedItems[0].Tag).Court = Convert.ToInt32(court);
             this.schochManager.Save();
         }
 
         private void NudRound_ValueChanged(object sender, EventArgs e)
         {
             this.schochManager.SetRoundNumber((int)this.NudRound.Value);
+        }
+
+        private void MnuMatchcard_Click(object sender, EventArgs e)
+        {
+            this.ShowMatchcard();
+        }
+
+        private void MnuEnterResult_Click(object sender, EventArgs e)
+        {
+            if (this.LvwDraws.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
+
+            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value, draw.Court, draw.Team1.Id, draw.Team2.Id);
+            if (frmEntry.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    this.schochManager.AddEntry(Helpers.CreateEntry(frmEntry));
+                    this.schochManager.CalculateRanking();
+                    this.schochManager.Save();
+                    this.ShowAll();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Öppis isch nöd guet.\r\nHesch sicher vergesse Teams uswähle!\r\n\r\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void EditEntry()
+        {
+            if (this.LvwEntries.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
+            var frmEntry = new FrmEntry(this.schochManager.Teams, entry);
+            if (frmEntry.ShowDialog() == DialogResult.OK)
+            {
+                Helpers.UpdateEntry(entry, frmEntry);
+
+                this.schochManager.CalculateRanking();
+                this.schochManager.Save();
+                this.ShowAll();
+            }
+        }
+
+        private void LvwEntries_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.EditEntry();
         }
     }
 }
