@@ -66,6 +66,7 @@
             ChdDrawTeam2 = new ColumnHeader();
             ChdOpp2 = new ColumnHeader();
             ChdCourt = new ColumnHeader();
+            ChdDuration = new ColumnHeader();
             CmsCourt = new ContextMenuStrip(components);
             MnuMatchcard = new ToolStripMenuItem();
             MnuEnterResult = new ToolStripMenuItem();
@@ -92,6 +93,7 @@
             ChrResultsGames = new ColumnHeader();
             ChrResultsSets = new ColumnHeader();
             ChrResultsPoints = new ColumnHeader();
+            TmrDuration = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)SpcMain).BeginInit();
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
@@ -384,7 +386,7 @@
             // LvwDraws
             // 
             LvwDraws.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2, ChdCourt });
+            LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2, ChdCourt, ChdDuration });
             LvwDraws.ContextMenuStrip = CmsCourt;
             LvwDraws.Font = new Font("Consolas", 9F);
             LvwDraws.FullRowSelect = true;
@@ -435,6 +437,11 @@
             // 
             ChdCourt.Text = "Feld";
             ChdCourt.Width = 50;
+            // 
+            // ChdDuration
+            // 
+            ChdDuration.Text = "Dauer";
+            ChdDuration.TextAlign = HorizontalAlignment.Right;
             // 
             // CmsCourt
             // 
@@ -654,6 +661,12 @@
             // 
             ChrResultsPoints.Text = "P";
             // 
+            // TmrDuration
+            // 
+            TmrDuration.Enabled = true;
+            TmrDuration.Interval = 1000;
+            TmrDuration.Tick += TmrDuration_Tick;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -753,5 +766,7 @@
         private ToolStripMenuItem MnuMatchcard;
         private ToolStripMenuItem MnuEnterResult;
         private ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Timer TmrDuration;
+        private ColumnHeader ChdDuration;
     }
 }

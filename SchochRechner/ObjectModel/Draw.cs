@@ -7,5 +7,7 @@
         public Team? Team2 { get; set; }
 
         public int Court { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SchochRechner
         private void ShowAll()
         {
             this.ShowEntries();
-            this.ShowRound();
+            this.ShowDraw();
             this.ShowRanking();
             this.frmDisplay.ShowRanking();
         }
@@ -48,7 +48,7 @@ namespace SchochRechner
             }
         }
 
-        public void ShowRound()
+        public void ShowDraw()
         {
             this.NudRound.Value = this.schochManager.Round.RoundActual;
 
@@ -67,6 +67,7 @@ namespace SchochRechner
                 item.SubItems.Add("(" + draw.Team2.Id + ") " + draw.Team2.Name);
                 item.SubItems.Add(Helpers.OpponentsAsList(draw.Team2.Opponents));
                 item.SubItems.Add(draw.Court == 0 ? string.Empty : draw.Court.ToString());
+                item.SubItems.Add(string.Empty);
                 item.Tag = draw;
                 group.Items.Add(item);
                 this.LvwDraws.Items.Add(item);
@@ -217,6 +218,7 @@ namespace SchochRechner
             var pd = new PrintDocument();
 
             pd.PrintPage += (s, e) => e.Graphics.DrawImage(bitmap, 100, 100);
+            pd.DefaultPageSettings.Landscape = true;
 
             var preview = new PrintPreviewDialog();
             preview.Document = pd;
@@ -237,7 +239,7 @@ namespace SchochRechner
 
             this.schochManager.CreateDraw((int)this.NudRound.Value);
             this.schochManager.Save();
-            this.ShowRound();
+            this.ShowDraw();
         }
 
         private void BtnRandomDraw_Click(object sender, EventArgs e)
@@ -249,7 +251,7 @@ namespace SchochRechner
 
             this.schochManager.CreateDrawRandom((int)this.NudRound.Value);
             this.schochManager.Save();
-            this.ShowRound();
+            this.ShowDraw();
         }
 
         private void BtnEmptyMatchcard_Click(object sender, EventArgs e)
@@ -330,8 +332,23 @@ namespace SchochRechner
             }
 
             var court = ((ToolStripMenuItem)sender).Tag.ToString();
-            this.LvwDraws.SelectedItems[0].SubItems[6].Text = court;
-            ((Draw)this.LvwDraws.SelectedItems[0].Tag).Court = Convert.ToInt32(court);
+            var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
+            draw.Court = Convert.ToInt32(court);
+
+            if (court == "0")
+            {
+                if (draw.Start != DateTime.MinValue)
+                {
+                    draw.End = DateTime.Now;
+                    this.LvwDraws.SelectedItems[0].SubItems[6].Text = string.Empty;
+                }
+            }
+            else
+            {
+                this.LvwDraws.SelectedItems[0].SubItems[6].Text = court;
+                draw.Start = DateTime.Now;
+            }
+
             this.schochManager.Save();
         }
 
@@ -393,6 +410,19 @@ namespace SchochRechner
         private void LvwEntries_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.EditEntry();
+        }
+
+        private void TmrDuration_Tick(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in this.LvwDraws.Items)
+            {
+                var draw = (Draw)item.Tag;
+                if (draw.Start != DateTime.MinValue && draw.Court != 0)
+                {
+                    var duration = DateTime.Now - draw.Start;
+                    item.SubItems[7].Text = Math.Floor(duration.TotalMinutes) + ":" + duration.Seconds.ToString("D2");
+                }
+            }
         }
     }
 }
