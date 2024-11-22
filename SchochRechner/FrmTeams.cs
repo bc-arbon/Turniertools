@@ -15,11 +15,14 @@ namespace SchochRechner
     public partial class FrmTeams : Form
     {
         private readonly SchochManager schochManager;
+        private readonly ListViewColumnSorter lvwColumnSorter = new ListViewColumnSorter();
 
         public FrmTeams()
         {
             this.InitializeComponent();
             this.schochManager = new SchochManager();
+
+            this.LvwTeams.ListViewItemSorter = lvwColumnSorter;
         }
 
         public FrmTeams(SchochManager schochManager) : this()
@@ -71,11 +74,6 @@ namespace SchochRechner
             this.LoadTeams();
         }
 
-        private void LvwTeams_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadTeams()
         {
             this.LvwTeams.Items.Clear();
@@ -87,6 +85,8 @@ namespace SchochRechner
                 item.SubItems.Add(team.Name);
                 this.LvwTeams.Items.Add(item);
             }
+
+            this.groupBox1.Text = "Teams (" + this.LvwTeams.Items.Count + ")";
         }
 
         private void LvwTeams_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -102,6 +102,33 @@ namespace SchochRechner
         private void LvwTeams_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void LvwTeams_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.LvwTeams.Sort();
+            this.LvwTeams.Refresh();
         }
     }
 }

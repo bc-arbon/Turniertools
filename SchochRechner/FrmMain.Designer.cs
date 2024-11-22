@@ -199,6 +199,7 @@
             // 
             LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrRank, ChrId, ChrName, ChrRounds, ChrPoints, ChrBuchholz, ChrFeinbuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
             LvwRanking.Dock = DockStyle.Fill;
+            LvwRanking.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LvwRanking.FullRowSelect = true;
             LvwRanking.Location = new Point(0, 0);
             LvwRanking.Name = "LvwRanking";
@@ -213,16 +214,18 @@
             // ChrRank
             // 
             ChrRank.Text = "Rang";
+            ChrRank.Width = 50;
             // 
             // ChrId
             // 
             ChrId.Text = "Id";
+            ChrId.TextAlign = HorizontalAlignment.Center;
             ChrId.Width = 50;
             // 
             // ChrName
             // 
             ChrName.Text = "Name";
-            ChrName.Width = 150;
+            ChrName.Width = 180;
             // 
             // ChrRounds
             // 
@@ -240,13 +243,13 @@
             // 
             ChrBuchholz.Text = "BHZ";
             ChrBuchholz.TextAlign = HorizontalAlignment.Center;
-            ChrBuchholz.Width = 40;
+            ChrBuchholz.Width = 45;
             // 
             // ChrFeinbuchholz
             // 
             ChrFeinbuchholz.Text = "FBHZ";
             ChrFeinbuchholz.TextAlign = HorizontalAlignment.Center;
-            ChrFeinbuchholz.Width = 45;
+            ChrFeinbuchholz.Width = 0;
             // 
             // ChrGames
             // 
@@ -258,7 +261,7 @@
             // 
             ChrGamesDiff.Text = "G Diff";
             ChrGamesDiff.TextAlign = HorizontalAlignment.Center;
-            ChrGamesDiff.Width = 50;
+            ChrGamesDiff.Width = 55;
             // 
             // ChrSets
             // 
@@ -388,7 +391,7 @@
             LvwDraws.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LvwDraws.Columns.AddRange(new ColumnHeader[] { ChdOpp1, ChdDrawTeam1, ChdPoints1, ChdPoints2, ChdDrawTeam2, ChdOpp2, ChdCourt, ChdDuration });
             LvwDraws.ContextMenuStrip = CmsCourt;
-            LvwDraws.Font = new Font("Consolas", 9F);
+            LvwDraws.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LvwDraws.FullRowSelect = true;
             LvwDraws.Location = new Point(8, 35);
             LvwDraws.Name = "LvwDraws";

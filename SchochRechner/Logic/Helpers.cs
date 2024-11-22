@@ -101,6 +101,7 @@ namespace SchochRechner.Logic
             entry.Round = round;
             entry.Team1 = draw.Team1.Id;
             entry.Team2 = draw.Team2.Id;
+            entry.Court = draw.Court;
 
             // 3-set single?
             var rand1 = rng.Next(0, 100);

@@ -40,17 +40,10 @@ namespace SchochRechner
             this.TxtRound.Text = round.ToString();
             this.TxtCourt.Text = court == -1 ? string.Empty : court.ToString();
 
-            if (preselectTeam1 != null)
-            {
-                var team1 = teams.Find(x => x.Id == preselectTeam1);
-                this.CbxTeam1.SelectedItem = team1;
-            }
-
-            if (preselectTeam2 != null)
-            {
-                var team2 = teams.Find(x => x.Id == preselectTeam2);
-                this.CbxTeam2.SelectedItem = team2;
-            }
+            var team1 = teams.Find(x => x.Id == preselectTeam1);
+            this.CbxTeam1.SelectedItem = team1;
+            var team2 = teams.Find(x => x.Id == preselectTeam2);
+            this.CbxTeam2.SelectedItem = team2;
         }
 
         public FrmEntry(List<Team> teams, Entry entry) : this(teams, entry.Round, entry.Court, entry.Team1, entry.Team2)
@@ -162,7 +155,7 @@ namespace SchochRechner
         {
             if (this.CbxTeam1.SelectedItem == null)
             {
-                MessageBox.Show("Team 1 fehlt", "Sir Schoch-A-Lot", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Team 1 fehlt", "Sir Schoch-A-Lot", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -28,117 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.LvwTeams = new System.Windows.Forms.ListView();
-            this.ChrId = new System.Windows.Forms.ColumnHeader();
-            this.ChrName = new System.Windows.Forms.ColumnHeader();
-            this.BtnNew = new System.Windows.Forms.Button();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.BtnEdit = new System.Windows.Forms.Button();
-            this.BtnDelete = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            LvwTeams = new ListView();
+            ChrId = new ColumnHeader();
+            ChrName = new ColumnHeader();
+            BtnNew = new Button();
+            BtnClose = new Button();
+            BtnEdit = new Button();
+            BtnDelete = new Button();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.LvwTeams);
-            this.groupBox1.Location = new System.Drawing.Point(12, 41);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 380);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Teams";
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(LvwTeams);
+            groupBox1.Location = new Point(12, 41);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(359, 380);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Teams";
             // 
             // LvwTeams
             // 
-            this.LvwTeams.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ChrId,
-            this.ChrName});
-            this.LvwTeams.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LvwTeams.FullRowSelect = true;
-            this.LvwTeams.Location = new System.Drawing.Point(3, 19);
-            this.LvwTeams.Name = "LvwTeams";
-            this.LvwTeams.OwnerDraw = true;
-            this.LvwTeams.Size = new System.Drawing.Size(353, 358);
-            this.LvwTeams.TabIndex = 0;
-            this.LvwTeams.UseCompatibleStateImageBehavior = false;
-            this.LvwTeams.View = System.Windows.Forms.View.Details;
-            this.LvwTeams.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.LvwTeams_DrawColumnHeader);
-            this.LvwTeams.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LvwTeams_DrawItem);
-            this.LvwTeams.SelectedIndexChanged += new System.EventHandler(this.LvwTeams_SelectedIndexChanged);
+            LvwTeams.Columns.AddRange(new ColumnHeader[] { ChrId, ChrName });
+            LvwTeams.Dock = DockStyle.Fill;
+            LvwTeams.FullRowSelect = true;
+            LvwTeams.Location = new Point(3, 19);
+            LvwTeams.Name = "LvwTeams";
+            LvwTeams.OwnerDraw = true;
+            LvwTeams.Size = new Size(353, 358);
+            LvwTeams.TabIndex = 0;
+            LvwTeams.UseCompatibleStateImageBehavior = false;
+            LvwTeams.View = View.Details;
+            LvwTeams.ColumnClick += LvwTeams_ColumnClick;
+            LvwTeams.DrawColumnHeader += LvwTeams_DrawColumnHeader;
+            LvwTeams.DrawItem += LvwTeams_DrawItem;
             // 
             // ChrId
             // 
-            this.ChrId.Text = "Id";
-            this.ChrId.Width = 30;
+            ChrId.Text = "Id";
+            ChrId.Width = 30;
             // 
             // ChrName
             // 
-            this.ChrName.Text = "Name";
-            this.ChrName.Width = 250;
+            ChrName.Text = "Name";
+            ChrName.Width = 250;
             // 
             // BtnNew
             // 
-            this.BtnNew.Location = new System.Drawing.Point(15, 12);
-            this.BtnNew.Name = "BtnNew";
-            this.BtnNew.Size = new System.Drawing.Size(75, 23);
-            this.BtnNew.TabIndex = 1;
-            this.BtnNew.Text = "Neu";
-            this.BtnNew.UseVisualStyleBackColor = true;
-            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
+            BtnNew.Location = new Point(15, 12);
+            BtnNew.Name = "BtnNew";
+            BtnNew.Size = new Size(75, 23);
+            BtnNew.TabIndex = 1;
+            BtnNew.Text = "Neu";
+            BtnNew.UseVisualStyleBackColor = true;
+            BtnNew.Click += BtnNew_Click;
             // 
             // BtnClose
             // 
-            this.BtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnClose.Location = new System.Drawing.Point(293, 427);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(75, 23);
-            this.BtnClose.TabIndex = 2;
-            this.BtnClose.Text = "OK";
-            this.BtnClose.UseVisualStyleBackColor = true;
+            BtnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            BtnClose.DialogResult = DialogResult.OK;
+            BtnClose.Location = new Point(293, 427);
+            BtnClose.Name = "BtnClose";
+            BtnClose.Size = new Size(75, 23);
+            BtnClose.TabIndex = 2;
+            BtnClose.Text = "OK";
+            BtnClose.UseVisualStyleBackColor = true;
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Location = new System.Drawing.Point(96, 12);
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(75, 23);
-            this.BtnEdit.TabIndex = 3;
-            this.BtnEdit.Text = "Bearbeiten";
-            this.BtnEdit.UseVisualStyleBackColor = true;
-            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            BtnEdit.Location = new Point(96, 12);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(75, 23);
+            BtnEdit.TabIndex = 3;
+            BtnEdit.Text = "Bearbeiten";
+            BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(177, 12);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(75, 23);
-            this.BtnDelete.TabIndex = 4;
-            this.BtnDelete.Text = "Löschen";
-            this.BtnDelete.UseVisualStyleBackColor = true;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            BtnDelete.Location = new Point(177, 12);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(75, 23);
+            BtnDelete.TabIndex = 4;
+            BtnDelete.Text = "Löschen";
+            BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // FrmTeams
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 462);
-            this.Controls.Add(this.BtnDelete);
-            this.Controls.Add(this.BtnEdit);
-            this.Controls.Add(this.BtnClose);
-            this.Controls.Add(this.BtnNew);
-            this.Controls.Add(this.groupBox1);
-            this.DoubleBuffered = true;
-            this.Name = "FrmTeams";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Teams";
-            this.Load += new System.EventHandler(this.FrmTeams_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(383, 462);
+            Controls.Add(BtnDelete);
+            Controls.Add(BtnEdit);
+            Controls.Add(BtnClose);
+            Controls.Add(BtnNew);
+            Controls.Add(groupBox1);
+            DoubleBuffered = true;
+            Name = "FrmTeams";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Teams";
+            Load += FrmTeams_Load;
+            groupBox1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

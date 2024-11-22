@@ -32,8 +32,8 @@
             ChrHidden = new ColumnHeader();
             ChrRank = new ColumnHeader();
             ChrTeam = new ColumnHeader();
-            ChrPoints = new ColumnHeader();
             ChrRounds = new ColumnHeader();
+            ChrPoints = new ColumnHeader();
             ChrBuchholz = new ColumnHeader();
             ChrGames = new ColumnHeader();
             ChrGamesDiff = new ColumnHeader();
@@ -47,7 +47,7 @@
             // 
             LvwRanking.Columns.AddRange(new ColumnHeader[] { ChrHidden, ChrRank, ChrTeam, ChrRounds, ChrPoints, ChrBuchholz, ChrGames, ChrGamesDiff, ChrSets, ChrSetsDiff, ChrGamepoints, ChrGamepointsDiff });
             LvwRanking.Dock = DockStyle.Fill;
-            LvwRanking.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LvwRanking.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LvwRanking.Location = new Point(0, 0);
             LvwRanking.Name = "LvwRanking";
             LvwRanking.OwnerDraw = true;
@@ -73,17 +73,17 @@
             ChrTeam.Text = "Name";
             ChrTeam.Width = 700;
             // 
-            // ChrPoints
-            // 
-            ChrPoints.Text = "Punkte";
-            ChrPoints.TextAlign = HorizontalAlignment.Center;
-            ChrPoints.Width = 130;
-            // 
             // ChrRounds
             // 
             ChrRounds.Text = "Runden";
             ChrRounds.TextAlign = HorizontalAlignment.Center;
             ChrRounds.Width = 140;
+            // 
+            // ChrPoints
+            // 
+            ChrPoints.Text = "Punkte";
+            ChrPoints.TextAlign = HorizontalAlignment.Center;
+            ChrPoints.Width = 130;
             // 
             // ChrBuchholz
             // 
