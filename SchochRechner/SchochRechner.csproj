@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FrmMatchcard2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="sampledata\entries-sample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
