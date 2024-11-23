@@ -29,14 +29,20 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            TxtTeam1 = new TextBox();
             CbxTeam1 = new ComboBox();
             groupBox2 = new GroupBox();
+            TxtTeam2 = new TextBox();
             CbxTeam2 = new ComboBox();
             BtnOk = new Button();
-            TxtTeam1 = new TextBox();
-            TxtTeam2 = new TextBox();
+            groupBox3 = new GroupBox();
+            TxtRound = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            TxtCourt = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -49,6 +55,13 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Team 1";
+            // 
+            // TxtTeam1
+            // 
+            TxtTeam1.Location = new Point(6, 51);
+            TxtTeam1.Name = "TxtTeam1";
+            TxtTeam1.Size = new Size(223, 23);
+            TxtTeam1.TabIndex = 1;
             // 
             // CbxTeam1
             // 
@@ -71,6 +84,13 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Team 2";
             // 
+            // TxtTeam2
+            // 
+            TxtTeam2.Location = new Point(6, 51);
+            TxtTeam2.Name = "TxtTeam2";
+            TxtTeam2.Size = new Size(223, 23);
+            TxtTeam2.TabIndex = 2;
+            // 
             // CbxTeam2
             // 
             CbxTeam2.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -84,7 +104,7 @@
             // BtnOk
             // 
             BtnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            BtnOk.Location = new Point(417, 108);
+            BtnOk.Location = new Point(417, 163);
             BtnOk.Name = "BtnOk";
             BtnOk.Size = new Size(75, 23);
             BtnOk.TabIndex = 2;
@@ -92,25 +112,56 @@
             BtnOk.UseVisualStyleBackColor = true;
             BtnOk.Click += BtnOk_Click;
             // 
-            // TxtTeam1
+            // groupBox3
             // 
-            TxtTeam1.Location = new Point(6, 51);
-            TxtTeam1.Name = "TxtTeam1";
-            TxtTeam1.Size = new Size(223, 23);
-            TxtTeam1.TabIndex = 1;
+            groupBox3.Controls.Add(label2);
+            groupBox3.Controls.Add(TxtCourt);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Controls.Add(TxtRound);
+            groupBox3.Location = new Point(12, 106);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(474, 51);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
             // 
-            // TxtTeam2
+            // TxtRound
             // 
-            TxtTeam2.Location = new Point(6, 51);
-            TxtTeam2.Name = "TxtTeam2";
-            TxtTeam2.Size = new Size(223, 23);
-            TxtTeam2.TabIndex = 2;
+            TxtRound.Location = new Point(56, 19);
+            TxtRound.Name = "TxtRound";
+            TxtRound.Size = new Size(50, 23);
+            TxtRound.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Runde:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(147, 22);
+            label2.Name = "label2";
+            label2.Size = new Size(32, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Feld:";
+            // 
+            // TxtCourt
+            // 
+            TxtCourt.Location = new Point(185, 19);
+            TxtCourt.Name = "TxtCourt";
+            TxtCourt.Size = new Size(50, 23);
+            TxtCourt.TabIndex = 3;
             // 
             // FrmCustomMatchcard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 143);
+            ClientSize = new Size(510, 198);
+            Controls.Add(groupBox3);
             Controls.Add(BtnOk);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -124,6 +175,8 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -136,5 +189,10 @@
         private Button BtnOk;
         private TextBox TxtTeam1;
         private TextBox TxtTeam2;
+        private GroupBox groupBox3;
+        private Label label2;
+        private TextBox TxtCourt;
+        private Label label1;
+        private TextBox TxtRound;
     }
 }

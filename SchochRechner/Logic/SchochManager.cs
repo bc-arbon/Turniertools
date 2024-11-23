@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SchochRechner.ObjectModel;
-using System.Text;
 
 namespace SchochRechner.Logic
 {
@@ -8,31 +7,54 @@ namespace SchochRechner.Logic
     {
         private string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
         private string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
+        private string roundFilePath = Path.Combine(Application.StartupPath, "round.json");
 
         public List<Entry> Entries { get; } = new();
         public List<Team> Teams { get; } = new();
+        public Round Round { get; } = new();
 
         public void Load()
         {
-            if (!File.Exists(this.entriesFilepath) || !File.Exists(this.teamsFilepath))
+            if (File.Exists(this.entriesFilepath))
             {
-                return;
+                var content1 = File.ReadAllText(this.entriesFilepath);
+                var newEntries = JsonConvert.DeserializeObject<List<Entry>>(content1);
+                if (newEntries != null)
+                {
+                    this.Entries.Clear();
+                    this.Entries.AddRange(newEntries);
+                }
             }
 
-            var content2 = File.ReadAllText(this.teamsFilepath);
-            var newTeams = JsonConvert.DeserializeObject<List<Team>>(content2);
-            if (newTeams != null)
+            if (File.Exists(this.teamsFilepath))
             {
-                this.Teams.Clear();
-                this.Teams.AddRange(newTeams);
+                var content2 = File.ReadAllText(this.teamsFilepath);
+                var newTeams = JsonConvert.DeserializeObject<List<Team>>(content2);
+                if (newTeams != null)
+                {
+                    this.Teams.Clear();
+                    this.Teams.AddRange(newTeams);
+                }
             }
 
-            var content1 = File.ReadAllText(this.entriesFilepath);
-            var newEntries = JsonConvert.DeserializeObject<List<Entry>>(content1);
-            if (newEntries != null)
+            if (File.Exists(this.roundFilePath))
             {
-                this.Entries.Clear();
-                this.Entries.AddRange(newEntries);
+                var content3 = File.ReadAllText(this.roundFilePath);
+                var newRound = JsonConvert.DeserializeObject<Round>(content3);
+                if (newRound != null)
+                {
+                    this.Round.RoundActual = newRound.RoundActual;
+                    this.Round.Draws.AddRange(newRound.Draws);
+
+                    // Fix all team references
+                    foreach (var draw in this.Round.Draws)
+                    {
+                        var team1Id = draw.Team1.Id;
+                        var team2Id = draw.Team2.Id;
+                        draw.Team1 = this.Teams.FirstOrDefault(x => x.Id == team1Id);
+                        draw.Team2 = this.Teams.FirstOrDefault(y => y.Id == team2Id);
+                    }
+                }
             }
         }
 
@@ -57,11 +79,23 @@ namespace SchochRechner.Logic
                 }
             }
 
+            if (File.Exists(this.roundFilePath))
+            {
+                var newFilePath = Path.Combine(Application.StartupPath, "round-" + suffix + ".json");
+                if (!File.Exists(newFilePath))
+                {
+                    File.Move(this.roundFilePath, newFilePath);
+                }
+            }
+
             var content1 = JsonConvert.SerializeObject(this.Entries, Formatting.Indented);
             File.WriteAllText(this.entriesFilepath, content1);
 
             var content2 = JsonConvert.SerializeObject(this.Teams, Formatting.Indented);
             File.WriteAllText(this.teamsFilepath, content2);
+
+            var content3 = JsonConvert.SerializeObject(this.Round, Formatting.Indented);
+            File.WriteAllText(this.roundFilePath, content3);
         }
 
         public void AddTeam(int id, string name)
@@ -190,106 +224,87 @@ namespace SchochRechner.Logic
             this.Teams.Sort(new SchochComparer());
         }
 
-        public Round CreateDraw()
+        public void CreateDraw(int roundNumber)
         {
-            var round = new Round();
-            var ranking = 0;
+            this.Round.RoundActual = roundNumber;
+            this.Round.Draws.Clear();
 
-            // Determine the Freilos, but only if a freilos is present
-            var hasFreilos = this.Teams.Where(x => x.Id == 99).ToArray();
-            if (hasFreilos.Length > 0)
+            var team1Index = 0;
+            var team2Index = 0;
+            var loopDetector2 = 1;
+
+            while (this.Teams.Count / 2 != this.Round.Draws.Count)
             {
-                for (var i = this.Teams.Count - 1; i >= 0; i--)
+                if (team1Index >= this.Teams.Count)
                 {
-                    if (this.Teams[i].Id == 99)
+                    team1Index = 0;
+                }
+
+                var team1 = this.Teams[team1Index];
+
+                // Is this team already in the draw?
+                if (this.AlreadyDrawn(this.Round.Draws, team1))
+                {
+                    team1Index++;
+                    continue;
+                }
+
+                if (team2Index >= this.Teams.Count)
+                {
+                    team2Index = 0;
+                }
+
+                var team2 = this.Teams[team2Index];
+
+                var opponentFound = false;
+                var loopDetector = 0;                
+                while (!opponentFound)
+                {
+                    loopDetector++;
+
+                    // Is already in draw or same team
+                    // or is the same team
+                    // or has already played against this team
+                    if (this.AlreadyDrawn(this.Round.Draws, team2)
+                        || team1.Id == team2.Id
+                        || team1.Opponents.Contains(team2.Id))
                     {
+                        team2Index++;
+                        if (team2Index >= this.Teams.Count)
+                        {
+                            team2Index = 0;
+                        }
+
+                        team2 = this.Teams[team2Index];
+
+                        if (loopDetector > 50)
+                        {
+                            for (var i = 0; i < loopDetector2; i++)
+                            {
+                                this.Round.Draws.RemoveAt(this.Round.Draws.Count - 1);
+                            }
+
+                            loopDetector = 0;
+                            loopDetector2++;
+                        }
+
                         continue;
                     }
 
-                    if (!this.Teams[i].Opponents.Contains(99))
-                    {
-                        round.Draws.Add(new Draw { Team1 = this.Teams[i], Team2 = hasFreilos[0] });
-                        break;
-                    }
+                    opponentFound = true;
                 }
+
+                // Add draw
+                team1Index++;
+                this.Round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
             }
-
-            // Determine all other draws
-            foreach (var team in this.Teams)
-            {
-                try
-                {
-                    // Is this team already in the draw?
-                    if (this.AlreadyDrawn(round.Draws, team))
-                    {
-                        ranking++;
-                        continue;
-                    }
-
-                    // Find next opponent                
-                    var opponentFound = false;
-                    var i = ranking + 1;
-                    var team2 = this.Teams[i];
-                    while (!opponentFound)
-                    {
-                        // Is it the same team
-                        if (team == team2)
-                        {
-                            i++;
-                            if (i == this.Teams.Count)
-                            {
-                                i = 0;
-                            }
-
-                            team2 = this.Teams[i];
-                            continue;
-                        }
-
-                        // Is already in draw
-                        if (this.AlreadyDrawn(round.Draws, team2))
-                        {
-                            i++;
-                            if (i == this.Teams.Count)
-                            {
-                                i = 0;
-                            }
-
-                            team2 = this.Teams[i];
-                            continue;
-                        }
-
-                        // Had already played against this team
-                        if (team.Opponents.Contains(team2.Id))
-                        {
-                            i++;
-                            if (i == this.Teams.Count)
-                            {
-                                i = 0;
-                            }
-
-                            team2 = this.Teams[i];
-                            continue;
-                        }
-
-                        opponentFound = true;
-                    }
-
-                    // Add draw
-                    ranking++;
-                    round.Draws.Add(new Draw { Team1 = team, Team2 = team2 });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Öppis isch nöd guet (Auslosung ist nicht zu trauen):\n\n" + ex, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            return round;
         }
 
-        public Round CreateDrawRandom()
+        public void CreateDrawRandom(int roundNumber)
         {
-            var round = new Round();
+            this.Round.RoundActual = roundNumber;
+            this.Round.Draws.Clear();
+
             var randomizedList = this.Teams.ToList();
             randomizedList.Shuffle();
 
@@ -298,7 +313,7 @@ namespace SchochRechner.Logic
                 var team1 = randomizedList[i];
 
                 // Is this team already in the draw?
-                if (this.AlreadyDrawn(round.Draws, team1))
+                if (this.AlreadyDrawn(this.Round.Draws, team1))
                 {
                     continue;
                 }
@@ -307,10 +322,13 @@ namespace SchochRechner.Logic
                 var team2 = randomizedList[i + 1];
 
                 // Add draw                
-                round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
+                this.Round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
             }
+        }
 
-            return round;
+        public void SetRoundNumber(int roundNumber)
+        {
+            this.Round.RoundActual = roundNumber;
         }
 
         public void AddExampleData()

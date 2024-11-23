@@ -32,8 +32,8 @@ namespace SchochRechner
                 var item = new ListViewItem(string.Empty);
                 item.SubItems.Add(rank.ToString());
                 item.SubItems.Add(team.Name);
-                item.SubItems.Add(team.GamesWon.ToString());
                 item.SubItems.Add(team.Rounds.ToString());
+                item.SubItems.Add(team.GamesWon.ToString());
                 item.SubItems.Add(team.Buchholz.ToString());
                 item.SubItems.Add(team.GamesWon.ToString() + ":" + team.GamesLost.ToString());
                 item.SubItems.Add(team.GamesDiffText);

@@ -15,18 +15,20 @@ namespace SchochRechner
             this.InitializeComponent();
             this.ctlMatchcard1.Team1 = string.Empty;
             this.ctlMatchcard1.Team2 = string.Empty;
+            this.ctlMatchcard1.Round = "Runde:";
+            this.ctlMatchcard1.Court = "Feld:";
         }
 
-        public FrmMatchcard(Draw draw) : this()
+        public FrmMatchcard(Draw draw, int round) : this(draw.Team1.Name, draw.Team2.Name, round, draw.Court)
         {
-            this.ctlMatchcard1.Team1 = draw.Team1.Name;
-            this.ctlMatchcard1.Team2 = draw.Team2.Name;
         }
 
-        public FrmMatchcard(string team1, string team2) : this()
+        public FrmMatchcard(string team1, string team2, int round, int court) : this()
         {
             this.ctlMatchcard1.Team1 = team1;
             this.ctlMatchcard1.Team2 = team2;
+            this.ctlMatchcard1.Court = court.ToString();
+            this.ctlMatchcard1.Round = round.ToString();
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)

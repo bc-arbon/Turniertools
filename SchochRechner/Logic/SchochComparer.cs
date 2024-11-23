@@ -1,5 +1,4 @@
 ﻿using SchochRechner.ObjectModel;
-using System.Runtime.CompilerServices;
 
 namespace SchochRechner.Logic
 {
