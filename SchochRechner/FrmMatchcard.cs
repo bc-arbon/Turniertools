@@ -15,8 +15,8 @@ namespace SchochRechner
             this.InitializeComponent();
             this.ctlMatchcard1.Team1 = string.Empty;
             this.ctlMatchcard1.Team2 = string.Empty;
-            this.ctlMatchcard1.Round = "Runde:";
-            this.ctlMatchcard1.Court = "Feld:";
+            this.ctlMatchcard1.Round = string.Empty;
+            this.ctlMatchcard1.Court = string.Empty;
         }
 
         public FrmMatchcard(Draw draw, int round) : this(draw.Team1.Name, draw.Team2.Name, round, draw.Court)
