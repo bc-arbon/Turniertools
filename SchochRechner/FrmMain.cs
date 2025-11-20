@@ -22,6 +22,7 @@ namespace SchochRechner
             this.ShowDraw();
             this.ShowRanking();
             this.frmDisplay.ShowRanking();
+            this.frmDisplay.ShowDraw();
         }
 
         private void ShowRanking()
@@ -74,6 +75,8 @@ namespace SchochRechner
                 //Thread.Sleep(500);
                 //Application.DoEvents();
             }
+
+            this.frmDisplay.ShowDraw();
         }
 
         private void ShowEntries()
@@ -349,6 +352,7 @@ namespace SchochRechner
                 draw.Start = DateTime.Now;
             }
 
+            this.frmDisplay.ShowDraw();
             this.schochManager.Save();
         }
 

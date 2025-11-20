@@ -1,5 +1,4 @@
 ﻿using SchochRechner.ObjectModel;
-using System.Net.NetworkInformation;
 
 namespace SchochRechner.Logic
 {

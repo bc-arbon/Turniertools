@@ -48,6 +48,24 @@ namespace SchochRechner
             }
         }
 
+        public void ShowDraw()
+        {
+            this.LblDrawsRound.Text = $"Runde {this.schochManager.Round.RoundActual}";
+
+            this.LvwDraw.Items.Clear();
+            foreach (var draw in this.schochManager.Round.Draws)
+            {
+                var item = new ListViewItem(string.Empty);
+                item.SubItems.Add(draw.Court == 0 ? string.Empty : draw.Court.ToString());
+                item.SubItems.Add(draw.Team1.Name);
+                item.SubItems.Add("-");
+                item.SubItems.Add(draw.Team2.Name);
+                var entry = this.schochManager.Entries.FirstOrDefault(e => e.Team1 == draw.Team1.Id && e.Team2 == draw.Team2.Id);
+                item.SubItems.Add(entry != null ? $"{entry.Games1}:{entry.Games2}" : string.Empty);
+                this.LvwDraw.Items.Add(item);
+            }
+        }
+
         private void LvwRanking_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             e.DrawDefault = true;
@@ -67,6 +85,18 @@ namespace SchochRechner
         {
             e.Cancel = true;
             this.Hide();
+        }
+
+        private void TmrChangeView_Tick(object sender, EventArgs e)
+        {
+            if (this.TclDisplay.SelectedTab == this.TpgDraw)
+            {
+                this.TclDisplay.SelectedTab = this.TpgRanking;
+            }
+            else if (this.TclDisplay.SelectedTab == this.TpgRanking)
+            {
+                this.TclDisplay.SelectedTab = this.TpgDraw;
+            }
         }
     }
 }

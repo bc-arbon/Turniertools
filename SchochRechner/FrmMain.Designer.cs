@@ -279,7 +279,7 @@
             // 
             ChrGamepoints.Text = "P";
             ChrGamepoints.TextAlign = HorizontalAlignment.Center;
-            ChrGamepoints.Width = 50;
+            ChrGamepoints.Width = 70;
             // 
             // ChrGamepointsDiff
             // 
@@ -679,7 +679,7 @@
             DoubleBuffered = true;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Sir Schoch-A-Lot 1.4";
+            Text = "Sir Schoch-A-Lot 1.5";
             FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
             SpcMain.Panel1.ResumeLayout(false);
