@@ -30,6 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             SpcMain = new SplitContainer();
+            tlpMainContent = new TableLayoutPanel();
+            pnlGroupSelector = new Panel();
+            CbxGroup = new ComboBox();
+            lblGroupSelector = new Label();
             tabControl1 = new TabControl();
             TpgRanking = new TabPage();
             SpcRanking = new SplitContainer();
@@ -98,6 +102,8 @@
             SpcMain.Panel1.SuspendLayout();
             SpcMain.Panel2.SuspendLayout();
             SpcMain.SuspendLayout();
+            tlpMainContent.SuspendLayout();
+            pnlGroupSelector.SuspendLayout();
             tabControl1.SuspendLayout();
             TpgRanking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpcRanking).BeginInit();
@@ -123,7 +129,7 @@
             // 
             // SpcMain.Panel1
             // 
-            SpcMain.Panel1.Controls.Add(tabControl1);
+            SpcMain.Panel1.Controls.Add(tlpMainContent);
             // 
             // SpcMain.Panel2
             // 
@@ -132,15 +138,59 @@
             SpcMain.SplitterDistance = 945;
             SpcMain.TabIndex = 0;
             // 
+            // tlpMainContent
+            // 
+            tlpMainContent.ColumnCount = 1;
+            tlpMainContent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpMainContent.Controls.Add(pnlGroupSelector, 0, 0);
+            tlpMainContent.Controls.Add(tabControl1, 0, 1);
+            tlpMainContent.Dock = DockStyle.Fill;
+            tlpMainContent.Location = new Point(0, 0);
+            tlpMainContent.Name = "tlpMainContent";
+            tlpMainContent.RowCount = 2;
+            tlpMainContent.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tlpMainContent.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpMainContent.Size = new Size(945, 818);
+            tlpMainContent.TabIndex = 0;
+            // 
+            // pnlGroupSelector
+            // 
+            pnlGroupSelector.Controls.Add(CbxGroup);
+            pnlGroupSelector.Controls.Add(lblGroupSelector);
+            pnlGroupSelector.Dock = DockStyle.Fill;
+            pnlGroupSelector.Location = new Point(3, 3);
+            pnlGroupSelector.Name = "pnlGroupSelector";
+            pnlGroupSelector.Size = new Size(939, 28);
+            pnlGroupSelector.TabIndex = 0;
+            // 
+            // CbxGroup
+            // 
+            CbxGroup.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbxGroup.FormattingEnabled = true;
+            CbxGroup.Location = new Point(112, 5);
+            CbxGroup.Name = "CbxGroup";
+            CbxGroup.Size = new Size(220, 23);
+            CbxGroup.TabIndex = 1;
+            CbxGroup.SelectedIndexChanged += GroupSelector_SelectedIndexChanged;
+            // 
+            // lblGroupSelector
+            // 
+            lblGroupSelector.AutoSize = true;
+            lblGroupSelector.Location = new Point(12, 9);
+            lblGroupSelector.Name = "lblGroupSelector";
+            lblGroupSelector.Size = new Size(92, 15);
+            lblGroupSelector.TabIndex = 0;
+            lblGroupSelector.Text = "Gruppe / Klasse:";
+            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(TpgRanking);
             tabControl1.Controls.Add(TpgDraws);
             tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
+            tabControl1.Location = new Point(3, 37);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(945, 818);
+            tabControl1.Size = new Size(939, 778);
             tabControl1.TabIndex = 1;
             // 
             // TpgRanking
@@ -149,8 +199,8 @@
             TpgRanking.Controls.Add(SpcRanking);
             TpgRanking.Location = new Point(4, 24);
             TpgRanking.Name = "TpgRanking";
-            TpgRanking.Padding = new Padding(3, 3, 3, 3);
-            TpgRanking.Size = new Size(937, 790);
+            TpgRanking.Padding = new Padding(3);
+            TpgRanking.Size = new Size(931, 750);
             TpgRanking.TabIndex = 0;
             TpgRanking.Text = "Rangliste";
             // 
@@ -170,8 +220,8 @@
             // SpcRanking.Panel2
             // 
             SpcRanking.Panel2.Controls.Add(LvwRanking);
-            SpcRanking.Size = new Size(931, 784);
-            SpcRanking.SplitterDistance = 34;
+            SpcRanking.Size = new Size(925, 744);
+            SpcRanking.SplitterDistance = 31;
             SpcRanking.SplitterWidth = 5;
             SpcRanking.TabIndex = 1;
             // 
@@ -204,7 +254,7 @@
             LvwRanking.Location = new Point(0, 0);
             LvwRanking.Name = "LvwRanking";
             LvwRanking.OwnerDraw = true;
-            LvwRanking.Size = new Size(931, 745);
+            LvwRanking.Size = new Size(925, 708);
             LvwRanking.TabIndex = 0;
             LvwRanking.UseCompatibleStateImageBehavior = false;
             LvwRanking.View = View.Details;
@@ -300,8 +350,8 @@
             TpgDraws.Controls.Add(LvwDraws);
             TpgDraws.Location = new Point(4, 24);
             TpgDraws.Name = "TpgDraws";
-            TpgDraws.Padding = new Padding(3, 3, 3, 3);
-            TpgDraws.Size = new Size(937, 790);
+            TpgDraws.Padding = new Padding(3);
+            TpgDraws.Size = new Size(931, 750);
             TpgDraws.TabIndex = 1;
             TpgDraws.Text = "Auslosungen";
             // 
@@ -368,7 +418,7 @@
             // BtnClearDraws
             // 
             BtnClearDraws.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnClearDraws.Location = new Point(862, 6);
+            BtnClearDraws.Location = new Point(856, 6);
             BtnClearDraws.Name = "BtnClearDraws";
             BtnClearDraws.Size = new Size(69, 23);
             BtnClearDraws.TabIndex = 3;
@@ -397,7 +447,7 @@
             LvwDraws.Location = new Point(8, 35);
             LvwDraws.Name = "LvwDraws";
             LvwDraws.OwnerDraw = true;
-            LvwDraws.Size = new Size(924, 744);
+            LvwDraws.Size = new Size(918, 704);
             LvwDraws.TabIndex = 1;
             LvwDraws.UseCompatibleStateImageBehavior = false;
             LvwDraws.View = View.Details;
@@ -688,6 +738,9 @@
             SpcMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SpcMain).EndInit();
             SpcMain.ResumeLayout(false);
+            tlpMainContent.ResumeLayout(false);
+            pnlGroupSelector.ResumeLayout(false);
+            pnlGroupSelector.PerformLayout();
             tabControl1.ResumeLayout(false);
             TpgRanking.ResumeLayout(false);
             SpcRanking.Panel1.ResumeLayout(false);
@@ -709,6 +762,10 @@
         #endregion
 
         private SplitContainer SpcMain;
+        private TableLayoutPanel tlpMainContent;
+        private Panel pnlGroupSelector;
+        private Label lblGroupSelector;
+        private ComboBox CbxGroup;
         private ListView LvwRanking;
         private ColumnHeader ChrName;
         private ColumnHeader ChrPoints;

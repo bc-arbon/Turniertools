@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.TxtId = new System.Windows.Forms.TextBox();
+            this.CbxGroup = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnOk = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -42,11 +44,13 @@
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.CbxGroup);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.TxtName);
             this.groupBox1.Controls.Add(this.TxtId);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(281, 88);
+            this.groupBox1.Size = new System.Drawing.Size(281, 117);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Team";
@@ -84,11 +88,29 @@
             this.TxtId.Size = new System.Drawing.Size(46, 23);
             this.TxtId.TabIndex = 0;
             this.TxtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            //
+            // CbxGroup
+            //
+            this.CbxGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxGroup.FormattingEnabled = true;
+            this.CbxGroup.Location = new System.Drawing.Point(54, 80);
+            this.CbxGroup.Name = "CbxGroup";
+            this.CbxGroup.Size = new System.Drawing.Size(221, 23);
+            this.CbxGroup.TabIndex = 2;
+            //
+            // label3
+            //
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Gruppe:";
             // 
             // BtnCancel
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancel.Location = new System.Drawing.Point(218, 109);
+            this.BtnCancel.Location = new System.Drawing.Point(218, 138);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 23);
             this.BtnCancel.TabIndex = 3;
@@ -98,7 +120,7 @@
             // BtnOk
             // 
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BtnOk.Location = new System.Drawing.Point(137, 109);
+            this.BtnOk.Location = new System.Drawing.Point(137, 138);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(75, 23);
             this.BtnOk.TabIndex = 2;
@@ -109,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 144);
+            this.ClientSize = new System.Drawing.Size(305, 173);
             this.Controls.Add(this.BtnOk);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.groupBox1);
@@ -133,6 +155,8 @@
         private Label label1;
         private TextBox TxtName;
         private TextBox TxtId;
+        private ComboBox CbxGroup;
+        private Label label3;
         private Button BtnCancel;
         private Button BtnOk;
     }

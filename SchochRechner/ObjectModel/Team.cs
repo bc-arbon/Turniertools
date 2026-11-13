@@ -12,6 +12,8 @@
 
         public string Name { get; set; }
 
+        public string GroupName { get; set; }
+
         public int Rounds { get { return this.Opponents.Count; } }
 
         public int SetsWon { get; set; }

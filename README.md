@@ -7,7 +7,8 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 - Resultatverwaltung
 - Auslosung einer neuen Schochrunde
 - Berechnung der Buchholz- und Feinbuchholzzahl
-- Berechnung der Rangliste  
+- Berechnung der Rangliste
+- Verwaltung mehrerer Gruppen oder Stärkeklassen mit getrennten Ranglisten und Auslosungen
 
 ## Todo
 - Druckqualität Resultatblatt verbessern
@@ -16,6 +17,11 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 - Global aktuelle Runde definieren (autofill bei Resultateingabe und Matchblatt)
 
 ## Changelog
+
+### V1.6 (13.11.2026)
+- Mehrere Gruppen/Stärkeklassen mit getrennten Ranglisten, Resultaten und Auslosungen verwalten
+- Gruppen anlegen, umbenennen und löschen; Teams Gruppen zuordnen
+- Beameranzeige schaltet automatisch durch Ranglisten und Auslosungen aller Gruppen
 
 ### V1.5 (20.11.2025)
 - Anzeige der aktuellen Runde im Displayfenster

@@ -9,10 +9,15 @@ namespace SchochRechner
             this.InitializeComponent();
         }
 
-        public FrmTeam(Team team) : this()
+        public FrmTeam(IEnumerable<string> groups, Team? team = null, string? selectedGroupName = null) : this()
         {
-            this.TxtId.Text = team.Id.ToString();
-            this.TxtName.Text = team.Name;
+            this.CbxGroup.Items.AddRange(groups.Cast<object>().ToArray());
+            this.CbxGroup.SelectedItem = team?.GroupName ?? selectedGroupName ?? this.CbxGroup.Items[0];
+            if (team != null)
+            {
+                this.TxtId.Text = team.Id.ToString();
+                this.TxtName.Text = team.Name;
+            }
         }
 
         public int Id 
@@ -24,6 +29,13 @@ namespace SchochRechner
         }
 
         public string TeamName { get { return this.TxtName.Text; }
+        }
+
+        public string GroupName { get { return (string)this.CbxGroup.SelectedItem; } }
+
+        public void SetGroupSelectionEnabled(bool enabled)
+        {
+            this.CbxGroup.Enabled = enabled;
         }
 
         private void TxtName_KeyDown(object sender, KeyEventArgs e)

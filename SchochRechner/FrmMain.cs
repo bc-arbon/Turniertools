@@ -15,6 +15,28 @@ namespace SchochRechner
 
         private readonly SchochManager schochManager = new();
         private readonly FrmDisplay frmDisplay;
+        private bool refreshingGroups;
+
+        private void RefreshGroups()
+        {
+            this.refreshingGroups = true;
+            this.CbxGroup.Items.Clear();
+            this.CbxGroup.Items.AddRange(this.schochManager.Groups.Cast<object>().ToArray());
+            this.CbxGroup.SelectedItem = this.schochManager.SelectedGroupName;
+            this.refreshingGroups = false;
+        }
+
+        private void GroupSelector_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (this.refreshingGroups || this.CbxGroup.SelectedItem is not string groupName)
+            {
+                return;
+            }
+
+            this.schochManager.SelectGroup(groupName);
+            this.schochManager.CalculateRanking();
+            this.ShowAll();
+        }
 
         private void ShowAll()
         {
@@ -29,7 +51,7 @@ namespace SchochRechner
         {
             this.LvwRanking.Items.Clear();
             var rank = 1;
-            foreach (var team in this.schochManager.Teams)
+            foreach (var team in this.schochManager.CurrentTeams)
             {
                 var item = new ListViewItem(rank.ToString());
                 item.SubItems.Add(team.Id.ToString());
@@ -61,6 +83,11 @@ namespace SchochRechner
 
             foreach (var draw in this.schochManager.Round.Draws)
             {
+                if (draw.Team1 == null || draw.Team2 == null)
+                {
+                    continue;
+                }
+
                 var item = new ListViewItem(Helpers.OpponentsAsList(draw.Team1.Opponents));
                 item.SubItems.Add("(" + draw.Team1.Id + ") " + draw.Team1.Name);
                 item.SubItems.Add(draw.Team1.GamesWon.ToString());
@@ -83,12 +110,12 @@ namespace SchochRechner
         {
             this.LvwEntries.Items.Clear();
 
-            foreach (var entry in this.schochManager.Entries)
+            foreach (var entry in this.schochManager.CurrentEntries)
             {
                 var item = new ListViewItem(entry.Round.ToString());
                 item.Tag = entry;
-                var team1 = this.schochManager.Teams.Find(x => x.Id == entry.Team1);
-                var team2 = this.schochManager.Teams.Find(x => x.Id == entry.Team2);
+                var team1 = this.schochManager.CurrentTeams.Find(x => x.Id == entry.Team1);
+                var team2 = this.schochManager.CurrentTeams.Find(x => x.Id == entry.Team2);
                 item.SubItems.Add(team1 != null ? team1.Name : string.Empty);
                 item.SubItems.Add(team2 != null ? team2.Name : string.Empty);
                 item.SubItems.Add(entry.Games1 + ":" + entry.Games2);
@@ -113,7 +140,7 @@ namespace SchochRechner
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value, -1, -1, -1);
+            var frmEntry = new FrmEntry(this.schochManager.CurrentTeams, (int)this.NudRound.Value, -1, -1, -1);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -167,6 +194,9 @@ namespace SchochRechner
         private void FrmMain_Load(object sender, EventArgs e)
         {
             this.schochManager.Load();
+            this.schochManager.SelectedGroupName = this.schochManager.Groups.First();
+            this.RefreshGroups();
+            this.schochManager.CalculateRanking();
             //this.schochManager.AddExampleData();
             //this.schochManager.AddExampleData2();
 
@@ -179,6 +209,8 @@ namespace SchochRechner
             var frmTeams = new FrmTeams(this.schochManager);
             frmTeams.ShowDialog();
 
+            this.RefreshGroups();
+            this.schochManager.CalculateRanking();
             this.ShowAll();
         }
 
@@ -311,7 +343,7 @@ namespace SchochRechner
 
         private void BtnCustomMatchcard_Click(object sender, EventArgs e)
         {
-            var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.Teams);
+            var frmCustomMatchcard = new FrmCustomMatchcard(this.schochManager.CurrentTeams);
             if (frmCustomMatchcard.ShowDialog() == DialogResult.OK)
             {
                 var frmMatchcard = new FrmMatchcard(frmCustomMatchcard.Team1, frmCustomMatchcard.Team2, frmCustomMatchcard.Round, frmCustomMatchcard.Court);
@@ -375,7 +407,7 @@ namespace SchochRechner
 
             var draw = (Draw)this.LvwDraws.SelectedItems[0].Tag;
 
-            var frmEntry = new FrmEntry(this.schochManager.Teams, (int)this.NudRound.Value, draw.Court, draw.Team1.Id, draw.Team2.Id);
+            var frmEntry = new FrmEntry(this.schochManager.CurrentTeams, (int)this.NudRound.Value, draw.Court, draw.Team1.Id, draw.Team2.Id);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -400,7 +432,7 @@ namespace SchochRechner
             }
 
             var entry = (Entry)this.LvwEntries.SelectedItems[0].Tag;
-            var frmEntry = new FrmEntry(this.schochManager.Teams, entry);
+            var frmEntry = new FrmEntry(this.schochManager.CurrentTeams, entry);
             if (frmEntry.ShowDialog() == DialogResult.OK)
             {
                 Helpers.UpdateEntry(entry, frmEntry);

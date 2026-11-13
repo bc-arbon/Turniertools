@@ -4,6 +4,8 @@
     {
         public int Round { get; set; }
 
+        public string GroupName { get; set; }
+
         public int Court { get; set; }
 
         public int Team1 { get; set; }

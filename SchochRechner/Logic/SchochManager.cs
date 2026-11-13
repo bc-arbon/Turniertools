@@ -8,13 +8,54 @@ namespace SchochRechner.Logic
         private string entriesFilepath = Path.Combine(Application.StartupPath, "entries.json");
         private string teamsFilepath = Path.Combine(Application.StartupPath, "teams.json");
         private string roundFilePath = Path.Combine(Application.StartupPath, "round.json");
+        private readonly string groupsFilePath = Path.Combine(Application.StartupPath, "groups.json");
+        private readonly string groupRoundsFilePath = Path.Combine(Application.StartupPath, "group-rounds.json");
+        private readonly List<string> groups = new() {  };
+        private readonly Dictionary<string, Round> rounds = new(StringComparer.OrdinalIgnoreCase);
 
         public List<Entry> Entries { get; } = new();
         public List<Team> Teams { get; } = new();
-        public Round Round { get; } = new();
+        public IReadOnlyList<string> Groups => this.groups;
+        public string SelectedGroupName { get; set; }
+        public List<Team> CurrentTeams => this.GetTeams(this.SelectedGroupName);
+        public List<Entry> CurrentEntries => this.GetEntries(this.SelectedGroupName);
+        public Round Round => this.GetRound(this.SelectedGroupName);
+
+        public List<Team> GetTeams(string groupName)
+        {
+            return this.Teams
+                .Where(team => string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(team => team, new SchochComparer())
+                .ToList();
+        }
+
+        public List<Entry> GetEntries(string groupName)
+        {
+            return this.Entries
+                .Where(entry => string.Equals(entry.GroupName, groupName, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        public Round GetRoundForGroup(string groupName)
+        {
+            return this.GetRound(groupName);
+        }
 
         public void Load()
         {
+            if (File.Exists(this.groupsFilePath))
+            {
+                var savedGroups = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(this.groupsFilePath));
+                if (savedGroups != null && savedGroups.Count > 0)
+                {
+                    this.groups.Clear();
+                    foreach (var groupName in savedGroups)
+                    {
+                        this.AddGroupIfMissing(groupName);
+                    }
+                }
+            }
+
             if (File.Exists(this.entriesFilepath))
             {
                 var content1 = File.ReadAllText(this.entriesFilepath);
@@ -34,7 +75,18 @@ namespace SchochRechner.Logic
                 {
                     this.Teams.Clear();
                     this.Teams.AddRange(newTeams);
+                    foreach (var team in this.Teams)
+                    {
+                        team.GroupName = string.IsNullOrWhiteSpace(team.GroupName) ? "Allgemein" : team.GroupName;
+                        this.AddGroupIfMissing(team.GroupName);
+                    }
                 }
+            }
+
+            foreach (var entry in this.Entries)
+            {
+                entry.GroupName = string.IsNullOrWhiteSpace(entry.GroupName) ? "Allgemein" : entry.GroupName;
+                this.AddGroupIfMissing(entry.GroupName);
             }
 
             if (File.Exists(this.roundFilePath))
@@ -43,16 +95,26 @@ namespace SchochRechner.Logic
                 var newRound = JsonConvert.DeserializeObject<Round>(content3);
                 if (newRound != null)
                 {
-                    this.Round.RoundActual = newRound.RoundActual;
-                    this.Round.Draws.AddRange(newRound.Draws);
-
-                    // Fix all team references
-                    foreach (var draw in this.Round.Draws)
+                    if (this.groups.Contains("Allgemein", StringComparer.OrdinalIgnoreCase))
                     {
-                        var team1Id = draw.Team1.Id;
-                        var team2Id = draw.Team2.Id;
-                        draw.Team1 = this.Teams.FirstOrDefault(x => x.Id == team1Id);
-                        draw.Team2 = this.Teams.FirstOrDefault(y => y.Id == team2Id);
+                        var defaultRound = this.GetRound("Allgemein");
+                        defaultRound.RoundActual = newRound.RoundActual;
+                        defaultRound.Draws.AddRange(newRound.Draws);
+                        this.FixTeamReferences(defaultRound, "Allgemein");
+                    }
+                }
+            }
+
+            if (File.Exists(this.groupRoundsFilePath))
+            {
+                var savedRounds = JsonConvert.DeserializeObject<Dictionary<string, Round>>(File.ReadAllText(this.groupRoundsFilePath));
+                if (savedRounds != null)
+                {
+                    foreach (var groupRound in savedRounds)
+                    {
+                        this.AddGroupIfMissing(groupRound.Key);
+                        this.rounds[groupRound.Key] = groupRound.Value;
+                        this.FixTeamReferences(groupRound.Value, groupRound.Key);
                     }
                 }
             }
@@ -88,19 +150,185 @@ namespace SchochRechner.Logic
                 }
             }
 
+            if (File.Exists(this.groupsFilePath))
+            {
+                var newFilePath = Path.Combine(Application.StartupPath, "groups-" + suffix + ".json");
+                if (!File.Exists(newFilePath))
+                {
+                    File.Move(this.groupsFilePath, newFilePath);
+                }
+            }
+
+            if (File.Exists(this.groupRoundsFilePath))
+            {
+                var newFilePath = Path.Combine(Application.StartupPath, "group-rounds-" + suffix + ".json");
+                if (!File.Exists(newFilePath))
+                {
+                    File.Move(this.groupRoundsFilePath, newFilePath);
+                }
+            }
+
             var content1 = JsonConvert.SerializeObject(this.Entries, Formatting.Indented);
             File.WriteAllText(this.entriesFilepath, content1);
 
             var content2 = JsonConvert.SerializeObject(this.Teams, Formatting.Indented);
             File.WriteAllText(this.teamsFilepath, content2);
 
-            var content3 = JsonConvert.SerializeObject(this.Round, Formatting.Indented);
+            var defaultRound = this.groups.Contains("Allgemein", StringComparer.OrdinalIgnoreCase)
+                ? this.GetRound("Allgemein")
+                : new Round();
+            var content3 = JsonConvert.SerializeObject(defaultRound, Formatting.Indented);
             File.WriteAllText(this.roundFilePath, content3);
+
+            File.WriteAllText(this.groupsFilePath, JsonConvert.SerializeObject(this.groups, Formatting.Indented));
+            File.WriteAllText(this.groupRoundsFilePath, JsonConvert.SerializeObject(this.rounds, Formatting.Indented));
+        }
+
+        public void AddGroup(string groupName)
+        {
+            groupName = groupName?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(groupName))
+            {
+                throw new ArgumentException("Der Gruppenname darf nicht leer sein.", nameof(groupName));
+            }
+
+            if (this.groups.Any(existing => string.Equals(existing, groupName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Diese Gruppe existiert bereits.", nameof(groupName));
+            }
+
+            this.groups.Add(groupName);
+            this.GetRound(groupName);
+        }
+
+        public void SelectGroup(string groupName)
+        {
+            if (!this.groups.Any(existing => string.Equals(existing, groupName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Die ausgewählte Gruppe existiert nicht.", nameof(groupName));
+            }
+
+            this.SelectedGroupName = this.groups.First(existing => string.Equals(existing, groupName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public void DeleteGroup(string groupName)
+        {
+            var groupIndex = this.groups.FindIndex(group => string.Equals(group, groupName, StringComparison.OrdinalIgnoreCase));
+            if (groupIndex < 0)
+            {
+                throw new ArgumentException("Die zu löschende Gruppe existiert nicht.", nameof(groupName));
+            }
+
+            if (this.groups.Count == 1)
+            {
+                throw new InvalidOperationException("Die letzte Gruppe kann nicht gelöscht werden.");
+            }
+
+            var existingName = this.groups[groupIndex];
+            this.groups.RemoveAt(groupIndex);
+            this.Teams.RemoveAll(team => string.Equals(team.GroupName, existingName, StringComparison.OrdinalIgnoreCase));
+            this.Entries.RemoveAll(entry => string.Equals(entry.GroupName, existingName, StringComparison.OrdinalIgnoreCase));
+            this.rounds.Remove(existingName);
+
+            if (string.Equals(this.SelectedGroupName, existingName, StringComparison.OrdinalIgnoreCase))
+            {
+                this.SelectedGroupName = this.groups[0];
+            }
+        }
+
+        public void RenameGroup(string currentName, string newName)
+        {
+            newName = newName?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(newName))
+            {
+                throw new ArgumentException("Der Gruppenname darf nicht leer sein.", nameof(newName));
+            }
+
+            var groupIndex = this.groups.FindIndex(group => string.Equals(group, currentName, StringComparison.OrdinalIgnoreCase));
+            if (groupIndex < 0)
+            {
+                throw new ArgumentException("Die umzubenennende Gruppe existiert nicht.", nameof(currentName));
+            }
+
+            if (this.groups.Where((_, index) => index != groupIndex)
+                .Any(group => string.Equals(group, newName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Diese Gruppe existiert bereits.", nameof(newName));
+            }
+
+            var oldName = this.groups[groupIndex];
+            this.groups[groupIndex] = newName;
+            foreach (var team in this.Teams.Where(team => string.Equals(team.GroupName, oldName, StringComparison.OrdinalIgnoreCase)))
+            {
+                team.GroupName = newName;
+            }
+
+            foreach (var entry in this.Entries.Where(entry => string.Equals(entry.GroupName, oldName, StringComparison.OrdinalIgnoreCase)))
+            {
+                entry.GroupName = newName;
+            }
+
+            var round = this.GetRound(oldName);
+            this.rounds.Remove(oldName);
+            this.rounds[newName] = round;
+
+            if (string.Equals(this.SelectedGroupName, oldName, StringComparison.OrdinalIgnoreCase))
+            {
+                this.SelectedGroupName = newName;
+            }
         }
 
         public void AddTeam(int id, string name)
         {
-            this.Teams.Add(new Team { Id = id, Name = name });
+            this.AddTeam(id, name, this.SelectedGroupName);
+        }
+
+        public void AddTeam(int id, string name, string groupName)
+        {
+            if (this.Teams.Any(team => team.Id == id && string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Diese Team-ID wird in der Gruppe bereits verwendet.");
+            }
+
+            this.Teams.Add(new Team { Id = id, Name = name, GroupName = groupName });
+        }
+
+        public bool HasEntries(Team team)
+        {
+            return this.Entries.Any(entry => string.Equals(entry.GroupName, team.GroupName, StringComparison.OrdinalIgnoreCase)
+                && (entry.Team1 == team.Id || entry.Team2 == team.Id));
+        }
+
+        public void UpdateTeam(Team team, int id, string name, string groupName)
+        {
+            if (this.Teams.Any(existing => existing != team && existing.Id == id
+                && string.Equals(existing.GroupName, groupName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Diese Team-ID wird in der Gruppe bereits verwendet.");
+            }
+
+            if (this.HasEntries(team) && team.Id != id)
+            {
+                throw new InvalidOperationException("Die ID eines Teams mit Resultaten kann nicht geändert werden.");
+            }
+
+            if (!string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase) && this.HasEntries(team))
+            {
+                throw new InvalidOperationException("Teams mit Resultaten können nicht in eine andere Gruppe verschoben werden.");
+            }
+
+            if (!string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (var round in this.rounds.Values)
+                {
+                    round.Draws.RemoveAll(draw => draw.Team1 == team || draw.Team2 == team);
+                }
+            }
+
+            team.Id = id;
+            team.Name = name;
+            team.GroupName = groupName;
+            this.AddGroupIfMissing(groupName);
         }
 
         public void DeleteTeam(Team team)
@@ -110,6 +338,7 @@ namespace SchochRechner.Logic
 
         public void AddEntry(Entry entry)
         {
+            entry.GroupName = this.SelectedGroupName;
             this.Entries.Add(entry);
         }
 
@@ -121,6 +350,7 @@ namespace SchochRechner.Logic
                 new Entry
                 {
                     Round = round,
+                    GroupName = this.SelectedGroupName,
                     Team1 = team1,
                     Team2 = team2,
                     Games1 = games1,
@@ -151,8 +381,16 @@ namespace SchochRechner.Logic
 
         public void CalculateRanking()
         {
+            this.CalculateRanking(this.SelectedGroupName);
+        }
+
+        public void CalculateRanking(string groupName)
+        {
+            var teams = this.GetTeams(groupName);
+            var entries = this.GetEntries(groupName);
+
             // Clear all stats first
-            foreach (var team in this.Teams)
+            foreach (var team in teams)
             {
                 team.GamesWon = 0;
                 team.GamesLost = 0;
@@ -164,10 +402,10 @@ namespace SchochRechner.Logic
             }
 
             // Calculate win/loss
-            foreach (var entry in this.Entries)
+            foreach (var entry in entries)
             {
-                var team1 = this.Teams.Find(x => x.Id == entry.Team1);
-                var team2 = this.Teams.Find(x => x.Id == entry.Team2);
+                var team1 = teams.Find(x => x.Id == entry.Team1);
+                var team2 = teams.Find(x => x.Id == entry.Team2);
 
                 if (team1 == null || team2 == null)
                 {
@@ -194,12 +432,12 @@ namespace SchochRechner.Logic
             }
 
             // Calculate BHZ
-            foreach (var team in this.Teams)
+            foreach (var team in teams)
             {
                 team.Buchholz = 0;
                 foreach (var opp in team.Opponents)
                 {
-                    var oppTeam = this.Teams.Find(x => x.Id == opp);
+                    var oppTeam = teams.Find(x => x.Id == opp);
                     if (oppTeam != null)
                     {
                         team.Buchholz += oppTeam.GamesWon;
@@ -208,12 +446,12 @@ namespace SchochRechner.Logic
             }
 
             // Calculate FBHZ
-            foreach (var team in this.Teams)
+            foreach (var team in teams)
             {
                 team.Feinbuchholz = 0;
                 foreach (var opp in team.Opponents)
                 {
-                    var oppTeam = this.Teams.Find(x => x.Id == opp);
+                    var oppTeam = teams.Find(x => x.Id == opp);
                     if (oppTeam != null)
                     {
                         team.Feinbuchholz += oppTeam.Buchholz;
@@ -221,26 +459,27 @@ namespace SchochRechner.Logic
                 }
             }
 
-            this.Teams.Sort(new SchochComparer());
+            teams.Sort(new SchochComparer());
         }
 
         public void CreateDraw(int roundNumber)
         {
             this.Round.RoundActual = roundNumber;
             this.Round.Draws.Clear();
+            var teams = this.CurrentTeams;
 
             var team1Index = 0;
             var team2Index = 0;
             var loopDetector2 = 1;
 
-            while (this.Teams.Count / 2 != this.Round.Draws.Count)
+            while (teams.Count / 2 != this.Round.Draws.Count)
             {
-                if (team1Index >= this.Teams.Count)
+                if (team1Index >= teams.Count)
                 {
                     team1Index = 0;
                 }
 
-                var team1 = this.Teams[team1Index];
+                var team1 = teams[team1Index];
 
                 // Is this team already in the draw?
                 if (this.AlreadyDrawn(this.Round.Draws, team1))
@@ -249,12 +488,12 @@ namespace SchochRechner.Logic
                     continue;
                 }
 
-                if (team2Index >= this.Teams.Count)
+                if (team2Index >= teams.Count)
                 {
                     team2Index = 0;
                 }
 
-                var team2 = this.Teams[team2Index];
+                var team2 = teams[team2Index];
 
                 var opponentFound = false;
                 var loopDetector = 0;                
@@ -270,12 +509,12 @@ namespace SchochRechner.Logic
                         || team1.Opponents.Contains(team2.Id))
                     {
                         team2Index++;
-                        if (team2Index >= this.Teams.Count)
+                        if (team2Index >= teams.Count)
                         {
                             team2Index = 0;
                         }
 
-                        team2 = this.Teams[team2Index];
+                        team2 = teams[team2Index];
 
                         if (loopDetector > 50)
                         {
@@ -305,24 +544,12 @@ namespace SchochRechner.Logic
             this.Round.RoundActual = roundNumber;
             this.Round.Draws.Clear();
 
-            var randomizedList = this.Teams.ToList();
+            var randomizedList = this.CurrentTeams;
             randomizedList.Shuffle();
 
-            for (var i = 0; i < randomizedList.Count; i++)
+            for (var i = 0; i + 1 < randomizedList.Count; i += 2)
             {
-                var team1 = randomizedList[i];
-
-                // Is this team already in the draw?
-                if (this.AlreadyDrawn(this.Round.Draws, team1))
-                {
-                    continue;
-                }
-
-                // Find next opponent                
-                var team2 = randomizedList[i + 1];
-
-                // Add draw                
-                this.Round.Draws.Add(new Draw { Team1 = team1, Team2 = team2 });
+                this.Round.Draws.Add(new Draw { Team1 = randomizedList[i], Team2 = randomizedList[i + 1] });
             }
         }
 
@@ -419,6 +646,46 @@ namespace SchochRechner.Logic
             this.teamsFilepath = Path.Combine(Application.StartupPath, "sampledata", "teams-sample.json");
             this.Load();
 
+        }
+
+        private Round GetRound(string groupName)
+        {
+            if (string.IsNullOrEmpty(groupName))
+            {
+                groupName = this.groups.First();
+            }
+
+            if (!this.rounds.TryGetValue(groupName, out var round))
+            {
+                round = new Round();
+                this.rounds[groupName] = round;
+            }
+
+            return round;
+        }
+
+        private void AddGroupIfMissing(string? groupName)
+        {
+            if (!string.IsNullOrWhiteSpace(groupName)
+                && !this.groups.Any(existing => string.Equals(existing, groupName, StringComparison.OrdinalIgnoreCase)))
+            {
+                this.groups.Add(groupName);
+            }
+        }
+
+        private void FixTeamReferences(Round round, string groupName)
+        {
+            foreach (var draw in round.Draws)
+            {
+                var team1Id = draw.Team1?.Id;
+                var team2Id = draw.Team2?.Id;
+                draw.Team1 = team1Id.HasValue
+                    ? this.Teams.FirstOrDefault(team => team.Id == team1Id && string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase))
+                    : null;
+                draw.Team2 = team2Id.HasValue
+                    ? this.Teams.FirstOrDefault(team => team.Id == team2Id && string.Equals(team.GroupName, groupName, StringComparison.OrdinalIgnoreCase))
+                    : null;
+            }
         }
 
         private bool AlreadyDrawn(List<Draw> draws, Team team)

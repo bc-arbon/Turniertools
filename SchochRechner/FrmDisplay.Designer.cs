@@ -196,7 +196,7 @@
             // TmrChangeView
             // 
             TmrChangeView.Enabled = true;
-            TmrChangeView.Interval = 30000;
+            TmrChangeView.Interval = 10000;
             TmrChangeView.Tick += TmrChangeView_Tick;
             // 
             // tableLayoutPanel1
