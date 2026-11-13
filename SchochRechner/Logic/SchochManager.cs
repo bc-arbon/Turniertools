@@ -118,6 +118,11 @@ namespace SchochRechner.Logic
                     }
                 }
             }
+
+            if (this.groups.Count == 0)
+            {
+                this.AddGroup("Allgemein");
+            }
         }
 
         public void Save()
