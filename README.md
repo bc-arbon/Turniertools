@@ -11,9 +11,7 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 - Verwaltung mehrerer Gruppen oder Stärkeklassen mit getrennten Ranglisten und Auslosungen
 
 ## Todo
-- Druckqualität Resultatblatt verbessern
 - Resultatblatt ohne Sätze
-- Resultatblatt mit eigenem Text oder Teams auswählen
 - Global aktuelle Runde definieren (autofill bei Resultateingabe und Matchblatt)
 
 ## Changelog
@@ -22,6 +20,7 @@ Für Turnierform Team gegen Team, pro Begegnung jeweils 1 Einzel und 1 Doppel
 - Mehrere Gruppen/Stärkeklassen mit getrennten Ranglisten, Resultaten und Auslosungen verwalten
 - Gruppen anlegen, umbenennen und löschen; Teams Gruppen zuordnen
 - Beameranzeige schaltet automatisch durch Ranglisten und Auslosungen aller Gruppen
+- Verbesserung Druckqualität des Matchblattes
 
 ### V1.5 (20.11.2025)
 - Anzeige der aktuellen Runde im Displayfenster

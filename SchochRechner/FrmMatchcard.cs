@@ -1,5 +1,4 @@
 ﻿using SchochRechner.ObjectModel;
-using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Drawing.Text;
 
@@ -7,8 +6,7 @@ namespace SchochRechner
 {
     public partial class FrmMatchcard : Form
     {
-        private Bitmap memoryImage;
-        private PrintDocument pd;
+        private PrintDocument? pd;
 
         public FrmMatchcard()
         {
@@ -33,16 +31,49 @@ namespace SchochRechner
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            var size = new Size(this.ctlMatchcard1.ClientSize.Width, this.ctlMatchcard1.ClientSize.Height + 100);
-
-            //var myGraphics = this.CreateGraphics();
-            memoryImage = new Bitmap(size.Width, size.Height);
-            var memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X + 20, this.Location.Y + 40, 0, 0, size);
-
-            var preview = new PrintPreviewDialog();
-            preview.Document = pd;
+            var printDocument = this.pd ?? throw new InvalidOperationException("Das Druckdokument wurde noch nicht initialisiert.");
+            using var preview = new PrintPreviewDialog();
+            preview.Document = printDocument;
             preview.ShowDialog();
+        }
+
+        private static void DrawLabels(Graphics graphics, Control parent, float parentX, float parentY, float scale)
+        {
+            foreach (Control child in parent.Controls)
+            {
+                var x = parentX + child.Left * scale;
+                var y = parentY + child.Top * scale;
+                if (child is Label label)
+                {
+                    var bounds = new RectangleF(x, y, label.Width * scale, label.Height * scale);
+                    if (label.BorderStyle == BorderStyle.FixedSingle)
+                    {
+                        using var pen = new Pen(label.ForeColor, 0.75f);
+                        graphics.DrawRectangle(pen, bounds.X + 0.375f, bounds.Y + 0.375f, bounds.Width - 0.75f, bounds.Height - 0.75f);
+                    }
+
+                    using var brush = new SolidBrush(label.ForeColor);
+                    using var format = new StringFormat
+                    {
+                        Alignment = label.TextAlign is ContentAlignment.TopCenter or ContentAlignment.MiddleCenter or ContentAlignment.BottomCenter
+                            ? StringAlignment.Center
+                            : label.TextAlign is ContentAlignment.TopRight or ContentAlignment.MiddleRight or ContentAlignment.BottomRight
+                                ? StringAlignment.Far
+                                : StringAlignment.Near,
+                        LineAlignment = label.TextAlign is ContentAlignment.MiddleLeft or ContentAlignment.MiddleCenter or ContentAlignment.MiddleRight
+                            ? StringAlignment.Center
+                            : label.TextAlign is ContentAlignment.BottomLeft or ContentAlignment.BottomCenter or ContentAlignment.BottomRight
+                                ? StringAlignment.Far
+                                : StringAlignment.Near,
+                        Trimming = StringTrimming.EllipsisCharacter,
+                    };
+                    graphics.DrawString(label.Text, label.Font, brush, bounds, format);
+                }
+                else
+                {
+                    DrawLabels(graphics, child, x, y, scale);
+                }
+            }
         }
 
         private void FrmMatchcard_Load(object sender, EventArgs e)
@@ -55,11 +86,9 @@ namespace SchochRechner
         private void Pd_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.PageSettings.Landscape = true;
-            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            e.Graphics.PixelOffsetMode = PixelOffsetMode.Half;
-            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
             e.Graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-            e.Graphics.DrawImage(this.memoryImage, 100, 100);
+            var source = this.ctlMatchcard1;
+            DrawLabels(e.Graphics, source, 100, 100, 100f / source.DeviceDpi);
         }
     }
 }
