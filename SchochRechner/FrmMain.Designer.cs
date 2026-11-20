@@ -731,7 +731,7 @@
             DoubleBuffered = true;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Sir Schoch-A-Lot 1.5";
+            Text = "Sir Schoch-A-Lot 1.6";
             FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
             SpcMain.Panel1.ResumeLayout(false);
